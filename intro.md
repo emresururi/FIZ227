@@ -1,11 +1,28 @@
-# Welcome to your Jupyter Book
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.4
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+# FIZ227 - Bilgisayar Programlama
+**Dr. Emre S. Taşcı** <emre.tasci@hacettepe.edu.tr>  
+Fizik Mühendisliği Bölümü  
+Hacettepe Üniversitesi  
+Ankara
 
-Check out the content pages bundled with this sample book to see more.
++++
 
-```{tableofcontents}
-```
+Bu kitapçık, bölümümüzde 2022 yılından itibaren vermeye başladığım "FİZ227 - Bilgisayar Programlama" dersine dair ders notlarının jupyter-book formatında derlenmiş halidir. Bu derste temel olarak Python programlama diline giriş ve fizikte uygulanmasına yönelik metotların öğretilmesi hedeflenmektedir.
+
++++
+
+11 Ocak 2024  
+Dr. Emre S. Taşcı
