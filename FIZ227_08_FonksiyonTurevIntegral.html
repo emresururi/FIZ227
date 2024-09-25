@@ -1,0 +1,1316 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Fonksiyonlar, Türev ve İntegral &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_08_FonksiyonTurevIntegral';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uygulama 1: Döngüler ve Kararlar" href="FIZ227_U01_nxn_EnKucukKareler.html" />
+    <link rel="prev" title="Lineer Cebir Uygulamaları (II)" href="FIZ227_07_LineerCebir_Uygulama_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_03_MatPlotLib_GrafikCizimi.html">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_04_DongulerVeKararlar.html">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_06_LineerCebir_Uygulama_1.html">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U01_nxn_EnKucukKareler.html">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_08_FonksiyonTurevIntegral.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fonksiyonlar, Türev ve İntegral</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Fonksiyonlar, Türev ve İntegral</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-8">Ders Notları: 8</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#giris">Giriş</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analitik-cozum-de-neymis">Analitik çözüm de neymiş?..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dogrusu-entegral-mi-integral-mi-yoksa-alan-hesabi-mi">Doğrusu “Entegral” mi, “İntegral” mi, yoksa “Alan hesabı” mı?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fonksiyonlar">Fonksiyonlar</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cok-girisli-cikisli-oturgacli-goturgec">Çok girişli-çıkışlı oturgaçlı götürgeç</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#integraller">Integraller</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dikdortgenler-sagdan-soldan-geliyor">Dikdörtgenler sağdan soldan geliyor..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ornek-int-a-b-cos-x-dx-stackrel-sin-b-sin-a">Örnek: <span class="math notranslate nohighlight">\(\int_a^b{\cos(x)\,dx}\stackrel{?}{=}\sin(b)-\sin(a)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otomatik-yapani-yok-mu-bunun-scipy-integrate-quad">Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad()</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#turevler">Türevler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turevin-formal-resmi-tanimi">Türevin formal/resmi tanımı</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otomatik-yapani-yok-mu-bunun-scipy-misc-derivative">Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative()</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alistirma">Alıştırma</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alistirma-cok-zorrrr">Alıştırma (Çok Zorrrr)</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fonksiyonlar-turev-ve-integral">
+<h1>Fonksiyonlar, Türev ve İntegral<a class="headerlink" href="#fonksiyonlar-turev-ve-integral" title="Permalink to this heading">#</a></h1>
+<section id="ders-notlari-8">
+<h2>Ders Notları: 8<a class="headerlink" href="#ders-notlari-8" title="Permalink to this heading">#</a></h2>
+<p><strong>Fonksiyonlar, Türev ve İntegral</strong></p>
+<ul class="simple">
+<li><p>Giriş</p>
+<ul>
+<li><p>Analitik çözüm de neymiş?..</p></li>
+<li><p>Doğrusu “Entegral” mi, “İntegral” mi, yoksa “Alan hesabı” mı?</p></li>
+</ul>
+</li>
+<li><p>Fonksiyonlar</p>
+<ul>
+<li><p>Çok girişli-çıkışlı oturgaçlı götürgeç</p></li>
+</ul>
+</li>
+<li><p>İntegraller</p>
+<ul>
+<li><p>Dikdörtgenler sağdan soldan geliyor..</p></li>
+<li><p>Otomatik yapanı yok mu bunun? (scipy.integrate.quad())</p></li>
+</ul>
+</li>
+<li><p>Türevler</p>
+<ul>
+<li><p>Türevin formal/resmi tanımı</p></li>
+<li><p>Otomatik yapanı yok mu bunun? (scipy.misc.derivative())</p></li>
+</ul>
+</li>
+<li><p>Alıştırma</p></li>
+<li><p>Alıştırma (Çok Zorrrr)</p></li>
+</ul>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="giris">
+<h1>Giriş<a class="headerlink" href="#giris" title="Permalink to this heading">#</a></h1>
+<p>Her uzmanlıkta, o uzmanlığa dair pek bir şey bilmediğinizi ama yine de bunun <em>artistlik</em> yapmanıza engel olmayacağını düşündüğünüzü dahası kötü (~ortaokul seviyesi) bir espri anlayışına sahip olduğunuzu ve dahi çok da çekilesi bir insan olmadığınızı göstermenizi sağlayan birtakım sorular vardır. Örneğin bir İngilizce çevirmenine “what ne demek?” diyebilirsiniz; bir fizikçiye “…sen onu bırak da şimdi ben sana 3 tane kütle versem, onların çözümünü yapabilir misin?” sorusunu yöneltebilir, ya da bir matematikçiden <span class="math notranslate nohighlight">\(\int{\frac{\sin x}{x}\,dx}\)</span> integralini almasını isteyebilirsiniz (*Abidin yine iyi kurtarmış bence!.. 8).</p>
+<p>Bilgisayarlar için durum biraz daha vahim: espriden anlamamalarının yanı sıra, “Zzzzt ne demek kompodor?” gibi basit bir soruda bile takıldıklarını <a class="reference internal" href="FIZ227_05_LineerCebir.html"><span class="doc std std-doc">önceki derslerimizden de biliyoruz</span></a>. O yüzden bırakın <span class="math notranslate nohighlight">\(\int{\frac{\sin x}{x}\,dx}\)</span> integralini, <span class="math notranslate nohighlight">\(\int{\cos x\,dx}\)</span> integralini bile alabileceklerinden emin değilim (o sırada, <a class="reference external" href="https://www.wolframalpha.com/input/?i=integral+cos%28x%29">Wolfram Merkez Üssü’nde Stephen Wolfram bu notları okuyup sinirden saçlarını yolmaktaydı…</a>).</p>
+<p>Şaka -ve arsızca çarpıtma- bir yana, sembolik hesaplar yapan pek çok matematik kütüphanesi var: ennnn sayısal çalışan MATLAB / GNU Octave bile uygun modüllerle sembolik hesap desteği kazanıyor, hatta Python’ı da boş geçmeyelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">integrate</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \sin{\left(x \right)}\]</div>
+</div>
+</div>
+<p>(insert: “bak, isteyince oluyormuş demek, keh keh…” pişkin gülüşü)</p>
+<p>Bilgisayarlarda matematiksel işlemler yaparken aklımızdan çıkarmamız gereken şey, her ne kadar bize doğal gibi gelen sembolik, analitik işlemleri yapıyor gibi görünseler de, aslında her koşul altında sayılarla, sayısal işlemler yapıyor olmaları (ek bilgi: bu işler için sembollere kendi aralarında asal sayılar, bizzat asal sayılar veya doğrudan komple sayılar atamak uygulanan metotlardan biri – sonrasında sonucu bu sembol değerleri üzerinden yorumlayıp, mümkün mertebe ayrıştırıyorlar).</p>
+<section id="analitik-cozum-de-neymis">
+<h2>Analitik çözüm de neymiş?..<a class="headerlink" href="#analitik-cozum-de-neymis" title="Permalink to this heading">#</a></h2>
+<p>Gene vaktiyle dersimizde bahsettiğimiz üzere, bizler çoğu zaman otomatik olarak, farkına bile varmadan elimizdeki problemleri soyutlamalar ve modellemelerle temsil edip, öyle çözüyoruz. Ama aslında ne kristaller pürüzsüz, ne de <a class="reference external" href="https://en.wikipedia.org/wiki/Spherical_cow"><em>tavuklar küresel</em></a>. Nasıl ki WhatsApp’dan mesaj yazıp, instagram’dan resim paylaşmak için kullandığımız aletlerin potansiyellerinin 100’de 1’i yeterliyse (klişe ama gerçek: o aletlerin çok daha düşük kapasitelisi 50 yıl önce (20 Haziran 1969) aya insan gönderdi), elimizdeki olası bir problemin (“bu akşam ne yemek yapsam?”) çözümünün bizi, ailemizi ve misafirlerimizi tatmin etmesi yeterli (Melbourne’da yaşayan John Smith’in (24) yemeğimi takdir edip etmemesi açıkçası pek umurumda değil). Bu kadar laf salatasına neden giriyorum?</p>
+<div class="math notranslate nohighlight">
+\[\int{\cos(x)\,dx}=\sin(x)\]</div>
+<p>şeklindeki belirsiz integrallerin çözümü, bütün olası durumlar için <strong>evrensel</strong> olarak geçerlidir. Analitik çözümler mutlak çözümler olup, tartışmaya, manevra alanına yer bırakmaz, sağlamlardır. Ama pahalıdırlar da, her zaman olmayabilirler de.</p>
+<p><img alt="08_One_Plus_One.jpg" src="_images/08_One_Plus_One.jpg" /><br />
+<a class="reference external" href="http://www.toondos.com">www.toondos.com</a> imiş (ben Eda’nın ders notlarından arakladım 8)</p>
+<p>Mühendislikte mevcut problemlerin çözümleri ile uğraşırız - bu problemler hayali/düşünsel problemler olmayıp, doğrudan gündelik hayatımızda karşılaştığımız sorunlara dairdir. Bu nedenle bulundukları ortamdan, tâbi oldukları koşullardan ayrı düşünülemez. Eğer düşünce kırılmayacak sağlamlıkta bir bardak için malzeme arıyorsak, bu bardağın 1.5, haydi sizin güzel hatrınız için 2 metreden düşünce sağlam kalması bizim için yeterlidir – gidip de üzerinden dozerle geçilse bile, ya da bir nötron yıldızına yerleştirildiği durumlarda dahi sağlam kalacak bir bardak tasarlamayız. Çalışma aralığımızı tanımlar, o aralıkta ve istenilen hassasiyette işimize bakarız. Yani birisi bizden <span class="math notranslate nohighlight">\(\int{f(x)\,dx}\)</span> integralinin değerini istediğinde, “hangi aralıkta (ve hangi hassasiyette)?” sorusunu sormamız gerekir. Analitik çözüme sayısal yöntemlerle yaklaşırken içiniz rahat olsun zira:</p>
+<ol class="arabic simple">
+<li><p>Elinizdeki sorunun analitik çözümü olmayabilir bile!</p></li>
+<li><p>Çözüme istediğiniz hassasiyette yaklaşabilirsiniz.</p></li>
+</ol>
+<p>Bu “analitik vs. sayısal” kapışmasına çok da girmemek lazım. Siz analitik takılırsınız, örneğin dersiniz ki: <span class="math notranslate nohighlight">\(\cos^{-1}(-1) = \pi\)</span>, ben de derim ki, “şu metreyi alın da bana şu kumaştan o cevaplık kadar kesin, kravat diktireceğim…” artık 3.14 metre mi kesersiniz, 3.1416 metre mi, … orasını bilemem ama sizin de pek <em>analitik</em> olduğunuz söylenemez o an itibarıyla. ;)</p>
+</section>
+<section id="dogrusu-entegral-mi-integral-mi-yoksa-alan-hesabi-mi">
+<h2>Doğrusu “Entegral” mi, “İntegral” mi, yoksa “Alan hesabı” mı?<a class="headerlink" href="#dogrusu-entegral-mi-integral-mi-yoksa-alan-hesabi-mi" title="Permalink to this heading">#</a></h2>
+<p>Ben lisanstayken çok sevdiğimiz, süper bir hocamız integral yerine “Entegral” derdi (bunu yetişme çağındayken Frankofon bir dünyada büyümüş olduğuna bağlıyorum, keza “internasyonel” yerine de “enternasyonel” ve “intropi” yerine de “entropi” derdi… deermişim!.. 8P 8). Peki integral, acaba bize lisede öğrettikleri üzere “grafiğin altında kalan alan” mı? Eğer öyleyse “ne kadar?”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;or&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">poli</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">0</span><span class="p">],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">]],</span><span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poli</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:}</span><span class="s2"> nokta ile..&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b1dad5441d2c7851f81a2e6096d445d5d9a34b1cc9c9dc88375b40112971d4dd.png" src="_images/b1dad5441d2c7851f81a2e6096d445d5d9a34b1cc9c9dc88375b40112971d4dd.png" />
+<img alt="_images/80f188adcc4a503e8456db3cde8417a87f5378e73b8ce2f063e8a023249a2880.png" src="_images/80f188adcc4a503e8456db3cde8417a87f5378e73b8ce2f063e8a023249a2880.png" />
+<img alt="_images/d20911eafec3e466132887993cd1799e3ff82e77916faa0a0b30e6dccbbaf88e.png" src="_images/d20911eafec3e466132887993cd1799e3ff82e77916faa0a0b30e6dccbbaf88e.png" />
+<img alt="_images/03fd201df67c09f6177065231a9b1e7eafd0a1e9862dc19c41b07e759568c033.png" src="_images/03fd201df67c09f6177065231a9b1e7eafd0a1e9862dc19c41b07e759568c033.png" />
+</div>
+</div>
+<p>- İyi günler, ben ders notlarındaki ilanınız için arıyorum… “Grafiğin altında kalan alanların toplamı…” derken ne diyordunuz? Efendim? <em>Eksi de olabilir</em> ne demek?.. Alanlar mı? Peki, anlıyorum, peki, teşekkür ederim, yok, bir başka randevum vardı, şimdi hatırladım, kapatıyorum, iyi günler…</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fonksiyonlar">
+<h1>Fonksiyonlar<a class="headerlink" href="#fonksiyonlar" title="Permalink to this heading">#</a></h1>
+<p>İntegrallerle ilgili ontolojik ve pratik tartışmaları daha da ilerletmeden önce, bir mola verip, fonksiyonları anlatmamız iyi olacak: Fonksiyonlar, bildiğiniz fonksiyonlar: verilen bir nesneyi, bir başka nesneye taşıyan otobüs benzeri araçlara fonksiyon diyoruz. Demek ki bir fonksiyonu tanımlarken üç şeyi belirtmemiz lazım:</p>
+<ol class="arabic simple">
+<li><p>Fonksiyonun adı (kötü ad seçerseniz bilgisayarınız size küsebilir)</p></li>
+<li><p>Girdi olarak ne kullanılacak (giriş parametreleri)</p></li>
+<li><p>Çıkış olarak ne döndürecek (çıkış değerleri)</p></li>
+</ol>
+<p>Python’da fonksiyonlar “define” (tanımla) yükleminden gelen <code class="docutils literal notranslate"><span class="pre">def</span></code> yönergesi ile başlatılan blok içerisinde tanımlanırlar. <code class="docutils literal notranslate"><span class="pre">def</span></code> yönergesinde fonksiyonun adı ve giriş parametresi belirtilir; eğer fonksiyon bir (veya daha çok) değer döndürecekse, bunlar da fonksiyon tanım bloğu içerisinde <code class="docutils literal notranslate"><span class="pre">return</span></code> yönergesi ile döndürülür.</p>
+<p>Örnek olarak, verilen bir sayının/dizinin/vektörün/vs.. karesini alan, “karele” adında bir fonksiyon yazalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">karele</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">karele</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">karele</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">karele</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="c1"># Python&#39;da vektörlerin düz çarpımının (v1*v2) karşılıklı elemanların çarpımı </span>
+<span class="c1"># olduğunu hatırlayın -- bir vektörü kendisiyle skaler çarpmak için:</span>
+<span class="c1"># np.dot(v,v) </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+[  1   4   9  16  25  36  49  64  81 100]
+[ 9 16]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python’da fonksiyonların çalışma uzayında ilginç bir yaklaşıma gidilmiştir: pek çok programlama dilinde fonksiyonun tanım bloğu dışındaki değişkenler erişime kapalıyken (erişmek istediğimiz değişkenleri genelde <code class="docutils literal notranslate"><span class="pre">global</span></code> yönergesiyle belirleyip içeriden dışarıya erişime açarız), Python’da “en uygun nasılsa öyle olsun” mantığı yürütülür, kulağa çok korkunç gelse de, işe yaramaktadır.</p>
+<p>Örneklerle açıklamaya çalışalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek 1 : içeriden dışarıya...</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Dışarıdaki bir değişken</span>
+
+<span class="k">def</span> <span class="nf">fonk1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="c1"># a değeri fonksiyonda tanımlı</span>
+               <span class="c1"># olmasa bile doğrudan kullanıyoruz</span>
+    
+<span class="nb">print</span> <span class="p">(</span><span class="n">fonk1</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek 2 : dışarıdaki dururken içeridekini kullanmak</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Dışarıdaki bir değişken</span>
+
+<span class="k">def</span> <span class="nf">fonk2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># içeride dışarıdaki ile aynı adda</span>
+          <span class="c1"># bir değişken tanımladık, haydi hayırlısı...</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fonk2</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
+5
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fonk2</span></code>de görüldüğü üzere, eğer kullandığımız değişken adı halihazırda içeride tanımlıysa, fonksiyonumuzun gözü dışarıdaki değişkenlere gitmiyor, kendininkini kullanıyor. İçeride aynı isimli değişkeni başka bir değerde tanımlasak bile (örneğin burada dışarıdaki a’nın değeri 5 iken, biz fonksiyon tanımı içerisinde onu 6 olarak tanımladık), dışarı çıkıldığı anda her şey unutuluyor: son satırda (fonksiyon tanım bloğunun dışında) a’nın değerini yazdırdığımız zaman bize o bloktaki (yani ana program bloğundaki) değeri olan 5’i döndürmekte.</p>
+<p><strong>Peki dışarıdaki değişkenin değerini gerçekten içeriden değiştirmek istersek?</strong><br />
+İşte bu çeşit durumlarda, <code class="docutils literal notranslate"><span class="pre">global</span></code> yönergesini kullanıyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Örnek 3 : İçeriden dışarıyı kurcalamak</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Dışarıdaki bir değişken</span>
+
+<span class="k">def</span> <span class="nf">fonk3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">a</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># a&#39;yı içeride tanımladık ama bu tanım</span>
+          <span class="c1"># global yönergesinden ötürü </span>
+          <span class="c1"># dışarıdaki a&#39;yı da etkiledi.</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fonk3</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
+6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Burada, tıpkı 2. örnekte olduğu gibi, fonksiyon içerisinde a değerini tanımladık ama bu sefer fonksiyon içerisinde a’yı global bir değişken olarak işaretlediğimiz için, fonksiyonun içerisinde yaptığımız işlemler, dışarıdaki a’yı da etkiledi.</p>
+<section id="cok-girisli-cikisli-oturgacli-goturgec">
+<h2>Çok girişli-çıkışlı oturgaçlı götürgeç<a class="headerlink" href="#cok-girisli-cikisli-oturgacli-goturgec" title="Permalink to this heading">#</a></h2>
+<p>Bir fonksiyon tanımlayalım, verilen iki sayının(/vektörün/dizinin…) tek seferde toplamını ve farkını döndürsün (toplamaya ayrı, çıkarmaya ayrı zaman mı?!..):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">topla_cikar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">toplam</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="n">fark</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">toplam</span><span class="p">,</span><span class="n">fark</span>
+
+<span class="n">top</span><span class="p">,</span><span class="n">cik</span> <span class="o">=</span> <span class="n">topla_cikar</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Toplam: &quot;</span><span class="p">,</span><span class="n">top</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fark: &quot;</span><span class="p">,</span><span class="n">cik</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Toplam:  8
+Fark:  -2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Peki, diyelim boş bulunup, dönüşe tek değişken koyduk? Bu durumda, bize sonuç demet (<em>tuple</em>) olarak dönecektir (demetlerle ilgili daha fazla bilgi için bkz. <a class="reference internal" href="FIZ227_01_Giris_Listeler.html#demetler"><span class="std std-ref">Ders Notları #1</span></a>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tekli_donen</span> <span class="o">=</span> <span class="n">topla_cikar</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dönen değer: &quot;</span><span class="p">,</span><span class="n">tekli_donen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tekli_donen</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tekli_donen</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dönen değer:  (8, -2)
+8
+-2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="integraller">
+<h1>Integraller<a class="headerlink" href="#integraller" title="Permalink to this heading">#</a></h1>
+<p>Artık fonksiyonlarımızı tanımlayabildiğimize göre, integrallerine de geçebiliriz. Öncelikle düşünelim, fonksiyon neydi?.. (fonksiyon emekti, sevgiydi…)</p>
+<p><img alt="08_SelviBoylumAlYazmalim.jpg" src="_images/08_SelviBoylumAlYazmalim.jpg" /><br />
+(Selvi Boylum, Al Yazmalım (1977) - Mutlaka seyretmenizi tavsiye ettiğim bir film!)</p>
+<p>İntegrali resmi tanımıyla yazarsak, hedefimizi de açıkça görmüş oluruz:
+$<span class="math notranslate nohighlight">\(\lim_{\Delta x\rightarrow 0}{\left[{\sum{f(x)\,\Delta x}}\right]} = \int{f(x)\,dx}\)</span>$</p>
+<p>Sağ tarafı analitikçi optiklere bırakıp, biz sol taraftan ilerleyeceğiz. Bunun için de bol bol yamuk çizeceğiz. <em>Yamuk da nereden çıktı? Tabanı <span class="math notranslate nohighlight">\(\Delta x\)</span>, yüksekliği <span class="math notranslate nohighlight">\(f(x)\)</span> olan dikdörtgenlerin alanı?..</em> derseniz de şu sebepten:</p>
+<section id="dikdortgenler-sagdan-soldan-geliyor">
+<h2>Dikdörtgenler sağdan soldan geliyor..<a class="headerlink" href="#dikdortgenler-sagdan-soldan-geliyor" title="Permalink to this heading">#</a></h2>
+<p>Bu seçimde <span class="math notranslate nohighlight">\([x,x+\Delta x]\)</span> aralığının alanını hesaplarken, dikdörtgen yüksekliği olarak <span class="math notranslate nohighlight">\(f(x)\)</span> değerini alıyoruz, bu da grafiksel olarak şöyle bir şeye denk geliyor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span><span class="n">Polygon</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">delta_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;or&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dik4sol</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">0</span><span class="p">],</span><span class="n">delta_x</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">dik4sol</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Soldan dikdörtgen yaklaşımı, </span><span class="si">{:}</span><span class="s2"> nokta ile..&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="c1">#plt.xlim(0.5,2.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73fd9074a1c895978accd55e98f656331d9fb2cc37e3fd8f2f7541634497e7f7.png" src="_images/73fd9074a1c895978accd55e98f656331d9fb2cc37e3fd8f2f7541634497e7f7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hayaller</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span>
+<span class="n">gercek</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hayaller</span><span class="o">-</span><span class="n">gercek</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9194829857059754
+0.9564491424152821
+-0.0369661567093067
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu şekilde yaklaşımda bulunduğumuzda (bir de üstüne duruma kelime anlamı ile <em>yaklaşıp</em> zoom yaptığımızda) görüyoruz ki, 1. aralıkta gerçek değerin altında; 2. aralıkta ise gerçek değerin üstünde bir alan taramışız (halbuki daha iyi olabilirdi).</p>
+<p>Aralığın sağ tarafındaki değeri yükseklik olarak kullansak gene çok bir şey değişmeyecek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span><span class="n">Polygon</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">delta_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;or&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dik4sag</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">0</span><span class="p">],</span><span class="n">delta_x</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">dik4sag</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sağdan dikdörtgen yaklaşımı, </span><span class="si">{:}</span><span class="s2"> nokta ile..&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="c1">#plt.xlim(0.5,2.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/690aa884e56688c589d9186cca37b45f3b6ff7c305ed66d2ee2e94d80fc14674.png" src="_images/690aa884e56688c589d9186cca37b45f3b6ff7c305ed66d2ee2e94d80fc14674.png" />
+</div>
+</div>
+<p>Bu sefer de, 1. aralıkta gerçek değerden fazla, 2. aralıkta gerçek değerin altında bir değer hesaplamış olduk. Şansa pek güven olmayacağından, iki yaklaşım arasında bir yol tutalım: yani bir aralık için, aralığın solundaki değerden sağındaki değere bir doğru çizip, böylelikle yamuk tanımlayalım (bu kadar düzgün ve net tanımlı bir çokgene <em>yamuk</em> adı verilir mi hiç?!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Rectangle</span><span class="p">,</span><span class="n">Polygon</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">delta_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;or&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">poli</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mi">0</span><span class="p">],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],[</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">0</span><span class="p">]],</span><span class="n">hatch</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">poli</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yamuk yaklaşımı, </span><span class="si">{:}</span><span class="s2"> nokta ile..&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="c1">#plt.xlim(0.5,2.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7186b28b97b4c0c1e5922b093ad733bf6f3f607b1c4eed8844b87f00421c6deb.png" src="_images/7186b28b97b4c0c1e5922b093ad733bf6f3f607b1c4eed8844b87f00421c6deb.png" />
+</div>
+</div>
+<p>Görüldüğü üzere, iki aralık için de hesaplanan değer gerçek değerin altında kalsa da (bu, altta/üstte kalış fonksiyona bağlı bu arada), yukarıdaki ikisine göre, hata miktarımız (yani kırmızı gerçek değerle mavi yaklaşım arasında kalan beyaz bölgelerin alanı) aşırı derece de azalmış durumda.</p>
+<p>Bu yaklaşımlar çok daha rafine hale getirilebilir, matematikte bu tür eldeki verilerin aralarını doldurma işlemlerine “içdeğer bulma, <em>enterpolasyon</em>” (<em>Interpolation</em>) denmekte. İlk aklıma gelen, güzeller güzeli Newton-Rhapson yöntemi ile sekant yöntemleri oluyor ama taban genişliğini yeterince düşük tuttuğumuz sürece integralimizi yamuklarla da epey iyi hassasiyetle alabiliriz.</p>
+</section>
+<section id="ornek-int-a-b-cos-x-dx-stackrel-sin-b-sin-a">
+<h2>Örnek: <span class="math notranslate nohighlight">\(\int_a^b{\cos(x)\,dx}\stackrel{?}{=}\sin(b)-\sin(a)\)</span><a class="headerlink" href="#ornek-int-a-b-cos-x-dx-stackrel-sin-b-sin-a" title="Permalink to this heading">#</a></h2>
+<p>Farklı aralıklar alıp, yamuk alanlarının toplamıyla  <span class="math notranslate nohighlight">\(\int_a^b{\cos(x)\,dx}\)</span> integralini verilen <span class="math notranslate nohighlight">\([a,b]\)</span> aralığında hesaplayalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span><span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">gercek_deger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">1000000</span><span class="p">]):</span>
+    <span class="c1"># N : aralığı kaç parçaya böldüğümüz</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">delta_x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">alan</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">zaman_basla</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">alan</span> <span class="o">=</span> <span class="n">alan</span> <span class="o">+</span> <span class="n">delta_x</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">zaman_bitis</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">zaman_hesap</span> <span class="o">=</span> <span class="n">zaman_bitis</span> <span class="o">-</span> <span class="n">zaman_basla</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bölüm Sayısı: </span><span class="si">{:}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hesaplanan Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alan</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Gerçek Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gercek_deger</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            Hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">alan</span><span class="o">-</span><span class="n">gercek_deger</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Hesap Süresi: </span><span class="si">{:.15f}</span><span class="s2"> sn&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zaman_hesap</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bölüm Sayısı: 5
+Hesaplanan Değer: 0.861073373783770
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.004952030000668
+    Hesap Süresi: 0.000005006790161 sn
+---------------------------------------------
+Bölüm Sayısı: 10
+Hesaplanan Değer: 0.865048122417347
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000977281367092
+    Hesap Süresi: 0.000005483627319 sn
+---------------------------------------------
+Bölüm Sayısı: 50
+Hesaplanan Değer: 0.865992441464719
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000032962319719
+    Hesap Süresi: 0.000018358230591 sn
+---------------------------------------------
+Bölüm Sayısı: 100
+Hesaplanan Değer: 0.866017328886492
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000008074897947
+    Hesap Süresi: 0.000035047531128 sn
+---------------------------------------------
+Bölüm Sayısı: 1000
+Hesaplanan Değer: 0.866025324483988
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000000079300451
+    Hesap Süresi: 0.000359058380127 sn
+---------------------------------------------
+Bölüm Sayısı: 10000
+Hesaplanan Değer: 0.866025402992857
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000000000791582
+    Hesap Süresi: 0.003598690032959 sn
+---------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bölüm Sayısı: 1000000
+Hesaplanan Değer: 0.866025403784344
+    Gerçek Değer: 0.866025403784439
+            Hata: 0.000000000000094
+    Hesap Süresi: 0.362694263458252 sn
+---------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="otomatik-yapani-yok-mu-bunun-scipy-integrate-quad">
+<h2>Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad()</span></code>)<a class="headerlink" href="#otomatik-yapani-yok-mu-bunun-scipy-integrate-quad" title="Permalink to this heading">#</a></h2>
+<p>Doğal olarak, bu integral işi yamukları kullanmak yerine çok daha optimize yapan prosedürler mevcut (SciPy altında, koskoca <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/integrate.html">integrate</a> modülü. Bunlardan en yaygın ve kolay kullanımı olan <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html"><code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad</span></code></a>ı ele alacağız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span><span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">gercek_deger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">zaman_basla</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">alan</span><span class="p">,</span><span class="n">hassasiyet</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="n">zaman_bitis</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">zaman_hesap</span> <span class="o">=</span> <span class="n">zaman_bitis</span> <span class="o">-</span> <span class="n">zaman_basla</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;           Hesaplanan Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alan</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;               Gerçek Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gercek_deger</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                       Hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">alan</span><span class="o">-</span><span class="n">gercek_deger</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Integrate&#39;in öngördüğü hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hassasiyet</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;               Hesap Süresi: </span><span class="si">{:.15f}</span><span class="s2"> sn&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zaman_hesap</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Hesaplanan Değer: 0.866025403784439
+               Gerçek Değer: 0.866025403784439
+                       Hata: 0.000000000000000
+Integrate&#39;in öngördüğü hata: 0.000000000000010
+               Hesap Süresi: 0.000082969665527 sn
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="turevler">
+<h1>Türevler<a class="headerlink" href="#turevler" title="Permalink to this heading">#</a></h1>
+<p>Genelde türev almak integral almaya göre her zaman daha basittir; bilgisayarlarda ise… bilgisayarlarda da daha basit, korkmayın. ;)</p>
+<p><img alt="&quot;Symbolic integration&quot; is when you theatrically go through the motions of finding integrals, but the actual result you get doesn't matter because it's purely symbolic." src="_images/08_xkcd_2117_differentiation_and_integration.png" /></p>
+<p><a class="reference external" href="https://xkcd.com/2117/">xkcd - Differentiation and Integration</a> [“Symbolic integration” is when you theatrically go through the motions of finding integrals, but the actual result you get doesn’t matter because it’s purely symbolic.]</p>
+<section id="turevin-formal-resmi-tanimi">
+<h2>Türevin formal/resmi tanımı<a class="headerlink" href="#turevin-formal-resmi-tanimi" title="Permalink to this heading">#</a></h2>
+<p>Hatırlarsanız, matematiksel formasyonda türev şu şekilde tanımlanmakta idi:
+$<span class="math notranslate nohighlight">\(\lim_{\Delta x\rightarrow 0}{\left[\frac{f(x+\Delta x)-f(x)}{\Delta x}\right]} = \frac{\text{d}f}{\text{d}x}\)</span>$</p>
+<p>Halk dilinde ise (onunla ilgili karikatürü koyamıyorum, biraz ayıp ;), “ben şimdi şunu biraz arttırırsam, bu ne kadar artar?” sorusunun cevabı olarak tanımlıyoruz türevi.</p>
+<p>Yukarıdaki (formal olan) tanımı kodda ifade edip, <span class="math notranslate nohighlight">\(x=\pi/3\)</span> noktasında <span class="math notranslate nohighlight">\(\sin(x)\)</span> fonksiyonun türevini bulalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="n">delta_x</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="n">turev_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">delta_x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">delta_x</span>
+
+<span class="n">gercek_deger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hesaplanan değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">turev_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Gerçek Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gercek_deger</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            Hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">turev_x</span><span class="o">-</span><span class="n">gercek_deger</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hesaplanan değer: 0.499999566971887
+    Gerçek Değer: 0.500000000000000
+            Hata: 0.000000433028113
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tabii ki, aralığı ne kadar küçük tutarsak (yukarıda <span class="math notranslate nohighlight">\(10^{-6}\)</span> aldık bu arada, <em>1E-6</em> o demek), gerçek değere de o kadar yaklaşacağımız bariz, burada o faktörü tekrardan değerlendirmeyeceğiz ama şu faktöre bir bakalım (bakalım koddaki farkı fark edebilecek misiniz?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="n">delta_x</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="n">turev_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">delta_x</span><span class="p">))</span> <span class="o">/</span> <span class="n">delta_x</span>
+
+<span class="n">gercek_deger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hesaplanan değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">turev_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Gerçek Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gercek_deger</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            Hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">turev_x</span><span class="o">-</span><span class="n">gercek_deger</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hesaplanan değer: 0.500000432945846
+    Gerçek Değer: 0.500000000000000
+            Hata: 0.000000432945846
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yapmış olduğumuz şey şu: türev madem ki fonksiyonun verilen noktasında fonksiyona teğet geçen doğrunun eğimi, doğruyu tanımlamak için de iki tane noktamız olması gerekiyor, işte o iki noktayı nasıl seçtiğimiz bize kalmış: ilk uygulamada, doğruyu çizmek için verilen nokta ile ondan <span class="math notranslate nohighlight">\(\Delta x\)</span> kadar ilerisindeki noktayı kullanırken; ikinci uygulamada verilen nokta ile onun <span class="math notranslate nohighlight">\(\Delta x\)</span> kadar gerisindeki noktayı kullandık.</p>
+<p>Grafiksel olarak şu iki doğrunun eğimlerini aldık yani:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="n">delta_x</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mf">1.3</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">turev_0</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">delta_x</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">/</span> <span class="n">delta_x</span>
+<span class="n">turev_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">delta_x</span><span class="p">))</span> <span class="o">/</span> <span class="n">delta_x</span>
+
+<span class="n">delta_y0</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">turev_0</span><span class="o">*</span><span class="n">x</span>
+<span class="n">delta_y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">turev_1</span><span class="o">*</span><span class="n">x</span>
+
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;*-r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">turev_0</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">delta_y0</span><span class="p">,</span><span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;*-r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">turev_1</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">delta_y1</span><span class="p">,</span><span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Bunları böyle ayrı ayrı çizdik ama pek bir fark anlaşılmıyor 8P&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/66f384b3ca86cec5d4741a1186e9fc2314220783dacd0b2287402c66b894e9c5.png" src="_images/66f384b3ca86cec5d4741a1186e9fc2314220783dacd0b2287402c66b894e9c5.png" />
+</div>
+</div>
+<p>Bu durumda da, aklımıza, integralde de gelen, <em>iki yaklaşımın ortası</em> geliyor, yani, türevi seçili noktanın <span class="math notranslate nohighlight">\(\Delta x\)</span> kadar ilerisi ya da gerisi ile hesaplamak yerine, hem ilerideki hem de gerideki noktaları işin içine katıp, şu şekilde hesaplamak:</p>
+<div class="math notranslate nohighlight">
+\[f'(x) = \frac{f(x+\Delta x) - f(x-\Delta x)}{2\Delta x}\]</div>
+<p>(aralığın <span class="math notranslate nohighlight">\(\Delta x\)</span>’den <span class="math notranslate nohighlight">\(2\Delta x\)</span>’e çıktığına dikkat edin..)</p>
+</section>
+<section id="otomatik-yapani-yok-mu-bunun-scipy-misc-derivative">
+<h2>Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative()</span></code>)<a class="headerlink" href="#otomatik-yapani-yok-mu-bunun-scipy-misc-derivative" title="Permalink to this heading">#</a></h2>
+<p>Doğal olarak, bu türev işini de yapan prosedürler mevcut, örneğin: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.misc.derivative.html"><code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative</span></code></a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">df_dx</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">)</span>
+<span class="n">gercek_deger</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;           Hesaplanan Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_dx</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;               Gerçek Değer: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gercek_deger</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                       Hata: </span><span class="si">{:.15f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df_dx</span><span class="o">-</span><span class="n">gercek_deger</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Hesaplanan Değer: 0.499999999958867
+               Gerçek Değer: 0.500000000000000
+                       Hata: 0.000000000041133
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_15070/3376290005.py:8: DeprecationWarning: scipy.misc.derivative is deprecated in SciPy v1.10.0; and will be completely removed in SciPy v1.12.0. You may consider using findiff: https://github.com/maroba/findiff or numdifftools: https://github.com/pbrod/numdifftools
+  df_dx = derivative(f,x,dx=1E-6)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ama çok bariz bir işlem olduğu için, integral’deki incelikleri, varyasyonları beklemeyin… Bildiğiniz şekilde alıyor bu arkadaş.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="alistirma">
+<h1>Alıştırma<a class="headerlink" href="#alistirma" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[f'(x) = \frac{f(x+\Delta x) - f(x-\Delta x)}{2\Delta x}\]</div>
+<p>yaklaşımını kullanarak <span class="math notranslate nohighlight">\([-\pi,\pi]\)</span> aralığında <span class="math notranslate nohighlight">\(\cos(x)\)</span> grafiğini <span class="math notranslate nohighlight">\(\sin(x)\)</span>’in türevini hesaplamak yoluyla çizdirin.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="alistirma-cok-zorrrr">
+<h1>Alıştırma (Çok Zorrrr)<a class="headerlink" href="#alistirma-cok-zorrrr" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span> düzgün çizgisel yük dağılımına sahip, <span class="math notranslate nohighlight">\(R\)</span> yarıçaplı, çember şeklindeki bir iletkenin iç bölgesinde, merkezden <span class="math notranslate nohighlight">\(r\)</span> uzaklıktaki bir noktadaki elektrik alanı hesaplayın.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_07_LineerCebir_Uygulama_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lineer Cebir Uygulamaları (II)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_U01_nxn_EnKucukKareler.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uygulama 1: Döngüler ve Kararlar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Fonksiyonlar, Türev ve İntegral</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-8">Ders Notları: 8</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#giris">Giriş</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analitik-cozum-de-neymis">Analitik çözüm de neymiş?..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dogrusu-entegral-mi-integral-mi-yoksa-alan-hesabi-mi">Doğrusu “Entegral” mi, “İntegral” mi, yoksa “Alan hesabı” mı?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fonksiyonlar">Fonksiyonlar</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cok-girisli-cikisli-oturgacli-goturgec">Çok girişli-çıkışlı oturgaçlı götürgeç</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#integraller">Integraller</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dikdortgenler-sagdan-soldan-geliyor">Dikdörtgenler sağdan soldan geliyor..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ornek-int-a-b-cos-x-dx-stackrel-sin-b-sin-a">Örnek: <span class="math notranslate nohighlight">\(\int_a^b{\cos(x)\,dx}\stackrel{?}{=}\sin(b)-\sin(a)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otomatik-yapani-yok-mu-bunun-scipy-integrate-quad">Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad()</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#turevler">Türevler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turevin-formal-resmi-tanimi">Türevin formal/resmi tanımı</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otomatik-yapani-yok-mu-bunun-scipy-misc-derivative">Otomatik yapanı yok mu bunun? (<code class="docutils literal notranslate"><span class="pre">scipy.misc.derivative()</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alistirma">Alıştırma</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#alistirma-cok-zorrrr">Alıştırma (Çok Zorrrr)</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

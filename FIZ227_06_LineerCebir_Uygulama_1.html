@@ -1,0 +1,1290 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lineer Cebir Uygulamaları (I) &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_06_LineerCebir_Uygulama_1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lineer Cebir Uygulamaları (II)" href="FIZ227_07_LineerCebir_Uygulama_2.html" />
+    <link rel="prev" title="Lineer Cebir" href="FIZ227_05_LineerCebir.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_03_MatPlotLib_GrafikCizimi.html">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_04_DongulerVeKararlar.html">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_08_FonksiyonTurevIntegral.html">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U01_nxn_EnKucukKareler.html">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_06_LineerCebir_Uygulama_1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lineer Cebir Uygulamaları (I)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lineer Cebir Uygulamaları (I)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-6">Ders Notları: 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#egik-duzleme-atilan-egik-atis-problemi">1. Eğik Düzleme Atılan Eğik Atış Problemi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hazir-elimiz-degmisken-cizdirelim-de-bari">Hazır elimiz değmişken, çizdirelim de bari…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-1">Soru #1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sonuc">Sonuç</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#son-soz">Son söz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-2">Soru #2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#surtunmeli-egik-duzlemde-kayan-kutle">2. Sürtünmeli Eğik Düzlemde Kayan Kütle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-3">Soru #3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sonuç</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-sadet-populasyon-2i-3-in-mathbb-c">Welcome to Sadet… (popülasyon 2i+3 <span class="math notranslate nohighlight">\(\in \mathbb{C}\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-4">Soru #4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Son söz</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lineer-cebir-uygulamalari-i">
+<h1>Lineer Cebir Uygulamaları (I)<a class="headerlink" href="#lineer-cebir-uygulamalari-i" title="Permalink to this heading">#</a></h1>
+<section id="ders-notlari-6">
+<h2>Ders Notları: 6<a class="headerlink" href="#ders-notlari-6" title="Permalink to this heading">#</a></h2>
+<p><strong>Lineer Cebir Uygulamaları &amp; Grafik Çizimi (I)</strong></p>
+<ul class="simple">
+<li><p>1. Eğik Düzleme Atılan Eğik Atış Problemi</p>
+<ul>
+<li><p>Hazır elimiz değmişken, çizdirelim de bari…</p></li>
+<li><p>Soru #1</p></li>
+<li><p>Sonuç</p></li>
+<li><p>Son söz</p></li>
+<li><p>Soru #2</p></li>
+</ul>
+</li>
+<li><p>2. Sürtünmeli Eğik Düzlemde Kayan Kütle</p>
+<ul>
+<li><p>Soru #3</p></li>
+<li><p>Sonuç</p></li>
+<li><p>Welcome to Sadet…</p>
+<ul>
+<li><p>Kısa bir ara</p></li>
+</ul>
+</li>
+<li><p>Soru #4</p></li>
+<li><p>Son söz</p></li>
+</ul>
+</li>
+</ul>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="egik-duzleme-atilan-egik-atis-problemi">
+<h1>1. Eğik Düzleme Atılan Eğik Atış Problemi<a class="headerlink" href="#egik-duzleme-atilan-egik-atis-problemi" title="Permalink to this heading">#</a></h1>
+<p><strong>(Neden?)</strong>
+<img alt="06_projectile_inclined_plane.svg" src="_images/06_projectile_inclined_plane.svg" /></p>
+<p>Yatayla <span class="math notranslate nohighlight">\(\alpha\)</span> açısı yapan bir eğik düzlemin dibinden, eğik düzleme göre <span class="math notranslate nohighlight">\(\beta\)</span> açısı ve <span class="math notranslate nohighlight">\(V_0\)</span> ilk hızıyla atılan bir cismin uçuş zamanını (<span class="math notranslate nohighlight">\(t_0\)</span>) ve eğik düzlem üzerine düştüğü yerin atış noktasına olan uzaklığını (<span class="math notranslate nohighlight">\(L\)</span>) bulunuz.</p>
+<p>Bu soruyu, 2016 yılında, bilgisayar mühendisliği bölümüne, FIZ137 - Fizik I dersinin 1. ara sınavında sormuşuz (Recai Hoca’yla):</p>
+<p><img alt="06_lineer_inclined_plane1_MT1.png" src="_images/06_lineer_inclined_plane1_MT1.png" /></p>
+<p><u><strong>Çözüm</strong></u></p>
+<p>En genel haliyle (sorumuzdan bağımsız olarak), <span class="math notranslate nohighlight">\(V_0\)</span> ilk hızıyla, yatayla <span class="math notranslate nohighlight">\(\theta\)</span> açısı yapacak şekilde atılan bir cismin <span class="math notranslate nohighlight">\(t_0\)</span> anındaki konumunu veren hareket denklemlerini yazarak başlayalım:
+$<span class="math notranslate nohighlight">\(x_0 = V_0\cos\theta\, t_0 + \frac{1}{2}\ddot{x}\,t_0^2\quad(1)\\
+y_0 = V_0\sin\theta\, t_0 + \frac{1}{2}\ddot{y}\,t_0^2\quad(2)\)</span>$</p>
+<p><u><strong>Rutin Koordinatlar</strong></u><br />
+Bizim durumumuzda, soruya özel olarak, şu bilgiler elimizde:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta = \alpha + \beta\\
+\ddot{x} = 0\\
+\ddot{y} = -g\\
+\tan{\alpha} = \frac{y_0}{x_0}\rightarrow y_0 = x_0 \tan\alpha\quad(*)\\
+x_0 = L\cos\alpha \rightarrow L = \frac{x_0}{\cos\alpha}\quad(**)\end{split}\]</div>
+<p>Bunları kullanarak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(1)\Rightarrow x_0 = V_0\cos(\alpha+\beta)\,t_0+\frac{1}{2}(0)\,t_0^2=V_0\cos(\alpha+\beta)\,t_0\\
+(2)\Rightarrow y_0 = V_0\sin(\alpha+\beta)\,t_0+\frac{1}{2}(-g)\,t_0^2=V_0\sin(\alpha+\beta)\,t_0-\frac{1}{2}gt_0^2\\
+(*)\Rightarrow V_0\sin(\alpha+\beta)\,t_0-\frac{1}{2}gt_0^2 = \tan\alpha\,V_0\cos(\alpha+\beta)\,t_0\\
+\rightarrow \frac{1}{2}gt_0 = V_0\sin(\alpha+\beta)- V_0\tan\alpha\cos(\alpha+\beta)\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(t_0\)</span>’ı yalnız bırakıp trigonometrik eşitlikleri çalıştıralım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+t_0&amp;=\frac{2V_0}{g}\left[\sin(\alpha+\beta)- \cos(\alpha+\beta)\tan\alpha\right]\\
+&amp;=\frac{2V_0}{g}\left[\sin\alpha \cos\beta + \sin\beta \cos\alpha - \frac{(\cos\alpha\cos\beta-\sin\alpha \sin\beta)\sin\alpha}{\cos\alpha}\right]\\
+&amp;=\frac{2V_0}{g\cos\alpha}\left[\sin\alpha\cos\alpha\cos\beta + \cos^2\alpha\sin\beta-\sin\alpha \cos\alpha \cos\beta + \sin^2\alpha\sin\beta\right]\\
+&amp;=\frac{2V_0}{g\cos\alpha}\left[\sin\beta(\cos^2\alpha+\sin^2\alpha)\right]\\
+&amp;=\frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}
+\end{align*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\boxed{t_0 = \frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}}\]</div>
+<p>Artık elimizde <span class="math notranslate nohighlight">\(t_0\)</span> olduğuna göre, önce <span class="math notranslate nohighlight">\(x_0\)</span>’ı:</p>
+<div class="math notranslate nohighlight">
+\[x_0 = V_0\cos(\alpha+\beta)\,t_0 = V_0\cos(\alpha+\beta)\frac{2V_0}{g}\left(\frac{\sin\beta}{\cos\alpha}\right)\]</div>
+<div class="math notranslate nohighlight">
+\[x_0 = \frac{2V_0^2}{g}\frac{\cos(\alpha+\beta)\sin\beta}{\cos\alpha}\]</div>
+<p><span class="math notranslate nohighlight">\(x_0\)</span>’ı kullanarak da <span class="math notranslate nohighlight">\((**)\)</span> eşitliğinden -nihayet- <span class="math notranslate nohighlight">\(L\)</span>’yi bulabiliriz:</p>
+<div class="math notranslate nohighlight">
+\[(**)\Rightarrow \boxed{L=\frac{x_0}{\cos\alpha}=\frac{2V_0^2}{g}\frac{\cos(\alpha+\beta)\sin\beta}{\cos^2\alpha}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sorudaki değerleri yerine koyarsak:</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># m/s</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="c1"># m/s^2</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">V0</span><span class="o">/</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t0 = &quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+
+<span class="c1">#x0 = (2*V0**2/g)*(np.cos(alpha+beta)*np.sin(beta)/np.cos(alpha))</span>
+<span class="c1">#print(&quot;x0 = &quot;,x0,&quot; m&quot;)</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">V0</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; L = &quot;</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="s2">&quot; m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t0 =  1.178265855489032 s
+ L =  6.802721088435373  m
+</pre></div>
+</div>
+</div>
+</div>
+<p><u><strong>’Normal’ Koordinatlar</strong></u><br />
+Böyle çözünce size de biraz karışık gelmiyor mu? Bence çözmeden önce birazcık kafamızı çalıştırıp, daha “uygun” bir koordinat sistemi kullanalım: sorumuzun çiziminde morla işaretlenmiş olan, <span class="math notranslate nohighlight">\(x'\)</span>nün eğik düzlemle paralel olduğu <span class="math notranslate nohighlight">\((x',y')\)</span> koordinat takımını. Bunun için de sistemimizi <span class="math notranslate nohighlight">\(\alpha\)</span> kadar döndürüyoruz:</p>
+<p><img alt="06_projectile_inclined_plane_rotated.png" src="_images/06_projectile_inclined_plane_rotated.png" /></p>
+<p>Bu yeni koordinat sisteminde, yerçekimi ivmesinin yeni eksenlere göre bileşenleri şu şekilde olacaktır:</p>
+<p><img alt="06_projectile_inclined_plane_detay.png" src="_images/06_projectile_inclined_plane_detay.png" /></p>
+<p><span class="math notranslate nohighlight">\((1)\)</span> ve <span class="math notranslate nohighlight">\((2)\)</span> genel hareket denklemlerini bu eksenler için yazmak için, bu koordinat sistemindeki özel durumları listeleyelim:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta = \beta\\
+\ddot{x'} = -g\sin\alpha\\
+\ddot{y'} = -g\cos\alpha\\
+y'_0 = 0\quad (*)\\
+\tan{\alpha'} = \frac{y'_0}{x'_0}\rightarrow \tan\alpha' = 0 \leftrightarrow \alpha'=0\\
+x'_0 = L\cos\alpha' \rightarrow L = x'_0\end{split}\]</div>
+<p>Bunları kullanarak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(1)\Rightarrow x'_0 = V_0\cos\beta\,t_0+\frac{1}{2}(-g\sin\alpha)\,t_0^2=V_0\cos\beta\,t_0-\frac{1}{2}g\sin\alpha\,t_0^2\\
+(2)\Rightarrow y'_0 = V_0\sin\beta\,t_0+\frac{1}{2}(-g\cos\alpha)\,t_0^2=V_0\sin\beta\,t_0-\frac{1}{2}g\cos\alpha\,t_0^2\\
+(*)\Rightarrow V_0\sin\beta\,t_0-\frac{1}{2}g\cos\alpha\,t_0^2=0\\
+\rightarrow \frac{1}{2}g\cos\alpha\, t_0 = V_0\sin\beta\Rightarrow\boxed{t_0 =  \frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}}\end{split}\]</div>
+<p>[Bu noktada, yukarıdaki koordinat sisteminde bu aşamaya gelene kadar nelerle uğraştığımıza tekrardan bir bakmanızı rica ediyorum 8]</p>
+<p><span class="math notranslate nohighlight">\(L\)</span>’yi de hesaplayalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+L = x'_0 &amp;= V_0\cos\beta\,t_0-\frac{1}{2}g\sin\alpha\,t_0^2\\
+&amp;=V_0\cos\beta\left( \frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}\right)-\frac{1}{2}g\sin\alpha\,\left( \frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}\right)^2\\
+&amp;=V_0\cos\beta\left( \frac{2V_0}{g}\frac{\sin\beta}{\cos\alpha}\right)-\frac{1}{2}g\sin\alpha\,\left( \frac{2^2V_0^2}{g^2}\frac{\sin^2\beta}{\cos^2\alpha}\right)\\
+&amp;=\frac{2V_0^2\sin\beta}{g\cos\alpha}\left(\cos\beta - \frac{\sin\alpha\sin\beta}{\cos\alpha}\right)\\
+&amp;=\frac{2V_0^2\sin\beta}{g\cos^2\alpha}\left(\cos\alpha\cos\beta-\sin\alpha\sin\beta\right)\\
+&amp;=\frac{2V_0^2}{g}\frac{\sin\beta\cos(\alpha+\beta)}{\cos^2\alpha}
+\end{align*}\end{split}\]</div>
+<section id="hazir-elimiz-degmisken-cizdirelim-de-bari">
+<h2>Hazır elimiz değmişken, çizdirelim de bari…<a class="headerlink" href="#hazir-elimiz-degmisken-cizdirelim-de-bari" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># m/s</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m/s^2</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">V0</span><span class="o">/</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;o-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rutin Koordinatlar&quot;</span><span class="p">)</span>
+<span class="c1">#plt.xlim(0,8)</span>
+<span class="c1">#plt.ylim(0,10)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fc84f41d39c3d8bbfbeafe38eee1738ea15ad3eb85b66dc86231e28442b434be.png" src="_images/fc84f41d39c3d8bbfbeafe38eee1738ea15ad3eb85b66dc86231e28442b434be.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># m/s</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m/s^2</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">V0</span><span class="o">/</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">xp</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">yp</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="s2">&quot;o-m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&#39; (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&#39; (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;&#39;Normal&#39; Koordinatlar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/63d235a46ed7917e361aa67acce3710240c45d82f17f96c81a3a4e8f44e1ede2.png" src="_images/63d235a46ed7917e361aa67acce3710240c45d82f17f96c81a3a4e8f44e1ede2.png" />
+</div>
+</div>
+<section id="soru-1">
+<h3>Soru #1<a class="headerlink" href="#soru-1" title="Permalink to this heading">#</a></h3>
+<p>Ölçeği ayarlayıp, iki grafikteki yayı aynı uzunluğa getirin.</p>
+</section>
+</section>
+<section id="sonuc">
+<h2>Sonuç<a class="headerlink" href="#sonuc" title="Permalink to this heading">#</a></h2>
+<p>Amerikalıların “ha öyle, ha böyle…” anlamına gelen bir deyimleri var (<a class="reference external" href="https://en.wiktionary.org/wiki/tomayto,_tomahto"><em>tom-ay-to/to-mah-to</em></a> – Gershwin’in şarkısının Fitzgerald &amp; Armstrong tarafından yapılan müthiş yorumu içinse <a class="reference external" href="https://www.youtube.com/watch?v=J2oEmPP5dTM">buyrunuz</a>…). Sonuçta biz de sadece kafamızı çevirmekle, işlemlerin bazılarını kolaylaştırsak da, kafamızı döndürmek suretiyle evrensel yasalara müdahale edemediğimizden, atılan cisim, iki referans çerçevesinde de (görelilikle beraber, koordinat sistemi takımlarına “referans çerçevesi” gibi âfili isimler takmaktayız ;) aynı sürede havada kalıp, eğik düzlemin aynı yerine düştü, klasik fizikte bu zaten beklenen şeydi.</p>
+<p>İki sistemdeki sonuçlarımızı özetlersek:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}x\\y\\t_0\\L\end{pmatrix} = \begin{pmatrix}5.8853\\3.3979\\1.1771\\6.8027\end{pmatrix},\quad\begin{pmatrix}x'\\y'\\t_0\\L\end{pmatrix} = \begin{pmatrix}6.7958\\0\\1.1771\\6.8027\end{pmatrix}\end{split}\]</div>
+<p>Acaba <span class="math notranslate nohighlight">\((x,y)\)</span> setimize ne yaptık da <span class="math notranslate nohighlight">\((x',y')\)</span>deki değerlere dönüştüler? Hatırladım, eksenleri döndürmüştük… O halde, dönüş matrisimizi ezberden bir tanımlayalım, bakalım ne olacak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_{\alpha} = \begin{pmatrix}
+\cos\alpha &amp; \sin\alpha \\ 
+-\sin\alpha &amp; \cos\alpha
+\end{pmatrix};\;\vec{x} = \begin{pmatrix}x_0\\y_0\end{pmatrix}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+
+<span class="n">R_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)],[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)]])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.8853</span><span class="p">],[</span><span class="mf">3.3979</span><span class="p">]])</span>
+
+<span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R_alpha</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[6.79576931e+00]
+ [1.77195191e-05]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yani:</p>
+<div class="math notranslate nohighlight">
+\[R_{\pi/6}. \vec{x} = \vec{x}'\]</div>
+<div class="math notranslate nohighlight">
+\[\Updownarrow\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+\cos{30^o} &amp; \sin{30^o} \\ 
+-\sin{30^o} &amp; \cos{30^o}
+\end{pmatrix}\begin{pmatrix}5.8853\\3.3979\end{pmatrix}=\begin{pmatrix}6.7958\\0\end{pmatrix}\end{split}\]</div>
+</section>
+<section id="son-soz">
+<h2>Son söz<a class="headerlink" href="#son-soz" title="Permalink to this heading">#</a></h2>
+<p>Demek ki, istesek tâ en başından bu çevrimi (ya da tersini) yapabilirmişiz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># m/s</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span> <span class="c1"># m/s^2</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">V0</span><span class="o">/</span><span class="n">g</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Rutin Koordinatlar</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="o">+</span><span class="n">beta</span><span class="p">)</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+
+<span class="c1"># Dönüş matrisimiz</span>
+<span class="n">R_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">)],[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">alpha</span><span class="p">)]])</span>
+
+<span class="c1"># Rutin Koordinatlar -&gt; &#39;Normal&#39; Koordinatlar</span>
+<span class="n">xpyp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R_alpha</span><span class="p">,</span><span class="n">xy</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpyp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="n">xpyp</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span><span class="s2">&quot;o-b&quot;</span><span class="p">)</span>
+<span class="c1">#plt.xlabel(&quot;x&#39;=R.xy0,: (m)&quot;)</span>
+<span class="c1">#plt.ylabel(&quot;y&#39;=R.xy1,: (m)&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rutin-&gt;&#39;Normal&#39; Koordinatlar&quot;</span><span class="p">)</span>
+<span class="c1">#plt.xlim(0,8)</span>
+<span class="c1">#plt.ylim(0,4)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/677e5ac3ecd7a82669f5249948cc8a5a3dad66960a61bdb698df0d6dc55f0134.png" src="_images/677e5ac3ecd7a82669f5249948cc8a5a3dad66960a61bdb698df0d6dc55f0134.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xy</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.        ],
+       [0.65459214, 1.04980264],
+       [1.30918428, 1.93163685],
+       [1.96377643, 2.64550265],
+       [2.61836857, 3.19140002],
+       [3.27296071, 3.56932897],
+       [3.92755285, 3.77928949],
+       [4.58214499, 3.8212816 ],
+       [5.23673714, 3.69530528],
+       [5.89132928, 3.40136054]])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="soru-2">
+<h3>Soru #2<a class="headerlink" href="#soru-2" title="Permalink to this heading">#</a></h3>
+<p>Bizim bildiğimiz -saatin tersi yönünde döndüren- dönüş matrisi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}R_{\alpha} = \begin{pmatrix}
+\cos\alpha &amp; -\sin\alpha \\ 
+\sin\alpha &amp; \cos\alpha
+\end{pmatrix}\end{split}\]</div>
+<p>şeklinde değil miydi (yani “<span class="math notranslate nohighlight">\(-\sin\alpha\)</span>” sağ üstte; “<span class="math notranslate nohighlight">\(\sin\alpha\)</span>” sol altta olacak şekilde)?</p>
+<p>Ama sistemimizi saatin tersi yönünde döndürmemize rağmen, neden yukarıda işlemi yaparken “<span class="math notranslate nohighlight">\(-\sin\alpha\)</span>”yı sol altta, “<span class="math notranslate nohighlight">\(\sin\alpha\)</span>”yı sağ üstte aldık?… (Açıklayın)</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="surtunmeli-egik-duzlemde-kayan-kutle">
+<h1>2. Sürtünmeli Eğik Düzlemde Kayan Kütle<a class="headerlink" href="#surtunmeli-egik-duzlemde-kayan-kutle" title="Permalink to this heading">#</a></h1>
+<p><strong>(Nasıl?)</strong>
+<img alt="06_lineer_inclined_plane1.svg" src="_images/06_lineer_inclined_plane1.svg" /></p>
+<p>İkinci örneğimizden herkese merhabalar! Soru (<em>normal kuvveti ve cismin eğik düzlem üzerindeki L mesafeyi ne kadar sürede kat edeceğini hesaplayın: <span class="math notranslate nohighlight">\(\theta=30^o;\,\mu=0.2;\,m=1.2\,kg;\,L=100\,m;\,g=9.81\,m/s^2\)</span></em>) çok klasik, o kadar klasik ki, bilinçaltınızda çözmeye başladınız bile – hatta durun an itibarı ile aklınızdan ne yaptığınızı da söyleyeyim: <span class="math notranslate nohighlight">\(mg\)</span> ağırlığını <span class="math notranslate nohighlight">\(F_N\)</span> normal kuvvet ve <span class="math notranslate nohighlight">\(f_\mu\)</span> sürtünme kuvveti yönlerinde bileşenlerine ayırıyorsunuz!..</p>
+<p><u><strong>Rutin Koordinatlar:</strong></u><br />
+Ama ayırmayalım hemen; öyle, körlemesine dalalım probleme, “vardır bir hikmeti” deyip, alışılageldik, yere paralel x-ekseni ve ona <span class="math notranslate nohighlight">\(90^o\)</span> yukarı uzanan y-ekseninden oluşan klasik koordinat takımımızı kullanıp, <span class="math notranslate nohighlight">\(F_N\)</span> ile <span class="math notranslate nohighlight">\(f_\mu\)</span>’yü bu eksenlerdeki bileşenlerine ayırıp, Newton’ın 2. yasasını tatbik edelim:</p>
+<p><u>x-ekseni boyunca kuvvetler:</u><br />
+<span class="math notranslate nohighlight">\(f_\mu\cos\theta -F_N\sin\theta = m\ddot{x}\quad(1)\)</span></p>
+<p><u>y-ekseni boyunca kuvvetler:</u><br />
+<span class="math notranslate nohighlight">\(f_\mu\sin\theta + F_N\cos\theta - mg = m\ddot{y}\quad(2)\)</span></p>
+<p><u>Seçtiğimiz koordinat sistemine dair bağıntı:</u><br />
+<span class="math notranslate nohighlight">\(\tan\theta = \frac{y}{x} \rightarrow y = x\tan\theta \Rightarrow \ddot{y} = \ddot{x}\tan\theta\quad(3)\)</span></p>
+<p><u>Genel olarak bildiğimiz:</u><br />
+<span class="math notranslate nohighlight">\(f_\mu = \mu F_N\quad(4)\)</span></p>
+<p><span class="math notranslate nohighlight">\((4)\)</span>’ü <span class="math notranslate nohighlight">\((1)\)</span> ve <span class="math notranslate nohighlight">\((2)\)</span>’de yerine yazalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}(1):\;\mu F_N \cos\theta - F_N\sin\theta &amp;= m\ddot{x}\\
+\rightarrow m\ddot{x} + \left(\sin\theta - \mu\cos\theta\right)F_N &amp;= 0\quad(1')\end{align*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}(2):\;\mu F_N \sin\theta + F_N\cos\theta- mg &amp;= m\ddot{y}\\
+\rightarrow -m\ddot{y} + \left(\cos\theta+\mu\sin\theta\right)F_N&amp;=mg\quad(2')\end{align*}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}(3):\;\ddot{y} &amp;= \ddot{x}\tan\theta\\
+\rightarrow\tan\theta\,\ddot{x}-\ddot{y}&amp;=0\quad(3')\end{align*}\end{split}\]</div>
+<p>Bu üç bilinmeyenli <span class="math notranslate nohighlight">\((\ddot{x},\ddot{y},F_N)\)</span> üç denklemimizi <span class="math notranslate nohighlight">\((1'),(2'),(3')\)</span>, matris - vektör çarpımı olarak yazabiliriz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;\sin\theta - \mu\cos\theta\\
+0&amp;-m &amp;\cos\theta+\mu\sin\theta\\
+\tan\theta &amp; -1 &amp; 0
+\end{pmatrix}\begin{pmatrix}\ddot{x}\\\ddot{y}\\F_N\end{pmatrix}=\begin{pmatrix}0\\mg\\0\end{pmatrix}\end{split}\]</div>
+<p>Bu lineer sistemi nasıl çözebileceğimizi biliyoruz (değil mi? ;)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Soruda verilenler:</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="c1"># kg</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># m</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m/s^2</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">-</span><span class="n">mu</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">m</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">mu</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.77635461 -1.60292908 10.19485105]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yani:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\ddot{x}\\\ddot{y}\\F_N\end{pmatrix}=\begin{pmatrix}-2.7764\,m/s^2\\-1.6029\,m/s^2\\10.1949\,N\end{pmatrix}\end{split}\]</div>
+<p>(ivmelerin negatif olması, sola ve aşağı doğru ivmelendiğini, yani yönünü gösteriyor).</p>
+<p>Eğik düzlemdeki <span class="math notranslate nohighlight">\(L\)</span> mesafesini ne kadar zamanda kat edeceğine gelince:</p>
+<div class="math notranslate nohighlight">
+\[x_0 = L \cos\theta = \frac{1}{2}\ddot{x}t_0^2\rightarrow t_0 = \sqrt{\frac{2L\cos\theta}{\ddot{x}}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t0: &quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t0:  7.898467695302089 s
+</pre></div>
+</div>
+</div>
+</div>
+<p><u><strong>’Normal’ Koordinatlar</strong></u><br />
+Bir de, bize mantıklı gelen koordinat sistemi olan <span class="math notranslate nohighlight">\((x',y')\)</span> üzerinden gidelim: Ne de olsa bir öncekinde hem normal kuvveti, hem de sürtünme kuvvetini bileşenlerine ayırmak zorunda kalmıştık, burada sadece ağırlığı bileşenlere ayıracağız; <span class="math notranslate nohighlight">\(y\)</span> ekseni yönünde herhangi bir yerdeğiştirme olmaması da cabası! <span class="math notranslate nohighlight">\((\ddot{y}' = 0)\)</span></p>
+<p><u>x’-ekseni boyunca kuvvetler:</u><br />
+<span class="math notranslate nohighlight">\(f_\mu - mg\sin\theta = m\ddot{x}'\quad(1)\)</span></p>
+<p><u>y’-ekseni boyunca kuvvetler:</u><br />
+<span class="math notranslate nohighlight">\(F_N - mg\cos\theta =m\ddot{y}'\quad(2)\)</span></p>
+<p><u>Seçtiğimiz koordinat sistemine dair bağıntı:</u><br />
+<span class="math notranslate nohighlight">\(\ddot{y}'=0\quad(3)\)</span></p>
+<p><u>Genel olarak bildiğimiz:</u><br />
+<span class="math notranslate nohighlight">\(f_\mu = \mu F_N\quad(4)\)</span></p>
+<p>Bu denklemleri kullanıp, bu koordinat sisteminde hareket denklemlerimizi lineer denklem seti olarak temsil edersek:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;-\mu\\
+0&amp;m &amp;-1\\
+0 &amp; 227 &amp; 0
+\end{pmatrix}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}=\begin{pmatrix}-mg\sin\theta\\-mg\cos\theta\\0\end{pmatrix}\end{split}\]</div>
+<section id="soru-3">
+<h2>Soru #3<a class="headerlink" href="#soru-3" title="Permalink to this heading">#</a></h2>
+<p>En alt satırın orta sütunundaki “227” değeri nereden geldi? Dersimizin koduyla aynı oluşu tesadüf mü?</p>
+<p>Çözüme geçersek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Soruda verilenler:</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="c1"># derece -&gt; radyan</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="c1"># kg</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># m</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m/s^2</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">mu</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">227</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">su</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">su</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.20585816  0.         10.19485105]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yani:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}=\begin{pmatrix}-3.2059\,m/s^2\\0\,m/s^2\\10.1949\,N\end{pmatrix}\end{split}\]</div>
+<p>Eğik düzlemdeki <span class="math notranslate nohighlight">\(L\)</span> mesafesini ne kadar zamanda kat edeceğine gelince:</p>
+<div class="math notranslate nohighlight">
+\[x_0' = L = \frac{1}{2}\ddot{x}'t_0^2\rightarrow t_0 = \sqrt{\frac{2L}{\ddot{x}'}}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">L</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">su</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;t0: &quot;</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t0:  7.898467695302089 s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Sonuç<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Yine şaşırtıcı olmayan bir biçimde, bizim seçtiğimiz koordinatlardan bağımsız olarak cismin üzerine binen normal kuvvet de, verilen mesafeyi kat ettiği zaman da iki referans çerçevesinde aynı çıktı.</p>
+<p>İlk sorudan sonra, birinden diğerine <span class="math notranslate nohighlight">\((\ddot{x},\ddot{y})\leftrightarrow(\ddot{x}',\ddot{y}')\)</span> nasıl geçebileceğimizi artık tahmin edebilirsiniz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}\begin{pmatrix}\ddot{x}\\\ddot{y}\end{pmatrix}=\begin{pmatrix}\ddot{x}'\\\ddot{y}'\end{pmatrix}\end{split}\]</div>
+<p>Hemen bir teyit alalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">xydd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">2.77635461</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.60292908</span><span class="p">])</span>
+
+<span class="n">R_theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+
+<span class="n">xyddpp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R_theta</span><span class="p">,</span><span class="n">xydd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">xyddpp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.20585816e+00  1.25518085e-09]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="welcome-to-sadet-populasyon-2i-3-in-mathbb-c">
+<h2>Welcome to Sadet… (popülasyon 2i+3 <span class="math notranslate nohighlight">\(\in \mathbb{C}\)</span>)<a class="headerlink" href="#welcome-to-sadet-populasyon-2i-3-in-mathbb-c" title="Permalink to this heading">#</a></h2>
+<p>Sadede gelirsek, görünürde bu ikinci örnekte ilk örneği biraz(!) daha geliştirdik, bilgimizi pekiştirdik ama aslında iki örnek birbirinden çok farklı (en büyük farkları da 1. örneği matris-vektör çarpımı şeklinde yazamamızda çünkü orada aktif olarak rol oynayan zaman ve/veya onu aradan çıkarıp x ile y değişkenlerinin aralarındaki bağıntı doğrusal değil, 2. dereceden (<em>quadratic</em>): hal böyle olunca pirincin taşını ayıklayamıyoruz maalesef (yine aynı nedenden ötürü oturup soruyu ellerimizle çözdük (başka (bir dolu) sayısal yaklaşımla tabii ki çözebiliriz ama lineer cebrin dışına çıkmış olurduk o zaman)). Bu soruda ise her şey gayet net:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;\sin\theta - \mu\cos\theta\\
+0&amp;-m &amp;\cos\theta+\mu\sin\theta\\
+\tan\theta &amp; -1 &amp; 0
+\end{pmatrix}\begin{pmatrix}\ddot{x}\\\ddot{y}\\F_N\end{pmatrix}=\begin{pmatrix}0\\mg\\0\end{pmatrix}\quad(^{*})\end{split}\]</div>
+<p>Biz dan-dan-dan çözerken, arka planda, belki de farkına bile varmadan neler yaptığımıza gelirsek: koordinat dönüşümünü <span class="math notranslate nohighlight">\((\ddot{x},\ddot{y})\)</span>’ye nasıl etki ettirip, <span class="math notranslate nohighlight">\((\ddot{x}',\ddot{y}')\)</span> gidebileceğimizi gördük:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}\begin{pmatrix}\ddot{x}\\\ddot{y}\end{pmatrix}=\begin{pmatrix}\ddot{x}'\\\ddot{y}'\end{pmatrix}\quad(^{*})\end{split}\]</div>
+<p>Boyut uyumu açısından <span class="math notranslate nohighlight">\(F_N\)</span>’i de değişmeyecek şekilde ekleyelim:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta&amp;0\\-\sin\theta&amp;\cos\theta&amp;0\\0&amp; 0&amp; 1\end{pmatrix}\begin{pmatrix}\ddot{x}\\\ddot{y}\\F_N\end{pmatrix}=\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}\quad(^{**})\end{split}\]</div>
+<p>Bu yukarıdaki işlem aslında gayet ciddi bir matris eşitliği, sembolik olarak şöyle bir şey:</p>
+<div class="math notranslate nohighlight">
+\[A\cdot\vec{x} = \vec{x}'\]</div>
+<p>İki tarafı da soldan, matrisimizin tersi <span class="math notranslate nohighlight">\(A^{-1}\)</span> ile çarparsak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\underbrace{A^{-1}\cdot A}_{\mathbb{1}}\cdot\vec{x} &amp;= A^{-1}\vec{x}'\\
+\rightarrow\vec{x} &amp;= A^{-1}\vec{x}'\end{align*}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\((\ddot{x},\ddot{y})\)</span>’den <span class="math notranslate nohighlight">\((\ddot{x}',\ddot{y}')\)</span>’ye gidebiliyorduk, artık <span class="math notranslate nohighlight">\((\ddot{x}',\ddot{y}')\)</span>’den <span class="math notranslate nohighlight">\((\ddot{x},\ddot{y})\)</span>’ye de gidebiliyoruz bu sayede! Bu iş için dönüş matrisimizin tersini bilmek gerekiyor. Dilerseniz bilgisayara hesaplatabilirsiniz (<code class="docutils literal notranslate"><span class="pre">R_inv</span> <span class="pre">=</span> <span class="pre">np.linalg.inv(R)</span></code>) ama kafamızı kullanmak daha iyi: eğer eksenlerimi saatin tersi yönünde <span class="math notranslate nohighlight">\(\theta\)</span> açısı kadar döndürmek için:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}\end{split}\]</div>
+<p>matrisini kullanıyorsam, geri gelmek için (yani işlemi “tersine” almak için), bu sefer saat yönünde <span class="math notranslate nohighlight">\(\theta\)</span> kadar gitmeliyim: bir başka deyişle, <span class="math notranslate nohighlight">\(-\theta\)</span> kadar dönüş yapmalıyım. Kosinüs çift fonksiyon olduğu için, <span class="math notranslate nohighlight">\(\theta\)</span> yerine <span class="math notranslate nohighlight">\(-\theta\)</span> yazdığımda bir şey değişmeyecek <span class="math notranslate nohighlight">\((\cos(-\theta) = \cos(\theta))\)</span>  ama sinüs tek fonksiyon olduğundan, işaretler değişecek <span class="math notranslate nohighlight">\((\sin(-\theta) = -\sin(\theta))\)</span>. Demek ki:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}^{-1} = \begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}\end{split}\]</div>
+<p>Bunu da (**) eşitliğinin iki yanına soldan etki ettirdiğimizde:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\ddot{x}\\\ddot{y}\end{pmatrix}=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\end{pmatrix}\end{split}\]</div>
+<p>(*) eşitliğinde <span class="math notranslate nohighlight">\(\begin{pmatrix}\ddot{x}\\\ddot{y}\end{pmatrix}\)</span> gördüğümüz yere bunu yazalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;\sin\theta - \mu\cos\theta\\
+0&amp;-m &amp;\cos\theta+\mu\sin\theta\\
+\tan\theta &amp; -1 &amp; 0
+\end{pmatrix}\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}=\begin{pmatrix}0\\mg\\0\end{pmatrix}\end{split}\]</div>
+<p><strong>Kısa bir ara</strong></p>
+<p>İşimiz neredeyse bitiyor, çok az kaldı. Özdeğer ve özvektörlerde hatırlıyorsanız, köşegenleştirme yapıyorduk, yani <code class="docutils literal notranslate"><span class="pre">[ozdegerler,ozvektorler]</span> <span class="pre">=</span> <span class="pre">np.linalg.eig(A)</span></code> dediğimizde, örneğin:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">],[</span><span class="mf">4.</span><span class="p">,</span><span class="mf">5.</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="p">[</span><span class="n">ozdegerler</span><span class="p">,</span><span class="n">ozvektorler</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Özdeğerler: &quot;</span><span class="p">,</span><span class="n">ozdegerler</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-----</span><span class="se">\n</span><span class="s2">Özvektörler:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">ozvektorler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2. 3.]
+ [4. 5.]]
+
+Özdeğerler:  [-0.27491722  7.27491722] 
+-----
+Özvektörler:
+ [[-0.79681209 -0.49436913]
+ [ 0.60422718 -0.86925207]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Özdeğerler köşegenleştirilmiş matris <span class="math notranslate nohighlight">\((D)\)</span>, özvektör matrisi de (<span class="math notranslate nohighlight">\(u\)</span>) olarak alındığında, <span class="math notranslate nohighlight">\(u\cdot D \cdot u^{-1} = A\)</span> eşitliği gerçeklenir. Devam edersek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ozdegerler</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;D:&quot;</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">ozvektorler</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u:&quot;</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
+
+<span class="n">u_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;u.D.u^{-1} = &quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">multi_dot</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">D</span><span class="p">,</span><span class="n">u_inv</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: [[-0.27491722  0.        ]
+ [ 0.          7.27491722]]
+u: [[-0.79681209 -0.49436913]
+ [ 0.60422718 -0.86925207]]
+u.D.u^{-1} =  [[2. 3.]
+ [4. 5.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Şimdi tekrar örneğimize geri dönelim, nerede kalmıştık?</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;\sin\theta - \mu\cos\theta\\
+0&amp;-m &amp;\cos\theta+\mu\sin\theta\\
+\tan\theta &amp; -1 &amp; 0
+\end{pmatrix}\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}=\begin{pmatrix}0\\mg\\0\end{pmatrix}\end{split}\]</div>
+<p>Bu, kesinlikle bir özdeğer denklemi değil – soldaki vektör ile sağdaki vektör bambaşka. Ama yine de hazır iki matris, bir de vektör çarpımı bulmuşken,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}\end{split}\]</div>
+<p>matrisine <span class="math notranslate nohighlight">\(u^{-1}\)</span> muamelesi çekelim, eşitliğin iki yanını da soldan bunun tersi ile çarpalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}\cos\theta&amp;\sin\theta&amp;0\\-\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}
+\begin{pmatrix}m&amp;0&amp;\sin\theta - \mu\cos\theta\\
+0&amp;-m &amp;\cos\theta+\mu\sin\theta\\
+\tan\theta &amp; -1 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}
+\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}
+=
+\begin{pmatrix}\cos\theta&amp;\sin\theta&amp;0\\-\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{pmatrix}
+\begin{pmatrix}0\\mg\\0\end{pmatrix}
+\end{split}\]</div>
+<p>Sağ taraftaki çarpımı kafadan yapabilirim ama sol taraftaki çarpımı kaldırmaya kalbim yetmez. Neyse, hele bir sağ tarafı halledelim, sola da döneriz elbet:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}&amp; &amp;\\ &amp;\ddots&amp;\\&amp; &amp;\end{pmatrix}
+\cdot
+\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}
+=\begin{pmatrix}mg\sin\theta\\mg\cos\theta\\0\end{pmatrix}\end{split}\]</div>
+<p>Sayısal olarak da olsa, elimizdeki değerlerle sol tarafı yapalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m:&quot;</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">mu:&quot;</span><span class="p">,</span><span class="n">mu</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">theta:&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">u_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">-</span><span class="n">mu</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">m</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">+</span><span class="n">mu</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],[</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">multi_dot</span><span class="p">((</span><span class="n">u</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">u_inv</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m: 1.2 	mu: 0.2 	theta: 29.999999999999996
+
+[[ 6.00000000e-01 -1.03923048e+00  7.66025404e-01]
+ [-1.03923048e+00 -6.00000000e-01  6.73205081e-01]
+ [ 1.11022302e-16 -1.15470054e+00  0.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\((\ddot{x}',\ddot{y}',F_N)\)</span> değerlerini yukarıda hesaplamıştık (<code class="docutils literal notranslate"><span class="pre">su</span></code>) olarak. Q matrisimizle <span class="math notranslate nohighlight">\((\ddot{x}',\ddot{y}',F_N)\)</span> vektörünü çarpıp, sonucu kontrol edelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  su:&quot;</span><span class="p">,</span><span class="n">su</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q.su:&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span><span class="n">su</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="n">m</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  su: [-3.20585816  0.         10.19485105]
+Q.su: [ 5.88600000e+00  1.01948511e+01 -3.55921754e-16]
+5.885999999999999 10.194851053350412 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bir de bizim o zaman bulmuş olduğumuz değerlerle kıyaslayalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}m&amp;0&amp;-\mu\\
+0&amp;m &amp;-1\\
+0 &amp; 227 &amp; 0
+\end{pmatrix}\begin{pmatrix}\ddot{x}'\\\ddot{y}'\\F_N\end{pmatrix}=\begin{pmatrix}-mg\sin\theta\\-mg\cos\theta\\0\end{pmatrix}\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">m</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="n">mu</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">227</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">su</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.20e+00  0.00e+00 -2.00e-01]
+ [ 0.00e+00  1.20e+00 -1.00e+00]
+ [ 0.00e+00  2.27e+02  0.00e+00]]
+[ -5.886      -10.19485105   0.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="soru-4">
+<h3>Soru #4<a class="headerlink" href="#soru-4" title="Permalink to this heading">#</a></h3>
+<p>Denklemler birbirlerinin “-” ile çarpılmışına eşit – bu sorun olur mu?</p>
+</section>
+</section>
+<section id="id2">
+<h2>Son söz<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p><strong>İşin özü, koordinat dönüşümüyle sadece “koordinatları” değil, bütün denklemleri dönüştürüyor olmamız.</strong></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_05_LineerCebir.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lineer Cebir</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_07_LineerCebir_Uygulama_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lineer Cebir Uygulamaları (II)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lineer Cebir Uygulamaları (I)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-6">Ders Notları: 6</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#egik-duzleme-atilan-egik-atis-problemi">1. Eğik Düzleme Atılan Eğik Atış Problemi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hazir-elimiz-degmisken-cizdirelim-de-bari">Hazır elimiz değmişken, çizdirelim de bari…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-1">Soru #1</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sonuc">Sonuç</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#son-soz">Son söz</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-2">Soru #2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#surtunmeli-egik-duzlemde-kayan-kutle">2. Sürtünmeli Eğik Düzlemde Kayan Kütle</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-3">Soru #3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sonuç</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welcome-to-sadet-populasyon-2i-3-in-mathbb-c">Welcome to Sadet… (popülasyon 2i+3 <span class="math notranslate nohighlight">\(\in \mathbb{C}\)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soru-4">Soru #4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Son söz</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

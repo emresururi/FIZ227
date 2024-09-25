@@ -1,0 +1,1481 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Uygulama 1: Döngüler ve Kararlar &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_U01_nxn_EnKucukKareler';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Uygulama 2: Yüklü Parçacıklar Simülasyonu" href="FIZ227_U02_YukluParcacikSimulasyonu.html" />
+    <link rel="prev" title="Fonksiyonlar, Türev ve İntegral" href="FIZ227_08_FonksiyonTurevIntegral.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_03_MatPlotLib_GrafikCizimi.html">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_04_DongulerVeKararlar.html">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_06_LineerCebir_Uygulama_1.html">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_08_FonksiyonTurevIntegral.html">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_U01_nxn_EnKucukKareler.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uygulama 1: Döngüler ve Kararlar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uygulama 1: Döngüler ve Kararlar</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dogrusal-denklem-setleri">Doğrusal denklem setleri</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#n-bilinmeyenli-n-dogrusal-denklemin-gauss-eleme-yontemi-ile-cozumu"><em>n</em> bilinmeyenli <em>n</em> doğrusal denklemin Gauss Eleme Yöntemi ile çözümü</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iki-bilinmeyenli-iki-denklem-sistemi">İki bilinmeyenli iki denklem sistemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ozel-cozum-ornek">Özel Çözüm (Örnek)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genel-cozum">Genel Çözüm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uc-bilinmeyenli-uc-denklem-sistemi">Üç bilinmeyenli üç denklem sistemi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genele-sistematik-uygulama">Genele sistematik uygulama</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ileriye-eleme-asamasi">İleriye eleme aşaması</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geriye-yerine-yerlestirme-asamasi">Geriye yerine yerleştirme aşaması</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naif-temiz-kalpli-saf-gauss-eleme-yontemi">Naif, temiz kalpli, saf Gauss eleme yöntemi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunu-yapan-komut-var-zaten">“Bunu yapan komut var zaten”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elimizde-gercekte-kac-adet-denklem-var">Elimizde gerçekte kaç adet denklem var?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#en-kucuk-kareler-yontemi">En küçük kareler yöntemi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#toplam-vs-skaler-carpim">Toplam vs. Skaler Çarpım</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uygulama-1-donguler-ve-kararlar">
+<h1>Uygulama 1: Döngüler ve Kararlar<a class="headerlink" href="#uygulama-1-donguler-ve-kararlar" title="Permalink to this heading">#</a></h1>
+<p><strong>Döngüler ve Kararlar Uygulama</strong></p>
+<ul class="simple">
+<li><p><em>n</em> bilinmeyenli <em>n</em> doğrusal denklemin çözümü</p></li>
+<li><p>En küçük kareler yöntemi</p></li>
+</ul>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="dogrusal-denklem-setleri">
+<h1>Doğrusal denklem setleri<a class="headerlink" href="#dogrusal-denklem-setleri" title="Permalink to this heading">#</a></h1>
+<p>Mühendislerin işleri, mevcut sorunlara çözüm getirmektir. Gerçek hayattaki bu sorunları da denklemler olarak temsil eder, onları -mümkünse analitik, değilse veya çok zorluysa sayısal olarak- çözmeye uğraşırız.</p>
+<p>Bu dersimizde, bilinmeyenlerin en büyük kuvvetinin 1 olduğu denklem setlerini ele alacağız, bu tür denklemlere <em>doğrusal denklem</em> diyoruz (bir doğrunun denklemini tanımladıkları için). Örneğin: <span class="math notranslate nohighlight">\(y=m x + n\)</span> denklemi, parametreleri olan <span class="math notranslate nohighlight">\(x\)</span>’in de, <span class="math notranslate nohighlight">\(y\)</span>’nin de kuvvetinin 1 olmasından ötürü eğimi <span class="math notranslate nohighlight">\(m\)</span> olup, y eksenini <span class="math notranslate nohighlight">\(n\)</span> değerinde kesen bir doğruyu verir.</p>
+<p><span class="math notranslate nohighlight">\(y = mx+n\)</span> denkleminde, 2 bilinmeyen var <span class="math notranslate nohighlight">\((x,y)\)</span>. 2 bilinmeyene 1</p>
+<p>Elimizde her 2 bilinmeyenli 2 denklem bulduğumuzda doğal olarak grafik çizip, kesiştikleri noktaları saptayamayacağımızdan ötürü, biraz daha sistematik olmak durumundayız. Genelleştirmek gerekirse, <em>m</em> bilinmeyenli <em>n</em> doğrusal denklem takımından bahsetmekteyiz. Bu denklem takımları <em>m</em> ve <em>n</em>’in birbirlerine olan büyük, küçük, eşit durumlarına göre üçe ayrılır:</p>
+<ol class="arabic simple">
+<li><p><strong>Yetersiz Tanımlı Doğrusal Takım (<span class="math notranslate nohighlight">\(m&gt;n\)</span>):</strong> Bilinmeyen sayısı <em>m</em>’in, denklem sayısından fazla olması durumunda, denklem takımını sağlayan sonsuz tane çözüm olur.</p></li>
+<li><p><strong>Bağımsız Doğrusal Takım (<span class="math notranslate nohighlight">\(m = n\)</span>):</strong> Bilinmeyen sayısı denklem sayısına eşitse, her bir bilinmeyenin bütün denklemleri sağlayan sadece bir adet değeri olacaktır.</p></li>
+<li><p><strong>Aşırı Tanımlı Doğrusal Takım (<span class="math notranslate nohighlight">\(m &lt; n\)</span>):</strong> Denklem sayısının bilinmeyen sayısından fazla olması durumunda ortaya çıkan bu takımda, çözüm olmasa da, gerçek hayatta genel olarak bu türden denklem takımları ile ilgilendiğimizden, elimizdeki denklemleri mümkün mertebe sağlayan değerleri bulmaya çalışırız. Bu tür denklem takımlarına örnek olarak çeşitli kütleleri (<span class="math notranslate nohighlight">\({m_i}\)</span>) bir tartıya koyup, ağırlıklarını (<span class="math notranslate nohighlight">\({F_i}\)</span>) ölçtüğümüz bir deney yaptığımızı düşünelim: gerek ortamdan, gerekse tartıdaki hassasiyet ve hatalardan dolayı hiçbir zaman tam olarak:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[F_i = m_i g\]</div>
+<p>bulamayız, onun yerine mesela şöyle bir veri setimiz olabilir:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(m_i\)</span> (kg)</p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(F\)</span> (N)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1.0000</p></td>
+<td class="text-center"><p>9.8818</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2.0000</p></td>
+<td class="text-center"><p>18.9612</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3.0000</p></td>
+<td class="text-center"><p>29.5044</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.0000</p></td>
+<td class="text-center"><p>36.7874</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5.0000</p></td>
+<td class="text-center"><p>53.2063</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Teoride <span class="math notranslate nohighlight">\(F = m\cdot g\)</span> olduğunu biliyoruz ama pratikte bu pek doğrulanmıyor. Elimizde 1 bilinmeyen (g) var ama 5 tane denklem var. Grafiğini çizdirirsek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8818</span><span class="p">,</span> <span class="mf">18.9612</span><span class="p">,</span> <span class="mf">29.5044</span><span class="p">,</span> <span class="mf">36.7874</span><span class="p">,</span> <span class="mf">53.2063</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3282bf4c783b1efb92ecc6213005025bf9a7bc296becca4c222accc77be5d84c.png" src="_images/3282bf4c783b1efb92ecc6213005025bf9a7bc296becca4c222accc77be5d84c.png" />
+</div>
+</div>
+<p>Denklemimiz doğrusal olduğundan lineer bir ilişki olduğunu biliyoruz ama işte o doğruyu bütün bu noktalardan geçirmeyeceğimiz de apaçık. O zaman hepsinin <em>mümkün mertebe</em> en yakınından geçen doğruyu alacağız, onu da “en küçük kareler yöntemi” denilen yöntemle elde edeceğiz.</p>
+<p>İlk olarak bilinmeyen sayısının bağımsız denklem sayısına eşit olduğu “Bağımsız Doğrusal Denklem Takımları” ile ilgileneceğiz (<em>n</em> bilinmeyenli <em>n</em> doğrusal denklem). Çok temel olduğu için onlarca çözüm yöntemi var, biz bu yöntemlerden Gauss eleme yöntemini ele alacağız.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="n-bilinmeyenli-n-dogrusal-denklemin-gauss-eleme-yontemi-ile-cozumu">
+<h1><em>n</em> bilinmeyenli <em>n</em> doğrusal denklemin Gauss Eleme Yöntemi ile çözümü<a class="headerlink" href="#n-bilinmeyenli-n-dogrusal-denklemin-gauss-eleme-yontemi-ile-cozumu" title="Permalink to this heading">#</a></h1>
+<section id="iki-bilinmeyenli-iki-denklem-sistemi">
+<h2>İki bilinmeyenli iki denklem sistemi<a class="headerlink" href="#iki-bilinmeyenli-iki-denklem-sistemi" title="Permalink to this heading">#</a></h2>
+<section id="ozel-cozum-ornek">
+<h3>Özel Çözüm (Örnek)<a class="headerlink" href="#ozel-cozum-ornek" title="Permalink to this heading">#</a></h3>
+<p>Elimizde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}5y = 2x+8\\4y=3x + 5\end{split}\]</div>
+<p>şeklinde iki bilinmeyenli, iki denklemimiz olsun. Bu denklemleri düzenleyip:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}(1):\;2x - 5y &amp;= -8\\(2):\;-3x+4y&amp;=5\end{align}\end{split}\]</div>
+<p>olarak yazalım. Denklemlerin solunu da, sağını da aynı sayıyla çarparsak/bölersek, aynı sayıyı eklersek/çıkarırsak, kısacası iki tarafa da aynı matematiksel işlemi uygularsak eşitlik bozulmaz. O halde biz de 1. denklemi önce 2’ye bölelim (böylelikle x’in katsayısı 1 olur); ardından (2. denkleme doğrudan eklediğimizde ondaki “-3x”ü götürmesi için) -3 ile çarpıp 2. denklemden çıkaralım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\frac{-3}{2}\times(1)&amp;:\;\frac{-3}{2}\left[2x - 5y = -8 \right]\rightarrow -3x + \frac{15}{2}y = 12\\
+(2)-\left[\frac{-3}{2}\times(1)\right]&amp;:\left[-3x+4y=5\right]-\;\left[-3x + \frac{15}{2}y = 12\right]  \\&amp;=\left(-3+3\right)x +\left(4- \frac{15}{2}\right)y = \left(5-12\right)\\&amp;\frac{-7}{2}y=-7\\&amp;\Rightarrow y = 2\end{align}\end{split}\]</div>
+<p>artık y değerine bildiğimize göre, iki denklemden birine bunu koyup, x’i bulabiliriz. 1. denklemi kullanalım:</p>
+<div class="math notranslate nohighlight">
+\[2x-5\cdot(2) = -8\rightarrow x=\frac{-8+10}{2} = 1\]</div>
+<p>Demek ki çözüm setimiz: <span class="math notranslate nohighlight">\((x,y) = (1,2)\)</span> imiş.</p>
+</section>
+<section id="genel-cozum">
+<h3>Genel Çözüm<a class="headerlink" href="#genel-cozum" title="Permalink to this heading">#</a></h3>
+<p>Elimizde:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(1):\;a_{11} x + a_{12} y = b_1 \\(2):\;a_{21} x + a_{22} y = b_2\end{split}\]</div>
+<p>şeklinde iki bilinmeyenli, iki denklemimiz olsun (<span class="math notranslate nohighlight">\(a\)</span>’lar ve <span class="math notranslate nohighlight">\(b\)</span>’ler verilmiş durumda, biz <span class="math notranslate nohighlight">\(x\)</span> ve <span class="math notranslate nohighlight">\(y\)</span>yi bulmaya çalışıyoruz). Her seferinde ayrı ayrı <span class="math notranslate nohighlight">\(x\)</span>’i ve <span class="math notranslate nohighlight">\(y\)</span>’yi yazmamak için katsayılarını matrise tanımlayıp oradan devam edelim (<span class="math notranslate nohighlight">\(b\)</span>’leri de matrise katarsak şöyle bir durum oluyor):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{11} x + a_{12} y = b_1 \\a_{21} x + a_{22} y = b_2\\\Rightarrow \begin{bmatrix}a_{11}&amp;a_{12}&amp;\|&amp; b_1\\a_{21}&amp;a_{22}&amp;\|&amp; b_2\end{bmatrix}\end{split}\]</div>
+<p>Denklemlerin ikisi de (adı üstünde) eşitlik olduğundan iki taraftan aynı sayıyla çarptığımız zaman hala sol taraf sağ tarafa eşit olacaktır. Biz de 1. denklemi <span class="math notranslate nohighlight">\(\frac{a_{21}}{a_{11}}\)</span> ile çarpıp, 2. denklemden çıkarmak suretiyle, 2. denklemden x’i eleyelim:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}a_{11}&amp;a_{12}&amp;\|&amp; b_1\\0&amp;a_{22}-\left(\frac{a_{21}}{a_{11}}a_{12}\right)&amp;\|&amp; b_2-\left(\frac{a_{21}}{a_{11}}b_{1}\right)\end{bmatrix}\end{split}\]</div>
+<p>Bu işlemden sonra 2. denklemde sadece <span class="math notranslate nohighlight">\(y\)</span> kaldı, onu da yalnız bırakırsak (yani 2. denklemi <span class="math notranslate nohighlight">\(y\)</span>’nin katsayısı olan <span class="math notranslate nohighlight">\(a_{22}-\left(\frac{a_{21}}{a_{11}}a_{12}\right)\)</span> değerine bölersek:</p>
+<div class="math notranslate nohighlight">
+\[ y=\frac{b_2-\left(\frac{a_{21}}{a_{11}}b_{1}\right)}{a_{22}-\left(\frac{a_{21}}{a_{11}}a_{12}\right)}\]</div>
+<p>olarak bulunur. <span class="math notranslate nohighlight">\(y\)</span>’nin bu değerini 1. denkleme koyduğumuzda ise (yani 1. denklemde <span class="math notranslate nohighlight">\(y\)</span> gördüğümüz yere <span class="math notranslate nohighlight">\(\frac{b_2-\left(\frac{a_{21}}{a_{11}}b_{1}\right)}{a_{22}-\left(\frac{a_{21}}{a_{11}}a_{12}\right)}\)</span> yazarak) <span class="math notranslate nohighlight">\(x\)</span>’i de buluruz:</p>
+<div class="math notranslate nohighlight">
+\[a_{11}x + a_{12}y = b_1 \rightarrow x = \frac{b_1 - a_{12}y}{a_{11}}\]</div>
+<div class="math notranslate nohighlight">
+\[y=\frac{b_2-\left(\frac{a_{21}}{a_{11}}b_{1}\right)}{a_{22}-\left(\frac{a_{21}}{a_{11}}a_{12}\right)}\Rightarrow x=\frac{b_1 -a_{12}{\frac{\left(-\frac{a_{21}}{a_{11}}b_{1}\right)+b_2}{\left(-\frac{a_{21}}{a_{11}}a_{12}\right)+a_{22}}}}{a_{11}}\]</div>
+<p>Bulduklarımızı bu kısmın başındaki özel örneğimize uygulayalım:</p>
+<p>\begin{align}2x - 5y &amp;= -8-3x+4y&amp;=5\end{align}</p>
+<p>Matrise çevirip, numpy’dan devam edelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrisleri tanımlarken ilk elemanı noktalı (ondalıklı)</span>
+<span class="c1"># şekilde yazıyoruz ki, numpy onları tamsayılar matrisi</span>
+<span class="c1"># olarak değil de, ondalıklı sayılar (float) matrisi olarak</span>
+<span class="c1"># ele alsın (yoksa işlem sonuçarı da tamsayılara yuvarlanır)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">8.</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2. -5.]
+ [-3.  4.]]
+[[-8.]
+ [ 5.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Satır çok uzun olduğu için işlemi &quot;\&quot; kesme işareti</span>
+<span class="c1"># ile ikiye ayırdık. Ayrıca, python&#39;da indisler 0&#39;dan</span>
+<span class="c1"># başladığından, formüldeki indislerden 1 düşük yazdık</span>
+<span class="c1"># (örn. A_21 -&gt; A[1,0] olarak temsil edildi)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> \
+  <span class="o">/</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu işlemleri (elimizde sayılarla tanımlanmış bir matris olduğundan) doğrudan matris üzerinden de yapabilirdik:</p>
+<p>Önce A ile b’yi birleştirip, M matrisini oluşturalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2., -5., -8.],
+       [-3.,  4.,  5.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>1. satırı (<code class="docutils literal notranslate"><span class="pre">M[0,:]</span></code>), ilk katsayısına (<code class="docutils literal notranslate"><span class="pre">M[0,0]</span> <span class="pre">=</span> <span class="pre">2</span></code>) bölüp, 2.nin ilk katsayısıyla (<code class="docutils literal notranslate"><span class="pre">M[1,0]=-3</span></code>) çarpıp, 2. satırdan (<code class="docutils literal notranslate"><span class="pre">M[1,:]</span></code>) çıkaralım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2. , -5. , -8. ],
+       [ 0. , -3.5, -7. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>2. denklemde (satırda) <span class="math notranslate nohighlight">\(y\)</span> yalnız kaldığına göre, son elemanı (<code class="docutils literal notranslate"><span class="pre">M[1,-1]</span> <span class="pre">=</span> <span class="pre">-7</span></code>), 2. elemana (<code class="docutils literal notranslate"><span class="pre">M[1,1]</span> <span class="pre">=</span> <span class="pre">-3</span></code>) bölerek onu bulabiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(x\)</span>’i bulmak için de bulduğumuz bu <span class="math notranslate nohighlight">\(y\)</span> değerini kullanacağız. İlk satırda (denklemde) (<code class="docutils literal notranslate"><span class="pre">M[0,:]</span></code>) son elemandan (<code class="docutils literal notranslate"><span class="pre">M[0,-1]</span> <span class="pre">=</span> <span class="pre">-8</span></code>) <span class="math notranslate nohighlight">\(y\)</span>’nin katsayısı (<code class="docutils literal notranslate"><span class="pre">M[0,1]</span> <span class="pre">=</span> <span class="pre">-5</span></code>) ile <span class="math notranslate nohighlight">\(y\)</span>’nin değerinin çarpımını çıkarıp, <span class="math notranslate nohighlight">\(x\)</span>’in katsayısına (<code class="docutils literal notranslate"><span class="pre">M[0,0]</span> <span class="pre">=</span> <span class="pre">2</span></code>) böleceğiz. Böyle yazınca çok karmaşık geliyor ama aslında dediğimiz şey: elimizde <span class="math notranslate nohighlight">\(ax + by = c\)</span> gibi bir denklem varsa, <span class="math notranslate nohighlight">\(y\)</span>’nin değerini de biliyorsak, <span class="math notranslate nohighlight">\(x = \frac{c - by}{a}\)</span> olacağı! 8)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="uc-bilinmeyenli-uc-denklem-sistemi">
+<h3>Üç bilinmeyenli üç denklem sistemi<a class="headerlink" href="#uc-bilinmeyenli-uc-denklem-sistemi" title="Permalink to this heading">#</a></h3>
+<p>(Bağımsız) Denklem sayımız üç olduğunda onu da:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}a_{11} x + a_{12} y + a_{13} z= b_1 \\a_{21} x + a_{22} y + a_{23} z= b_2\\a_{31} x + a_{32} y + a_{33} z= b_3\\\Rightarrow \begin{bmatrix}a_{11}&amp;a_{12}&amp;a_{13}&amp;\|&amp; b_1\\a_{21}&amp;a_{22}&amp;a_{23}&amp;\|&amp; b_2\\a_{31}&amp;a_{32}&amp;a_{33}&amp;\|&amp; b_3\end{bmatrix}\end{split}\]</div>
+<p>olarak düşünüp, önce 1. denklemi kullanıp, 2. ve 3. denklemlerdeki <span class="math notranslate nohighlight">\(x\)</span> katsayılarını eleyelim. Bunun için 1. denklemi <span class="math notranslate nohighlight">\(\frac{a_{21}}{a_{11}}\)</span> ile çarpıp 2.’den; <span class="math notranslate nohighlight">\(\frac{a_{31}}{a_{11}}\)</span> ile de çarpıp, 3. denklemden çıkartırız.</p>
+<p>Sonrasında sıra 3. denklemdeki <span class="math notranslate nohighlight">\(y\)</span> katsayısını elemeye gelir. 1. denklemde herhangi bir işlem yapıp 3. denklemde çıkarmamız halinde <span class="math notranslate nohighlight">\(x\)</span>’in de geri geleceğinden ötürü, 3. denklemdeki <span class="math notranslate nohighlight">\(y\)</span> katsayısını 2. denklemi kullanarak eleriz. 2. denklemi kendisinin o aşamadaki <span class="math notranslate nohighlight">\(y\)</span> katsayısına bölüp, 3. denklemin o aşamadaki <span class="math notranslate nohighlight">\(y\)</span> katsayısı ile çarpıp, 3. denklemden ekleriz. (Formüler olarak çok karışık ve korkutucu bir hal aldığından, somut bir örnek üzerinden gidelim):</p>
+<p>Denklemlerimiz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}2x-5y+3z&amp;=7\\x+3y-4z&amp;=-2\\-2x+2y-3z&amp;=-10\end{align}\end{split}\]</div>
+<p>olsunlar. Bunları numpy’a girelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A:
+ [[ 2. -5.  3.]
+ [ 1.  3. -4.]
+ [-2.  2. -3.]]
+b:
+ [[  7]
+ [ -2]
+ [-10]]
+M:
+ [[  2.  -5.   3.   7.]
+ [  1.   3.  -4.  -2.]
+ [ -2.   2.  -3. -10.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>2. satırdaki <span class="math notranslate nohighlight">\(x\)</span> katsayısını elemek için 1. satırı 1. satırın <span class="math notranslate nohighlight">\(x\)</span> katsayısına (2) bölüp, ikinci satırın <span class="math notranslate nohighlight">\(x\)</span> katsayısı (1) ile çarpıp, 2. satırdan çıkartırız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  2. ,  -5. ,   3. ,   7. ],
+       [  0. ,   5.5,  -5.5,  -5.5],
+       [ -2. ,   2. ,  -3. , -10. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>3. satırdaki <span class="math notranslate nohighlight">\(x\)</span> katsayısını götürmek içinse 1. satırı 1. satırın <span class="math notranslate nohighlight">\(x\)</span> katsayısına (2) bölüp, üçüncü satırın <span class="math notranslate nohighlight">\(x\)</span> katsayısı (-2) ile çarpıp 3.’den çıkartırız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2. , -5. ,  3. ,  7. ],
+       [ 0. ,  5.5, -5.5, -5.5],
+       [ 0. , -3. ,  0. , -3. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Şimdi sırada 2. satırı kullanarak, 3. satırın <span class="math notranslate nohighlight">\(y\)</span> katsayısını elemek var. Bunun için de, 2. satırı 2. satırın <span class="math notranslate nohighlight">\(y\)</span> katsayısına (5.5) bölüp, 3. satırın <span class="math notranslate nohighlight">\(y\)</span> katsayısı (-3) ile çarparak 3. satırdan çıkartırız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">-</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2. , -5. ,  3. ,  7. ],
+       [ 0. ,  5.5, -5.5, -5.5],
+       [ 0. ,  0. , -3. , -6. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Buradan (3. satırdan) doğrudan <span class="math notranslate nohighlight">\(z = \frac{-6}{-3} = 2\)</span> olduğunu görüyoruz.</p>
+<p>Bunu 2. satırda kullanırsak: <span class="math notranslate nohighlight">\(y = \frac{-5.5 + 5.5z}{5.5} = \frac{-5.5 + 5.5\times2}{5.5}=\frac{5.5}{5.5}= 1\)</span></p>
+<p>Artık <span class="math notranslate nohighlight">\(z\)</span> de, <span class="math notranslate nohighlight">\(y\)</span> de elimizde olduğuna göre, <span class="math notranslate nohighlight">\(x\)</span>’i de bulabiliriz:</p>
+<p><span class="math notranslate nohighlight">\(x = \frac{7-3z+5y}{2} = \frac{7-3\times2+5\times1}{2} = \frac{6}{2} = 3\)</span></p>
+</section>
+<section id="genele-sistematik-uygulama">
+<h3>Genele sistematik uygulama<a class="headerlink" href="#genele-sistematik-uygulama" title="Permalink to this heading">#</a></h3>
+<p><em>n</em> bilinmeyenli <em>n</em> denklemimizde bilinmeyenlerin katsayılarını <span class="math notranslate nohighlight">\(A\)</span> matrisinde, eşitliklerini de <span class="math notranslate nohighlight">\(b\)</span> sütun vektöründe toplayalım. Sonra da bunları yukarıda yaptığımız gibi birleştirip <span class="math notranslate nohighlight">\(n\times (n+1)\)</span>’lik bir <span class="math notranslate nohighlight">\(M\)</span> matrisinde toplayalım.</p>
+<section id="ileriye-eleme-asamasi">
+<h4>İleriye eleme aşaması<a class="headerlink" href="#ileriye-eleme-asamasi" title="Permalink to this heading">#</a></h4>
+<p>İlk yapmamız gereken 1. satırı, 1. satırın 1. sütununa bölüp, altındaki her bir satırın 1. sütununun değeriyle çarpıp o satırdan çıkararak o satırlardaki ilk terimi elemek. Bu işlem bitince, bu sefer 2. satırı, 2. satırın 2. sütununa bölüp, altındaki her bir satırın 2. sütununun değeriyle çarpıp o satırdan çıkararak, o satırlardaki ikinci terimi elemek; sonra 3. satıra geçip, onu 3. satırın 3. sütununa bölüp, altındaki her bir satırın 3. sütununun değeriyle çarpıp o satırdan çıkararak 3. terimleri elemek, …</p>
+<p><em>Örüntüyü</em> (“pattern”i) fark edebildiniz mi? (Eğer edemediyseniz, bir de sesli okuyun, örüntü de, kafiyeli bir şiir gibi dilinize gelecektir ;)</p>
+<p><em>sanki-kod</em>’da (“pseudo-code”) bunu şu şekilde belirtebiliriz:</p>
+<p><code>for eleyen_satir = 0:n-1
+for etkilenen_satir = eleyen_satir+1:n
+etkilenen_satir = etkilenen_satir -
+(eleyen_satir)/(eleyen_satir’in eleyen_satir’inci sutununun
+degeri) * (etkilenen_satir’in eleyen_satir’inci sutununun
+degeri ile carpilmis hali)
+</code></p>
+<p>Yukarıda çözdüğümüz örnekte bir uygulamayı deneyelim bakalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># satır (denklem) sayısı</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">x</span><span class="si">{:d}</span><span class="s2">&#39;lik bir denklem takımı çözüyoruz!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># İleriye eleme aşaması:</span>
+<span class="k">for</span> <span class="n">eleyen_satir_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">etkilenen_satir_no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">eleyen_satir_no</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">etkilenen_satir_no</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">etkilenen_satir_no</span><span class="p">,:]</span> \
+          <span class="o">-</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">eleyen_satir_no</span><span class="p">,:]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="n">eleyen_satir_no</span><span class="p">,</span><span class="n">eleyen_satir_no</span><span class="p">]</span>\
+             <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="n">etkilenen_satir_no</span><span class="p">,</span><span class="n">eleyen_satir_no</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İleriye eleme aşamasının sonucu:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3x3&#39;lik bir denklem takımı çözüyoruz!
+
+İleriye eleme aşamasının sonucu:
+[[ 2.  -5.   3.   7. ]
+ [ 0.   5.5 -5.5 -5.5]
+ [ 0.   0.  -3.  -6. ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="geriye-yerine-yerlestirme-asamasi">
+<h4>Geriye yerine yerleştirme aşaması<a class="headerlink" href="#geriye-yerine-yerlestirme-asamasi" title="Permalink to this heading">#</a></h4>
+<p>İlk (0.) satırdan (denklemden) başlayıp, eleye eleye sona (<em>n-1</em>. satıra/denkleme geldik. Bu satırda yapılacak tek şey, son (<em>n</em>.) sütundaki denklem eşitliğini, sondan bir önceki (<em>n-1</em>.) değere (yani son bilinmeyenin katsayısına bölmek). Özel örneğimizde bu: <span class="math notranslate nohighlight">\(z = \frac{-6}{-3}\)</span> demeye karşılık geliyor. (Python’da indislerin 0’dan başlaması işleri biraz karıştırsa da aslında yaptığımız gayet basit ve dosdoğru).</p>
+<p>Sondan bir önceki (Python’da <em>n-2</em> indisli) satıra geldiğimizde, bu denklemin eşitliği son (<em>n-1</em> indisli) sütunda, bir alttaki satırdan bulduğumuz bilinmeyenin katsayısı sondan bir önceki (<em>n-2</em> indisli) sütunda, bu denklemdeki bilinmeyenin katsayısı da sondan iki önceki sütunda duruyor. Artık ondan sonraki değişken bilindiğinden, o bilinmeyeni yerine koyup, katsayısı ile çarpıp, eşitliğin değerinden çıkarıp, bu satırın bilinmeyeninin katsayısına bölersek, bu satırın bilinmeyenini de bulmuş oluruz.</p>
+<p>Genel olarak yazarsak:</p>
+<p><span class="math notranslate nohighlight">\(i\)</span> indisli satıra geldiğimizde, o satırın bilinmeyeni <span class="math notranslate nohighlight">\(i\)</span> indisli sütunda olacak, kendisinden önceki sütunların katsayıları 0 olacak, kendisinden sonraki değişkenler de o aşamada bilinir olacağından, son sütundaki değerden alttaki satırlardan (denklemlerden) bulduğumuz değerleri yerine koyup katsayıları ile çarpımlarını çıkarırsak, ve son olarak da mevcut bilinmeyenin katsayısına bölersek işlem tamam olacaktır. Yine çok laf kalabalığı gayet dosdoğru ve basit bir matematiksel işlemi karmaşık gösterdi, o yüzden bir örnek ile ilerleyelim, elimizdeki <span class="math notranslate nohighlight">\(i\)</span> indisli satır şöyle olsun:</p>
+<div class="math notranslate nohighlight">
+\[\begin{matrix}0&amp;0&amp;\dots&amp;0&amp;a_{i}&amp;a_{i+1}&amp;a_{i+2}&amp;\dots&amp;a_{n-1}&amp;b_i\end{matrix}\]</div>
+<p><span class="math notranslate nohighlight">\(a_i\)</span> bizim mevcut bilinmeyenimizin katsayısı, ondan sonra gelen <span class="math notranslate nohighlight">\(a_*\)</span> katsayıları artık bilinen değişkenlerin katsayıları, en sondaki <span class="math notranslate nohighlight">\(b_i\)</span> de o denklemin sağ tarafındaki eşitlik. Bu da demek oluyor ki, bizim <span class="math notranslate nohighlight">\(x_i\)</span> bilinmeyenimizi, şu şekilde çekebiliriz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather*}a_i x_i + a_{i+1} x_{i+1} + \dots + a_{n-1} x_{n-1} = b_i\\
+a_i x_i = b_i-\left(a_{i+1} x_{i+1} + \dots + a_{n-1} x_{n-1}\right)\\
+\\
+x_i = \frac{b_i-\left(a_{i+1} x_{i+1} + \dots + a_{n-1} x_{n-1}\right)}{a_i}
+\end{gather*}\end{split}\]</div>
+<p>Üstteki denklemde, paydadaki parantez içindeki katsayılar ile ilgili değişkenlerinin çarpımına dikkat edersek, bunu aslında tüm katsayılar ile değişkenlerin çarpımı gibi yazabileceğimizi görebiliyoruz. Bunu, o satırın ilgili değişkeninden önceki bütün bilinmeyenlerin katsayılarının 0 olması sağlıyor; ufak bir fark, o satırın ilgili değişkeninin toplama girmiyor oluşu ki, bunu da küçük bir “hile” ile halledeceğiz.</p>
+<p>Matematiksel olarak özetlersek: <span class="math notranslate nohighlight">\(\vec{a}\)</span>, o satırın katsayılar vektörü olsun, <span class="math notranslate nohighlight">\(\vec{x}\)</span> de değişkenler vektörü. Eğer değişkenler vektörünün ilk <span class="math notranslate nohighlight">\(i\)</span> elemanını (yani bilmediğimiz değişkenlerin değerlerini) 0 olarak tanımlarsak <span class="math notranslate nohighlight">\(\vec{a}.\vec{x}\)</span> skaler çarpımı bize tam da istediğimiz toplamı verir <span class="math notranslate nohighlight">\(\left(\vec a . \vec x = \sum_{i}{a_i.x_i}\right)\)</span>. Formül şeklinde yazarsak:</p>
+<div class="math notranslate nohighlight">
+\[x_i = \frac{b_i - \vec {a} . \vec {x}}{a_i}\]</div>
+<p>Gelelim “hilemize”:  başlangıçta bilinmeyenlerin tutulduğu <span class="math notranslate nohighlight">\(\vec x\)</span> dizisinin bütün elemanlarını 0 yapıyor, değerleri buldukça ilgili bileşenleri güncelliyoruz. Böylelikle yukarıdaki skaler çarpımda bilinmeyenler o sırada 0 olduğundan toplama hiçbir katkıda bulunmuyorlar! 8)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2. , -5. ,  3. ,  7. ],
+       [ 0. ,  5.5, -5.5, -5.5],
+       [ 0. ,  0. , -3. , -6. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Bilinmeyenlerimize başlangıçta 0 değeri verip,</span>
+<span class="c1"># n boyutlu bir x vektöründe tutuyoruz</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2"> indisli satırı işliyoruz:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">b_i</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">a_i</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b_i</span> <span class="o">-</span> <span class="n">ax</span> <span class="p">)</span> <span class="o">/</span> <span class="n">a_i</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Bu denklemin bilinmeyeni: x[</span><span class="si">{:d}</span><span class="s2">] = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span>\
+          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bilinmeyenler bulundu:&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 indisli satırı işliyoruz:
+	Bu denklemin bilinmeyeni: x[2] = 2.000
+1 indisli satırı işliyoruz:
+	Bu denklemin bilinmeyeni: x[1] = 1.000
+0 indisli satırı işliyoruz:
+	Bu denklemin bilinmeyeni: x[0] = 3.000
+
+
+Bilinmeyenler bulundu: [3. 1. 2.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="naif-temiz-kalpli-saf-gauss-eleme-yontemi">
+<h2>Naif, temiz kalpli, saf Gauss eleme yöntemi<a class="headerlink" href="#naif-temiz-kalpli-saf-gauss-eleme-yontemi" title="Permalink to this heading">#</a></h2>
+<p>Bu notlarda kullandığımız eleme yönteminin tam ismi aynen bu: Naif Gauss Eleme Yöntemi (<em>Naïve Gauss Elimination Method</em>). Böyle <em>naif</em> denmesinin sebebi, birtakım tuzaklara karşı önhazırlıksız olmasından, verilen matrisin sıralanmasından kaynaklı olarak bazı işlemlerinin uzun ve kötü hassasiyetle çıkabiliyor oluşundan kaynaklanıyor. Daha optimize ve kurnaz hali <em>Gauss-Jordan Eleme Yöntemi</em> olarak anılıyor (çok da farklı, kompleks bir şey değil bu arada:, sadece orada satırların sırasını belli bir düzene göre değiştirip, öyle işleme alıyoruz).</p>
+</section>
+<section id="bunu-yapan-komut-var-zaten">
+<h2>“Bunu yapan komut var zaten”<a class="headerlink" href="#bunu-yapan-komut-var-zaten" title="Permalink to this heading">#</a></h2>
+<p>Hesaplarımız sıklıkla “n bilinmeyenli n denklemin çözümü” problemine dönüştüğünden, bunu hızlıca yapan hazır bir komutumuz da mevcut. Ama öncesinde bir başka yaklaşımdan bahsedelim:</p>
+<p>Denklemlerimiz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}2x-5y+3z&amp;=7\\x+3y-4z&amp;=-2\\-2x+2y-3z&amp;=-10\end{align}\end{split}\]</div>
+<p>olsun. Bu denklem setini, bir matrix ve vektörün çarpımı olarak şu şekilde yazabiliriz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}2&amp;-5&amp;3\\1&amp;3&amp;-4\\-2&amp;2&amp;-3\end{bmatrix}
+\begin{bmatrix}x\\y\\z\end{bmatrix}=\begin{bmatrix}7\\-2\\-10\end{bmatrix}\end{split}\]</div>
+<p>Katsayılar matrisine <span class="math notranslate nohighlight">\(A\)</span>, bilinmeyenler vektörüne <span class="math notranslate nohighlight">\(\vec x\)</span>, sonuçların olduğu vektöre de <span class="math notranslate nohighlight">\(\vec b\)</span> diyelim. Böylelikle elimizdeki işlem basit bir matris-vektör çarpım eşitliği olarak yazılabilir:</p>
+<div class="math notranslate nohighlight">
+\[A\cdot \vec x = \vec b\]</div>
+<p>Eşitliğin iki tarafını soldan <span class="math notranslate nohighlight">\(A\)</span> matrisinin tersi ile çarpacak olursak, tersiyle çarpım birim matrisi vereceğinden <span class="math notranslate nohighlight">\(\vec x\)</span> yalnız kalır:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\underbrace{A^{-1}A}_{\mathbb 1}\cdot \vec x &amp;= A^{-1}\vec b\\
+\rightarrow\vec x &amp;= A^{-1}\vec b\end{align}\end{split}\]</div>
+<p>Bunu python’da yaparsak:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">A</span><span class="p">,</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[ 2., -5.,  3.],
+        [ 1.,  3., -4.],
+        [-2.,  2., -3.]]),
+ array([[  7],
+        [ -2],
+        [-10]]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="n">b</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.],
+       [1.],
+       [2.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tahmin edeceğiniz üzere, bu işlemin de hızlı çalışacak şekilde optimize edilmiş hazır bir fonksiyonu bulunmakta: <code class="docutils literal notranslate"><span class="pre">np.linalg.solve(A,b)</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.],
+       [1.],
+       [2.]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="elimizde-gercekte-kac-adet-denklem-var">
+<h2>Elimizde gerçekte kaç adet denklem var?<a class="headerlink" href="#elimizde-gercekte-kac-adet-denklem-var" title="Permalink to this heading">#</a></h2>
+<p>Bazen, elimizde <em>n</em> adet <strong>bağımsız</strong> denklem olduğunu sanarken, aslında bunların bazıları diğerlerinin lineer bileşimlerinden elde edilebilir, bu da doğal olarak yeni bir bilgi getirmediğinden, denklemleri çözmemiz mümkün olmaz. Örnek olarak aşağıdaki üç bilinmeyenli üç denklemi ele alalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}6x+3y-z &amp;= 18\\
+6x+y+2z&amp;=45\\
+18x+13y-9z&amp;=0\end{align}\end{split}\]</div>
+<p>Denklemler ilk bakışta birbirlerinden epey alakasız görünseler de, dikkat edince 3. denklemin, 1. denklemin 5 katından, 2. denklemin 2 katının çıkarılmasıyla elde edilebileceği ortaya çıkar:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">18</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">9</span><span class="p">]])</span>
+<span class="n">M</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 6,  3, -1],
+       [ 6,  1,  2],
+       [18, 13, -9]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">*</span><span class="mi">5</span> <span class="o">-</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">*</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18, 13, -9])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu da doğal olarak katsayılar matrisinin determinantının 0 olup, matrisin tersinin bulunmayacağı anlamına gelir.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="c1"># katsayılar 3x3&#39;lük kısımda,</span>
+                 <span class="c1"># son sütun denklem değerleri</span>
+                 <span class="c1"># olduğundan onu ayırdık.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.330669073875456e-15
+</pre></div>
+</div>
+</div>
+</div>
+<p>Verilen bir denklem setinin kaç adet bağımsız denklem içerdiğini o matrisin rütbesini (<em>rank</em>) sorarak öğrenebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="en-kucuk-kareler-yontemi">
+<h1>En küçük kareler yöntemi<a class="headerlink" href="#en-kucuk-kareler-yontemi" title="Permalink to this heading">#</a></h1>
+<p>Dersimizin başında, her zaman için elimizdeki bağımsız denklem sayısının bilinmeyen sayısına eşit olmayacağını, bazen denklem sayısının değişken sayısından daha fazla olduğu “Aşırı tanımlı doğrusal takım”dan bahsedip, yerçekimi ivmesini hesaplamak üzere tasarlanan bir deneyin ölçümlerini vermiştik.</p>
+<div class="math notranslate nohighlight">
+\[F_i = m_i g\]</div>
+<p>için yapılan ölçüm sonuçları şunlar olsun:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p><span class="math notranslate nohighlight">\(m_i\)</span> (kg)</p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(F\)</span> (N)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>1.0000</p></td>
+<td class="text-center"><p>9.8818</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>2.0000</p></td>
+<td class="text-center"><p>18.9612</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>3.0000</p></td>
+<td class="text-center"><p>29.5044</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>4.0000</p></td>
+<td class="text-center"><p>36.7874</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>5.0000</p></td>
+<td class="text-center"><p>53.2063</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8818</span><span class="p">,</span> <span class="mf">18.9612</span><span class="p">,</span> <span class="mf">29.5044</span><span class="p">,</span> <span class="mf">36.7874</span><span class="p">,</span> <span class="mf">53.2063</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3282bf4c783b1efb92ecc6213005025bf9a7bc296becca4c222accc77be5d84c.png" src="_images/3282bf4c783b1efb92ecc6213005025bf9a7bc296becca4c222accc77be5d84c.png" />
+</div>
+</div>
+<p>Grafiğini çizdiğimizde, eğimin bize g’yi vereceği açık ama hangi doğrunun grafiğini almalıyız? Ya da bir başka deyişle, “en doğru doğru”yu nasıl tanımlarız? Akla ilk gelen, tabii ki bütün noktaların mümkün mertebe en yakınından geçen doğruyu almak. Peki o doğrunun denklemini nasıl elde ederiz? Bu soruya en iyi cevabı “En Küçük Kareler Yöntemi” vermekte.</p>
+<p>Bu yöntemde elimizde bir <span class="math notranslate nohighlight">\(y=mx+n\)</span> doğrusunun olduğu varsayımıyla başlarız. Bu doğrunun elimizdeki <span class="math notranslate nohighlight">\(x\)</span> değerlerine karşılık gelen değerlerinin (bu değerleri “<span class="math notranslate nohighlight">\(t\)</span>” ile gösterelim) deneyde bulduğumuz <span class="math notranslate nohighlight">\(y\)</span> değerleri arasındaki mesafeleri hesaplayıp, bu mesafeleri mümkün oldukça küçük yapacak <span class="math notranslate nohighlight">\(m\)</span> ve <span class="math notranslate nohighlight">\(n\)</span> değerlerini bulmaya çalışırız.</p>
+<p>Verileri elde ettiğimiz deney şöyle bir düzenek olabilir: elimizde 1 kg’dan 6 kg’a kadar 6 kütle var, bunları basküle koyup, ağırlıklarını Newton cinsinden ölçüyoruz.</p>
+<p>Genelleştirme adına kontrol parametremiz olan kütleleri <span class="math notranslate nohighlight">\(x\)</span> ile, okuduğumuz ölçümler olan ağırlıkarı da <span class="math notranslate nohighlight">\(y\)</span> ile temsil edelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8818</span><span class="p">,</span> <span class="mf">18.9612</span><span class="p">,</span> <span class="mf">29.5044</span><span class="p">,</span> <span class="mf">36.7874</span><span class="p">,</span> <span class="mf">53.2063</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python’da doğrudan sembolik hesap yapılmadığından (yani “m” ve “n” olarak bilinmeyenleri denklemlere sokamayacağımızdan), işlemlerimizi “kağıt” üzerinde açalım:</p>
+<p>Elimizde 5 adet veri ikilisi var. Bu ikililerin her birini x(i) ve y(i) ile gösterelim.</p>
+<p>Örneğin:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>x[4] = 5.0
+y[4] = 53.2063
+</pre></div>
+</div>
+<p>Doğrunun denkleminde x[i]ye karşılık gelen değeri t[i] ile gösterecek olursak, <span class="math notranslate nohighlight">\(t_i = mx_i+n\)</span> olur (örneğin, t[4] = m*[5.0] + n).</p>
+<p>Doğru denkleminden bulduğumuz değer ile deneyde bulduğumuz değer arasındaki mesafe:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}
+\mid{t_i - y_i}\mid = \sqrt{{(t_i - y_i)}^2}
+\end{equation*}\]</div>
+<p>olarak tanımlanır. Biz bu değerin kendisinden çok, bu değeri minimum yapmakla, yani doğruyu noktaya mümkün olduğunca yakın geçirmekle ilgilendiğimizden dolayı hem işlemden tasarruf sağlamak (karenin kökü yerine sadece kare alma işlemi), hem de minimize ederken türev almak gerekliliğinden dolayı (mutlak değer fonksiyonunun 0 noktasında türevi tanımlı değildir) aralarındaki mesafenin karesini minimize edeceğiz (mesafenin karesi minimize olduğunda, mesafenin kendisi de minimize olmuş olur ne de olsa).</p>
+<p>Bu durumda, doğrunun üzerindeki nokta ile deneyde okunan değerin aralarındaki farkın karesine “s” diyelim:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}
+s_i = (y_i - (m x_i + n))^2
+\end{equation*}\]</div>
+<p>ve parentezi açınca da:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+s_i &amp;= (y_i - (m x_i + n))^2 = y_i^2 - 2 y_i(mx_i+n) + (mx_i+n)^2\\
+s_i &amp;= y_i^2 - 2m x_i y_i -2n y_i +m^2 x_i^2 +2 m n x_i + n^2
+\end{align}\end{split}\]</div>
+<p>Toplam hata her bir veri çiftinden gelen hataların (farkların) toplamına eşit olacak <span class="math notranslate nohighlight">\(\left(S = \sum_{i=1}^N s_i\right)\)</span>.</p>
+<p>Toplam hatayı denklem cinsinden yazacak olursak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+S = \sum_{i=1}^N s_i = \sum_{i=1}^N (y_i^2 - 2m x_i y_i -2n y_i +m^2 x_i^2 +2 m n x_i + n^2)
+\end{align}\]</div>
+<p>Toplam hatanın iki tane parametresi (ve bizim için bilinmeyeni) var: m &amp; n. Denklemi minimize edecek m &amp; n değerlerini bulabilmek için her birine göre türev alıp, sıfıra eşitleriz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\frac{\partial S}{\partial m} &amp;= \sum_{i=1}^N \frac{\partial s_i}{\partial m} = \sum_{i=1}^N (-2 x_i y_i + 2 m x_i^2 + 2 n x_i) = 0\\
+\frac{\partial S}{\partial n} &amp;= \sum_{i=1}^N \frac{\partial s_i}{\partial n} = \sum_{i=1}^N (-2 y_i + 2 m x_i + 2 n) = 0
+\end{align}\end{split}\]</div>
+<p>işimiz bitmedi ama az kaldı… 8)</p>
+<p>Elimizde iki adet, iki bilinmeyenli eşitlik var (hataların m ve n’ye göre türevleri ve onların sıfıra eşit oluşları). Denklemleri m ve n’nin çarpanları olacak şekilde düzenlersek:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\left(\sum_{i=1}^N 2x_i^2\right)m + \left(\sum_{i=1}^N 2x_i\right)n &amp;= \left(\sum_{i=1}^N  2x_i y_i\right)\\
+\left(\sum_{i=1}^N 2x_i\right)m + \left(\sum_{i=1}^N 2\right)n &amp;= \left(\sum_{i=1}^N 2 y_i\right)
+\end{align}\end{split}\]</div>
+<p>Parantez içindeki bütün terimleri x[i] ve y[i]leri bildiğimizden dolayı döngü üzerinden hesaplatabiliriz.</p>
+<p>Kolay anlaşılması açısından:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather*}
+A_{11} = \sum_{i=1}^N 2x_i^2 ,\quad A_{12} = A_{21} = \sum_{i=1}^N 2x_i,\quad A_{22} = \sum_{i=1}^N 2\\
+B_{11} = \sum_{i=1}^N  2x_i y_i,\quad B_{12} = \sum_{i=1}^N 2 y_i
+\end{gather*}\end{split}\]</div>
+<p>dersek, denklemlerimiz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{equation*}
+A_{11}m + A_{12}n = B_{11}\\
+A_{12}m + A_{22}n = B_{12}
+\end{equation*}\end{split}\]</div>
+<p>halini alırlar. İkinci denklemde n’yi m cinsinden yazarsak:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}
+n = \frac{B_{12} - A_{12}m }{A_{22}}
+\end{equation*}\]</div>
+<p>bulunur; bunu da götürüp birinci denklemde n gördüğümüz yere yazdığımızda m’yi:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather*}
+A_{11}m + A_{12} \left(\frac{B_{12} - A_{12}m }{A_{22}} \right)  = B_{11}\\
+A_{11}m + \frac{A_{12} B_{12}}{A_{22}} - \frac{A_{12}^2 m}{A_{22}} = B_{11}\\
+\left(A_{11} - \frac{A_{12}^2 }{A_{22}}\right)m + \frac{A_{12} B_{12}}{A_{22}}  = B_{11}\\
+\Rightarrow m = \frac{\left(B_{11} - \frac{A_{12} B_{12}}{A_{22}}\right)}{\left(A_{11} - \frac{A_{12}^2}{A_{22}}\right)}
+\end{gather*}\end{split}\]</div>
+<p>olarak buluruz.</p>
+<p>Artık m’yi bildiğimize göre, n’nin tanımında yerine koyarak, n’yi de elde ederiz:</p>
+<div class="math notranslate nohighlight">
+\[\begin{equation*}
+n = \frac{B_{12} - A_{12}m }{A_{22}}
+\end{equation*}\]</div>
+<p>Denklemlerin çıkarımı biraz karışık gelse bile, önemli olan sonuçlar, çıkarımlardan başınız ağrıdıysa, sadece son A ile B’lerin tanımları ve m ile n’in onlar cinsinden eşitliklerini bilin. Zira formüller artık elimizde olduğundan, birazdan aşağıda göreceğiniz gibi, her şeyi kolayca hesaplayacağız! 8)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8818</span><span class="p">,</span> <span class="mf">18.9612</span><span class="p">,</span> <span class="mf">29.5044</span><span class="p">,</span> <span class="mf">36.7874</span><span class="p">,</span> <span class="mf">53.2063</span><span class="p">])</span>
+
+<span class="n">A11</span> <span class="o">=</span> <span class="n">A12</span> <span class="o">=</span> <span class="n">A22</span> <span class="o">=</span> <span class="n">B11</span> <span class="o">=</span> <span class="n">B12</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Hesaplanacak değerler</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Kaç adet verimiz olduğu</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">A11</span> <span class="o">=</span> <span class="n">A11</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">A12</span> <span class="o">=</span> <span class="n">A12</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">A22</span> <span class="o">=</span> <span class="n">A22</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="n">B11</span> <span class="o">=</span> <span class="n">B11</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">B12</span> <span class="o">=</span> <span class="n">B12</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+<span class="c1"># Toplamlar hesaplandı bile! 8)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">B11</span> <span class="o">-</span> <span class="p">(</span><span class="n">A12</span> <span class="o">*</span> <span class="n">B12</span> <span class="o">/</span> <span class="n">A22</span><span class="p">))</span>  <span class="o">/</span> <span class="p">(</span><span class="n">A11</span> <span class="o">-</span> <span class="p">(</span><span class="n">A12</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">A22</span><span class="p">))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">B12</span> <span class="o">-</span> <span class="n">A12</span> <span class="o">*</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">A22</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Artık verilerimize en yakın geçen </span>
+<span class="c1"># doğrunun denklemi elimizde olduğuna göre</span>
+<span class="c1"># hem doğruyu, hem de deney verilerini birlikte</span>
+<span class="c1"># çizdirelim</span>
+
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">xx</span> <span class="o">+</span> <span class="n">n</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">tt</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = 10.448
+n = -1.674
+</pre></div>
+</div>
+<img alt="_images/4cef150c7d2e45a6bf10864f25eecc0d62e4439767cfd7887db2d935fae1b8ca.png" src="_images/4cef150c7d2e45a6bf10864f25eecc0d62e4439767cfd7887db2d935fae1b8ca.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="toplam-vs-skaler-carpim">
+<h1>Toplam vs. Skaler Çarpım<a class="headerlink" href="#toplam-vs-skaler-carpim" title="Permalink to this heading">#</a></h1>
+<p>Konumuz döngülerin uygulaması olduğundan, en küçük kareler yöntemindeki toplamları döngü kullanarak yaptık ama bunun çok daha doğrudan bir yolu var: vektörlerin skaler çarpımı!</p>
+<p>Hesaplattığımız toplamları hatırlayalım:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{gather*}
+A_{11} = \sum_{i=1}^N 2x_i^2 ,\quad A_{12} = A_{21} = \sum_{i=1}^N 2x_i,\quad A_{22} = \sum_{i=1}^N 2\\
+B_{11} = \sum_{i=1}^N  2x_i y_i,\quad B_{12} = \sum_{i=1}^N 2 y_i
+\end{gather*}\end{split}\]</div>
+<p>Bu toplamlardan en karmaşık görünen <span class="math notranslate nohighlight">\(B_{11}\)</span> katsayısını <span class="math notranslate nohighlight">\(\vec x\)</span> ile <span class="math notranslate nohighlight">\(\vec y\)</span> vektörlerinin skaler çarpımının 2 katı olarak hesaplayabiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.8818</span><span class="p">,</span> <span class="mf">18.9612</span><span class="p">,</span> <span class="mf">29.5044</span><span class="p">,</span> <span class="mf">36.7874</span><span class="p">,</span> <span class="mf">53.2063</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B11</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">B11</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1098.9969999999998
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(A_{11}\)</span> ise <span class="math notranslate nohighlight">\(\vec x\)</span> vektörünün kendisi ile skaler çarpımının 2 katı:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A11</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="n">A11</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>110.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(A_{12}\)</span> ve <span class="math notranslate nohighlight">\(B_{12}\)</span> vektörlerin bileşenlerinin toplamının 2 katı:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A12</span> <span class="o">=</span> <span class="n">A21</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">B12</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">A12</span><span class="p">,</span><span class="n">B12</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(30.0, 296.6822)
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(A_{22}\)</span> katsayısı ise <span class="math notranslate nohighlight">\(2\times N\)</span>’den ibaret:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A22</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">A22</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bulduğumuz bu katsayıları formülde yerlerine koyarak, <span class="math notranslate nohighlight">\(m\)</span> ve <span class="math notranslate nohighlight">\(n\)</span>’yi hesaplatıp, grafikleri tekrardan çizdirelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">B11</span> <span class="o">-</span> <span class="p">(</span><span class="n">A12</span> <span class="o">*</span> <span class="n">B12</span> <span class="o">/</span> <span class="n">A22</span><span class="p">))</span>  <span class="o">/</span> <span class="p">(</span><span class="n">A11</span> <span class="o">-</span> <span class="p">(</span><span class="n">A12</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">A22</span><span class="p">))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">B12</span> <span class="o">-</span> <span class="n">A12</span> <span class="o">*</span> <span class="n">m</span><span class="p">)</span> <span class="o">/</span> <span class="n">A22</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Artık verilerimize en yakın geçen </span>
+<span class="c1"># doğrunun denklemi elimizde olduğuna göre</span>
+<span class="c1"># hem doğruyu, hem de deney verilerini birlikte</span>
+<span class="c1"># çizdirelim</span>
+
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="n">xx</span> <span class="o">+</span> <span class="n">n</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">tt</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;ro&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m = 10.448
+n = -1.674
+</pre></div>
+</div>
+<img alt="_images/4cef150c7d2e45a6bf10864f25eecc0d62e4439767cfd7887db2d935fae1b8ca.png" src="_images/4cef150c7d2e45a6bf10864f25eecc0d62e4439767cfd7887db2d935fae1b8ca.png" />
+</div>
+</div>
+<p>numpy kütüphanesi, lineer cebir işlerinde yüksek hızda performans gösterecek şekilde tasarlandığından, doğrudan vektörler ve matrisler üzerinde işlem yapmak her zaman daha hızlı olacaktır. ;)</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_08_FonksiyonTurevIntegral.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Fonksiyonlar, Türev ve İntegral</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_U02_YukluParcacikSimulasyonu.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Uygulama 2: Yüklü Parçacıklar Simülasyonu</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uygulama 1: Döngüler ve Kararlar</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dogrusal-denklem-setleri">Doğrusal denklem setleri</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#n-bilinmeyenli-n-dogrusal-denklemin-gauss-eleme-yontemi-ile-cozumu"><em>n</em> bilinmeyenli <em>n</em> doğrusal denklemin Gauss Eleme Yöntemi ile çözümü</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iki-bilinmeyenli-iki-denklem-sistemi">İki bilinmeyenli iki denklem sistemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ozel-cozum-ornek">Özel Çözüm (Örnek)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genel-cozum">Genel Çözüm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uc-bilinmeyenli-uc-denklem-sistemi">Üç bilinmeyenli üç denklem sistemi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#genele-sistematik-uygulama">Genele sistematik uygulama</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ileriye-eleme-asamasi">İleriye eleme aşaması</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geriye-yerine-yerlestirme-asamasi">Geriye yerine yerleştirme aşaması</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naif-temiz-kalpli-saf-gauss-eleme-yontemi">Naif, temiz kalpli, saf Gauss eleme yöntemi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bunu-yapan-komut-var-zaten">“Bunu yapan komut var zaten”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elimizde-gercekte-kac-adet-denklem-var">Elimizde gerçekte kaç adet denklem var?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#en-kucuk-kareler-yontemi">En küçük kareler yöntemi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#toplam-vs-skaler-carpim">Toplam vs. Skaler Çarpım</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

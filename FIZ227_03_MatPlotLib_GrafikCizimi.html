@@ -1,0 +1,1735 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Grafik Çizimi &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_03_MatPlotLib_GrafikCizimi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Döngüler ve Kararlar" href="FIZ227_04_DongulerVeKararlar.html" />
+    <link rel="prev" title="Vektörler ve Matrisler" href="FIZ227_02_Vektorler_Matrisler.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_04_DongulerVeKararlar.html">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_06_LineerCebir_Uygulama_1.html">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_08_FonksiyonTurevIntegral.html">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U01_nxn_EnKucukKareler.html">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_03_MatPlotLib_GrafikCizimi.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grafik Çizimi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grafik Çizimi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-3">Ders Notları: 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-ile-grafik-cizimi">MatPlotLib ile Grafik Çizimi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#veriler">Veriler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markor-cesitleri">Markör çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renk-cesitleri">Renk çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markor-boyu">Markör boyu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markorun-ic-ve-dis-renkleri">Markörün iç ve dış renkleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgiler">Çizgiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-cesitleri">Çizgi Çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-rengi">Çizgi Rengi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-kalinligi">Çizgi kalınlığı</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gerekli-seyler-sus-pus">Gerekli şeyler &amp; süs+püs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basliklar-tanimlar">Başlıklar, tanımlar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izgara-ve-keneler-8p">“Izgara ve keneler” 8P</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#grafigin-sinirlari">Grafiğin sınırları</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coklu-grafikler">Çoklu grafikler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bir-ipte-iki-cambaz-i">Bir ipte iki cambaz (I)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bir-ipte-iki-cambaz-ii">Bir ipte iki cambaz (II)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cok-ipte-cok-cambaz">Çok ipte çok cambaz</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sacilim">Saçılım</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boyutlu-cizimler">3 Boyutlu Çizimler</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="grafik-cizimi">
+<h1>Grafik Çizimi<a class="headerlink" href="#grafik-cizimi" title="Permalink to this heading">#</a></h1>
+<section id="ders-notlari-3">
+<h2>Ders Notları: 3<a class="headerlink" href="#ders-notlari-3" title="Permalink to this heading">#</a></h2>
+<p><strong>MatPlotLib ile Grafik Çizimi</strong></p>
+<ul class="simple">
+<li><p>Veriler</p>
+<ul>
+<li><p>Markör çeşitleri</p></li>
+<li><p>Renk çeşitleri</p></li>
+<li><p>Markör boyu</p></li>
+<li><p>Markörün iç ve dış renkleri</p></li>
+<li><p>Çizgiler</p></li>
+<li><p>Çizgi Çeşitleri</p></li>
+<li><p>Çizgi Rengi</p></li>
+<li><p>Çizgi kalınlığı</p></li>
+</ul>
+</li>
+<li><p>Gerekli şeyler &amp; süs+püs</p>
+<ul>
+<li><p>Başlıklar, tanımlar</p></li>
+<li><p>“Izgara ve keneler” 8P</p></li>
+<li><p>Grafiğin sınırları</p></li>
+</ul>
+</li>
+<li><p>Çoklu grafikler</p>
+<ul>
+<li><p>Bir ipte iki cambaz (I)</p></li>
+<li><p>Bir ipte iki cambaz (II)</p></li>
+<li><p>Çok ipte çok cambaz</p></li>
+</ul>
+</li>
+<li><p>Saçılım</p></li>
+<li><p>Histogram</p></li>
+<li><p>3 Boyutlu Çizimler</p></li>
+</ul>
+<p>Grafik çizimi: markör, renk, boy, çizgi çeşitleri; başlıklar, tanımlar, ızgara ve çentikler; grafiğin sınırları; çoklu grafikler; fonksiyon çizimi; saçılım; rastgele sayılar; saçılım grafiğinde 3. parametreye bağlı boy ve parlaklık farkı oluşturma; histogram; 3 boyutlu çizimler &amp; kontür grafikleri; grafikleri dosyaya yazdırma.</p>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib-ile-grafik-cizimi">
+<h1>MatPlotLib ile Grafik Çizimi<a class="headerlink" href="#matplotlib-ile-grafik-cizimi" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="veriler">
+<h1>Veriler<a class="headerlink" href="#veriler" title="Permalink to this heading">#</a></h1>
+<p>Elimizde, sınıf ortamında, yerden farklı yüksekliklerden bırakılan bir kütlenin düşme sürelerinin ölçüm verileri var:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Yükseklik (m)</p></th>
+<th class="head"><p>Düşüş Süresi (s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0.201900</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.7</p></td>
+<td><p>0.377759</p></td>
+</tr>
+<tr class="row-even"><td><p>0.8</p></td>
+<td><p>0.403882</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.2</p></td>
+<td><p>0.494707</p></td>
+</tr>
+<tr class="row-even"><td><p>1.3</p></td>
+<td><p>0.514983</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.8</p></td>
+<td><p>0.606071</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">veriler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>   
+   <span class="p">[</span><span class="mf">0.20000</span><span class="p">,</span>   <span class="mf">0.20190</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.70000</span><span class="p">,</span>   <span class="mf">0.37776</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.80000</span><span class="p">,</span>   <span class="mf">0.40388</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.20000</span><span class="p">,</span>   <span class="mf">0.49471</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.30000</span><span class="p">,</span>   <span class="mf">0.51498</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.80000</span><span class="p">,</span>   <span class="mf">0.60607</span><span class="p">]])</span>
+
+<span class="n">veriler</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2    , 0.2019 ],
+       [0.7    , 0.37776],
+       [0.8    , 0.40388],
+       [1.2    , 0.49471],
+       [1.3    , 0.51498],
+       [1.8    , 0.60607]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">veriler</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">veriler</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f3caa3e3394d3641cf4b62ff0a1af437772a89ead2f1dcb36f18134e0eb29371.png" src="_images/f3caa3e3394d3641cf4b62ff0a1af437772a89ead2f1dcb36f18134e0eb29371.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/aef27f1a10ce68c344693884a51241ee0d0f9c9df09c1cfc428c47bd3efb2c70.png" src="_images/aef27f1a10ce68c344693884a51241ee0d0f9c9df09c1cfc428c47bd3efb2c70.png" />
+</div>
+</div>
+<section id="markor-cesitleri">
+<h2>Markör çeşitleri<a class="headerlink" href="#markor-cesitleri" title="Permalink to this heading">#</a></h2>
+<p>Dilersek başka bir sürü şekil markör kullanabiliriz:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sembol</p></th>
+<th class="head"><p>İşaret</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>Artı</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>Daire</p></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>Yıldız</p></td>
+</tr>
+<tr class="row-odd"><td><p>.</p></td>
+<td><p>Nokta</p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>Çarpı</p></td>
+</tr>
+<tr class="row-odd"><td><p>s</p></td>
+<td><p>Kare (<em><strong>s</strong>quare</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>d</p></td>
+<td><p>Paralelkenar/Elmas (<em><strong>d</strong>iamond</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>^</p></td>
+<td><p>Sivri ucu yukarıda olan üçgen</p></td>
+</tr>
+<tr class="row-even"><td><p>v</p></td>
+<td><p>Sivri ucu aşağıda olan üçgen</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt;</p></td>
+<td><p>Sivri ucu sağda olan üçgen</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>Sivri ucu solda olan üçgen</p></td>
+</tr>
+<tr class="row-odd"><td><p>p</p></td>
+<td><p>5 köşeli yıldız (<em><strong>p</strong>entagram</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>h</p></td>
+<td><p>6 köşeli yıldız (<em><strong>h</strong>exagram</em>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verileri karelerle temsil edelim:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/26b9ba9dd09f30c33cf96db061cb5d4c10f29c9ca07de775f8e7b8414c9b6d33.png" src="_images/26b9ba9dd09f30c33cf96db061cb5d4c10f29c9ca07de775f8e7b8414c9b6d33.png" />
+</div>
+</div>
+</section>
+<section id="renk-cesitleri">
+<h2>Renk çeşitleri<a class="headerlink" href="#renk-cesitleri" title="Permalink to this heading">#</a></h2>
+<p>Renkleri hazır tanımlı renkler arasından belirtebiliriz (dilersek ‘color’ parametresi ile herhangi bir RGB üçlüsü olarak da belirtebiliriz, ama bu aşamada çok gerekli değil).</p>
+<p>Hazır tanımlı renklerin listesine gelirsek:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sembol</p></th>
+<th class="head"><p>Renk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>k</p></td>
+<td><p>Siyah (<em>blac<strong>K</strong></em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>r</p></td>
+<td><p>Kırmızı (<em><strong>R</strong>ed</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>g</p></td>
+<td><p>Yeşil (<em><strong>G</strong>reen</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>b</p></td>
+<td><p>Mavi (<em><strong>B</strong>lue</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>m</p></td>
+<td><p>Mor (<em><strong>M</strong>agenta</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>c</p></td>
+<td><p>Turkuaz (<em><strong>C</strong>yan</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p>w</p></td>
+<td><p>Beyaz (<em><strong>W</strong>hite</em>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Bu renk sembollerini de doğrudan markör sembolünün yanına yazıyoruz - çakışma olmadığı için hangisini önce yazdığımızın bir önemi yok, yeter ki aynı tırnak işaretinin içerisinde olsunlar: örneğin <code class="docutils literal notranslate"><span class="pre">&quot;xr&quot;</span></code> de, <code class="docutils literal notranslate"><span class="pre">&quot;rx&quot;</span></code> de, bize kırmızı çarpılı markörler çıkartır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verileri karelerle temsil edelim:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e1ebd108e5e3062a05345ec61807821a62b3e9777ed75e571f4770c6a23ca122.png" src="_images/e1ebd108e5e3062a05345ec61807821a62b3e9777ed75e571f4770c6a23ca122.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verileri karelerle temsil edelim:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;s&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#a910dc&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;mor.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e9375a16cb8196398fa292ec0d4030ef332d1d2d0f5ed7166c07b2492a69aef5.png" src="_images/e9375a16cb8196398fa292ec0d4030ef332d1d2d0f5ed7166c07b2492a69aef5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kırmızı çarpılar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;rx&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/tmp/out.png&quot;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/50c8ec1c84c3bb62d60a8033b684922cd45f3d2e91bdf4f0d5d1553d2ceeecb5.png" src="_images/50c8ec1c84c3bb62d60a8033b684922cd45f3d2e91bdf4f0d5d1553d2ceeecb5.png" />
+</div>
+</div>
+</section>
+<section id="markor-boyu">
+<h2>Markör boyu<a class="headerlink" href="#markor-boyu" title="Permalink to this heading">#</a></h2>
+<p>Çarpılar biraz küçük gibi görünüyor, büyütme işini <code class="docutils literal notranslate"><span class="pre">&quot;markersize&quot;</span></code> (<em>markör boyu</em>) parametresi ile yapıyoruz. Bu parametre markör şekli ve renginden biraz farklı bir şekilde tanımlanıyor yalnız: önce parametreyi girip, onu istediğim değere şu şekilde eşitliyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kırmızı büyük çarpılar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;rx&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/018eefedda2fedc98f149a15c2d927a1da601a4c64a1df18a16aab72dd1392d5.png" src="_images/018eefedda2fedc98f149a15c2d927a1da601a4c64a1df18a16aab72dd1392d5.png" />
+</div>
+</div>
+</section>
+<section id="markorun-ic-ve-dis-renkleri">
+<h2>Markörün iç ve dış renkleri<a class="headerlink" href="#markorun-ic-ve-dis-renkleri" title="Permalink to this heading">#</a></h2>
+<p>Eğer daire, kare veya yıldız gibi içi olan bir markör kullanıyorsak, içinin ve kontürünün renklerini sırasıyla <code class="docutils literal notranslate"><span class="pre">&quot;markerfacecolor&quot;</span></code> ve <code class="docutils literal notranslate"><span class="pre">&quot;markeredgecolor&quot;</span></code> parametreleriyle ayrı ayrı belirleyebiliriz.</p>
+<p>Örneğin, içi yeşil, dışı kırmızı daireler kullanalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                 <span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                 <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cdd5bd737e6d6e83aa42f78606a29517d7cd96be9b9cd5bd45261433dcb17c09.png" src="_images/cdd5bd737e6d6e83aa42f78606a29517d7cd96be9b9cd5bd45261433dcb17c09.png" />
+</div>
+</div>
+</section>
+<section id="cizgiler">
+<h2>Çizgiler<a class="headerlink" href="#cizgiler" title="Permalink to this heading">#</a></h2>
+<p>Markörleri iyice kavradığımıza göre, grafiklerimize biraz daha çeşitlilik katalım. Veri noktalarımızı çizgi ile birleştirmek için, biçim kısmına en temel halde bir <code class="docutils literal notranslate"><span class="pre">-</span></code> sembolü ekleriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4bb17f3b8a2d66451b6ced68388f63ddab91785e5863c8d11c5954163f0733ae.png" src="_images/4bb17f3b8a2d66451b6ced68388f63ddab91785e5863c8d11c5954163f0733ae.png" />
+</div>
+</div>
+</section>
+<section id="cizgi-cesitleri">
+<h2>Çizgi Çeşitleri<a class="headerlink" href="#cizgi-cesitleri" title="Permalink to this heading">#</a></h2>
+<p>Her şeye olduğu gibi, çizgi biçimlerine de müdahale edebiliyoruz: çizgilerimizin çeşitlerini (düz, kesikli, nokta nokta, çizgi-nokta); rengini, kalınlığını, onlara karşılık gelen anahtar kelime / sembollerle ayarlayabiliriz.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sembol</p></th>
+<th class="head"><p>Çizgi çeşidi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>-</p></td>
+<td><p>Düz çizgi</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p>Kesikli çizgi</p></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>Nokta nokta</p></td>
+</tr>
+<tr class="row-odd"><td><p>-.</p></td>
+<td><p>Çizgi-nokta</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nasıl göründüklerini altta topluca inceleyebilirsiniz (o 2x2 grafiği nasıl çizdirdiğimizi (<em>subplot</em>) de birazdan göreceğiz ;) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Düz Çizgi&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Kesikli Çizgi&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Nokta nokta&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;o-.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Çizgi nokta&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3a38cf6cb3d531b29fcddddf853c801a4d37ae03060ec28f988a53a77ca4ba03.png" src="_images/3a38cf6cb3d531b29fcddddf853c801a4d37ae03060ec28f988a53a77ca4ba03.png" />
+</div>
+</div>
+</section>
+<section id="cizgi-rengi">
+<h2>Çizgi Rengi<a class="headerlink" href="#cizgi-rengi" title="Permalink to this heading">#</a></h2>
+<p>Aslında en başından beri grafikleri çizerken, normal renk parametresi (örn. “or“‘deki “r”) olarak belirttiğimiz renk, temel olarak çizgi rengidir, markörlerin rengi de (“markerfacecolor” ve/veya “markeredgecolor” ile) aksi belirtilmedikçe bu renkte çizilir.</p>
+<p>Yani, grafiğimizi mavi kesikli çizgi üzerine dışı kırmızı, içi yeşil dairesel markörlerle çizdirmek istersek, bunu şu şekilde yaparız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/86dacee029d254cd18e3d0ed2702ee1c5ac6379e5736d303010eb4364bf47784.png" src="_images/86dacee029d254cd18e3d0ed2702ee1c5ac6379e5736d303010eb4364bf47784.png" />
+</div>
+</div>
+</section>
+<section id="cizgi-kalinligi">
+<h2>Çizgi kalınlığı<a class="headerlink" href="#cizgi-kalinligi" title="Permalink to this heading">#</a></h2>
+<p>Çizgi kalınlığını da <code class="docutils literal notranslate"><span class="pre">linewidth</span></code> parametresi ile belirtiriz. Yukarıdaki grafiği daha kalın çizgilerle çizmek için:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e6a64edd6e0f447105f54c96b84c99931098b1856e3899031af71f1913d1471e.png" src="_images/e6a64edd6e0f447105f54c96b84c99931098b1856e3899031af71f1913d1471e.png" />
+</div>
+</div>
+<p>Markörler çizgilerin yanında biraz küçük kaldı, onları da coşturup, bu konuyu kapatalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b3c49e7bbfba18428a7d761eea09917bd6a616c87b3a3906de6ba664a18dc6d7.png" src="_images/b3c49e7bbfba18428a7d761eea09917bd6a616c87b3a3906de6ba664a18dc6d7.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gerekli-seyler-sus-pus">
+<h1>Gerekli şeyler &amp; süs+püs<a class="headerlink" href="#gerekli-seyler-sus-pus" title="Permalink to this heading">#</a></h1>
+<p>Grafiklerimiz bu şekilde <em>matematiksel olarak</em> grafik olsalar da, fiziksel açıdan pek de işe yarar şeyler değiller: Neyin grafiği bu? Yatay ve düşey eksenler neyi temsil ediyor, birimleri nedir? Veri noktaları tam olarak neye karşılık geliyor? Bu noktada devreye grafik tanımlayıcıları girer.</p>
+<section id="basliklar-tanimlar">
+<h2>Başlıklar, tanımlar<a class="headerlink" href="#basliklar-tanimlar" title="Permalink to this heading">#</a></h2>
+<p>Eksenlerin tanımlarını <code class="docutils literal notranslate"><span class="pre">xlabel()</span></code> ve <code class="docutils literal notranslate"><span class="pre">ylabel()</span></code> fonksiyonları ile ve <strong>grafiği <code class="docutils literal notranslate"><span class="pre">plot</span></code> ile çizdirdikten sonra</strong> belirtiriz. <code class="docutils literal notranslate"><span class="pre">title()</span></code> fonksiyonu ile de grafiğimizin başlığını yazarız. Örneğimiz üzerinde çalışalım, çok daha anlaşılır olacak:</p>
+<div class="math notranslate nohighlight">
+\[a=-\frac{2y_0}{t^2}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="c1">#plt.title(&quot;Serbest Düşüş Deneyi&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$a=-\frac</span><span class="si">{2y_0}</span><span class="s2">{t^2}$&#39;nın saptanması&#39;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/544d2e1231c6464a7755dcbb93411d54b1c1a5ba04f96717344045ace6161a51.png" src="_images/544d2e1231c6464a7755dcbb93411d54b1c1a5ba04f96717344045ace6161a51.png" />
+</div>
+</div>
+</section>
+<section id="izgara-ve-keneler-8p">
+<h2>“Izgara ve keneler” 8P<a class="headerlink" href="#izgara-ve-keneler-8p" title="Permalink to this heading">#</a></h2>
+<p>Grafik üzerindeki verilerimizin değerleri rahatça anlaşılıp, kıyaslanabilsin diye, eksenleri böldüğümüz aralıklardan çizgiler uzatırız. Bu kontrolü <code class="docutils literal notranslate"><span class="pre">grid</span></code> komutu ile gerçekleştiriyoruz:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grid(True)</span></code> bu çizgilerin görüntülenmesini açar</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid(False)</span></code> da kapar</p></li>
+</ul>
+<p>Eksenler üzerindeki hangi değerlerin hangi aralıklarla (örneğin yukarıdaki grafikte yatay eksen 0’dan 2’ye 0.5’lik aralıklarla; düşey eksen ise 0.2’den 0.7’ye 0.1’lik aralıklarla bölünmüş durumda) bölüneceğini, ya da bir başka deyişle çentik konumlarını ise sırasıyla <code class="docutils literal notranslate"><span class="pre">xticks()</span></code> ve <code class="docutils literal notranslate"><span class="pre">yticks()</span></code> fonksiyonları ile belirtiriz.</p>
+<p>Yukarıdaki örnek üzerinde çalışmaya devam edersek, önce ızgarayı (<em>grid</em>’i) açalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grafiğimizi çizdiriyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Tanımlamaları yapıyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3cc2115adb67b1730eb05f651c2db2fcdb4b664da190623b9f249413f36dc4f5.png" src="_images/3cc2115adb67b1730eb05f651c2db2fcdb4b664da190623b9f249413f36dc4f5.png" />
+</div>
+</div>
+<p>sonrasında da yatay ve düşey eksendeki çentikleri (ticks) sıklaştıralım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grafiğimizi çizdiriyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Tanımlamaları yapıyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Çentikleri yeniden tanımlayalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.73</span><span class="p">,</span><span class="mf">0.025</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f5c2a74f1cac59bdcf675182293b3e24513844530f38c4532dc1dccdab6f849f.png" src="_images/f5c2a74f1cac59bdcf675182293b3e24513844530f38c4532dc1dccdab6f849f.png" />
+</div>
+</div>
+<p>Grafik aynı grafik olsa da, okunabilirliği epey artmış oldu. Çentik tanımlamasını yaparken, aralık fonksiyonunu (np.arange()) kullandığımıza dikkatinizi çekerim.</p>
+<p>Pek sık karşılaşılmasa da, çentikleri dilerseniz kafanıza göre, eşit olmayan aralıklarla da tanımlayabilirsiniz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grafiğimizi çizdiriyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Tanımlamaları yapıyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Çentikleri yeniden tanımlayalım</span>
+
+<span class="c1"># Yatay eksendekiler için sadece veri noktalarını</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">])</span>
+
+<span class="c1"># Düşey eksendekiler içinse kafamıza göre alalım...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mf">0.23</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.65</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/316e298c77633ca1481b0628721523917c59acc91edaa5c4c7f1b0cfe0635631.png" src="_images/316e298c77633ca1481b0628721523917c59acc91edaa5c4c7f1b0cfe0635631.png" />
+</div>
+</div>
+<p>(tahmin edebileceğiniz üzere, yatay eksendeki çentikleri tek tek yazmak yerine, doğrudan xticks(y) de diyebilirdik - ne de olsa y değişkeni doğal olarak yukarıda girdiğimiz veri noktalarını tutmakta ;)</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="grafigin-sinirlari">
+<h1>Grafiğin sınırları<a class="headerlink" href="#grafigin-sinirlari" title="Permalink to this heading">#</a></h1>
+<p>Grafiğimizin çizim sınırlarını <code class="docutils literal notranslate"><span class="pre">axis()</span></code> fonksiyonu ile belirliyoruz. Parametre olarak bir dizi alır ve dizinin eleman sayısı 2 ise bunlar yatay eksenin minimum ve maksimum değerlerini; 4 elemanlı bir dizi ise o zaman da dizinin elemanlarını sırasıyla yatay eksenin minimum ve maksimum değerleri ve düşey eksenin minimum ve maksimum değerleri olarak yorumlar.</p>
+<p>Yukarıdaki örneğimizi önce bir düzgün çizdirelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grafiğimizi çizdiriyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Tanımlamaları yapıyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3cc2115adb67b1730eb05f651c2db2fcdb4b664da190623b9f249413f36dc4f5.png" src="_images/3cc2115adb67b1730eb05f651c2db2fcdb4b664da190623b9f249413f36dc4f5.png" />
+</div>
+</div>
+<p>Yatay eksenin gösterim aralığını [-1,3], düşey eksen aralığını ise [0,1] yapalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grafiğimizi çizdiriyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;b--o&quot;</span><span class="p">,</span><span class="n">markerfacecolor</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+                    <span class="n">markeredgecolor</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+                    <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                    <span class="n">markersize</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Tanımlamaları yapıyoruz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8ac182e1e649b1ff4d7af9bc2353603dc4c0b2c9f0be4d8b31e3def6f1dab158.png" src="_images/8ac182e1e649b1ff4d7af9bc2353603dc4c0b2c9f0be4d8b31e3def6f1dab158.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="coklu-grafikler">
+<h1>Çoklu grafikler<a class="headerlink" href="#coklu-grafikler" title="Permalink to this heading">#</a></h1>
+<section id="bir-ipte-iki-cambaz-i">
+<h2>Bir ipte iki cambaz (I)<a class="headerlink" href="#bir-ipte-iki-cambaz-i" title="Permalink to this heading">#</a></h2>
+<p>Bir grafik üzerinde iki veri setini göstermek için, sanki iki ayrı grafik çizdirecekmişiz gibi tanımlayıp, sonra bunları aynı <code class="docutils literal notranslate"><span class="pre">plot()</span></code> fonksiyonu içerisinde birleştiririz.</p>
+<p>Ders boyunca kullanageldiğimiz veri setini hatırlayalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">veriler</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2    , 0.2019 ],
+       [0.7    , 0.37776],
+       [0.8    , 0.40388],
+       [1.2    , 0.49471],
+       [1.3    , 0.51498],
+       [1.8    , 0.60607]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu serbest düşüş deneyini ellerinde kronometre olmadığından, süreyi saatin saniye kısmıyla ölçen ikinci bir grubun da yapmış olduğunu ve şu sonuçları aldığını varsayalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">veriler_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+   <span class="p">[</span><span class="mf">0.20000</span><span class="p">,</span>   <span class="mf">0.3</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.70000</span><span class="p">,</span>   <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">0.80000</span><span class="p">,</span>   <span class="mf">0.4</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.20000</span><span class="p">,</span>   <span class="mf">0.5</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.30000</span><span class="p">,</span>   <span class="mf">0.6</span><span class="p">],</span>
+   <span class="p">[</span><span class="mf">1.80000</span><span class="p">,</span>   <span class="mf">0.7</span><span class="p">]])</span>
+   
+<span class="c1"># 2. sütunu t_2 değişkenine atayalım</span>
+<span class="n">t_2</span> <span class="o">=</span> <span class="n">veriler_2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># (y değerleri (1.sütun) ilk veri setiyle</span>
+<span class="c1"># aynı olduğundan, onu ayrıca bir y_2 değişkenine </span>
+<span class="c1"># atamadık)</span>
+
+<span class="n">veriler_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2, 0.3],
+       [0.7, 0.4],
+       [0.8, 0.4],
+       [1.2, 0.5],
+       [1.3, 0.6],
+       [1.8, 0.7]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>İkisini ayrı ayrı çizdirecek gibi yapıyoruz ama <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> komutunu en sonda vererek aynı “tuval” üzerinde çıkmalarını sağlıyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;^-b&quot;</span><span class="p">)</span>   <span class="c1"># 1. grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t_2</span><span class="p">,</span><span class="s2">&quot;o-r&quot;</span><span class="p">)</span> <span class="c1"># 2. grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0705da28c62dbaaf51bc3e7f835da9eed0df5f6953b279ee84fd567c6948634e.png" src="_images/0705da28c62dbaaf51bc3e7f835da9eed0df5f6953b279ee84fd567c6948634e.png" />
+</div>
+</div>
+<p>Hangisinin hangisi olduğunun açıklamasını ise <code class="docutils literal notranslate"><span class="pre">legend()</span></code> komutu ile belirtebiliriz (hazır yapıyorken, tanımları da koyalım):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;^-b&quot;</span><span class="p">)</span>   <span class="c1"># 1. grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t_2</span><span class="p">,</span><span class="s2">&quot;o-r&quot;</span><span class="p">)</span> <span class="c1"># 2. grafik</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Hassas Ölçüm (1.Grup)&quot;</span><span class="p">,</span><span class="s2">&quot;Kaba Ölçüm (2. Grup)&quot;</span><span class="p">])</span>
+
+<span class="c1"># Izgarayı da açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c200b0a89466e7eeb2389b476361bf7e36f95fe79afb7ec0c137701b67563f07.png" src="_images/c200b0a89466e7eeb2389b476361bf7e36f95fe79afb7ec0c137701b67563f07.png" />
+</div>
+</div>
+<p>Açıklama kutusunun konumunu değiştirmek istersek, bunu da “loc” parametresi ile yapıyoruz. Parametre değerleri olarak merkez dahil 10 konum + verilerle çakıştırmadan iyi bir yere koyma işini bilgisayara bırakmak istiyorsak bir de “best” ile birlikte 11 değer kullanabiliyoruz:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;best&#39;</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;upper right&#39;</span> <span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;upper left&#39;</span> <span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;lower left&#39;</span> <span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;lower right&#39;</span> <span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="s1">&#39;right&#39;</span> <span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="s1">&#39;center left&#39;</span> <span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="s1">&#39;center right&#39;</span> <span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="s1">&#39;lower center&#39;</span> <span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="s1">&#39;upper center&#39;</span> <span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="s1">&#39;center&#39;</span> <span class="p">(</span><span class="mi">10</span><span class="p">),</span> 
+</pre></div>
+</div>
+<p>(parantez içindeki sayılar bölgelere karşılık gelip, onları da doğrudan değer olarak kullanabiliriz)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="s2">&quot;^-b&quot;</span><span class="p">)</span>   <span class="c1"># 1. grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t_2</span><span class="p">,</span><span class="s2">&quot;o-r&quot;</span><span class="p">)</span> <span class="c1"># 2. grafik</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Yükseklik (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Düşüş süresi (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Serbest Düşüş Deneyi&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Hassas Ölçüm (1.Grup)&quot;</span><span class="p">,</span><span class="s2">&quot;Kaba Ölçüm (2. Grup)&quot;</span><span class="p">],</span>
+           <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Izgarayı da açalım</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a8559f7f9d0b87064b1fcfa02877906f30908f0d043635c4acff569bc828990a.png" src="_images/a8559f7f9d0b87064b1fcfa02877906f30908f0d043635c4acff569bc828990a.png" />
+</div>
+</div>
+</section>
+<section id="bir-ipte-iki-cambaz-ii">
+<h2>Bir ipte iki cambaz (II)<a class="headerlink" href="#bir-ipte-iki-cambaz-ii" title="Permalink to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(y=x\)</span> ve <span class="math notranslate nohighlight">\(y=x^2\)</span> fonksiyonlarının grafiklerini <span class="math notranslate nohighlight">\(x \in [0,1]\)</span> aralığında çizdirmeyi deneyelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">125</span><span class="p">)</span>
+<span class="n">y_1</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de81b852ce4cbb0df5b0fd49caf2844ba5f41b8387e19ec4c40d97b3114ab0e6.png" src="_images/de81b852ce4cbb0df5b0fd49caf2844ba5f41b8387e19ec4c40d97b3114ab0e6.png" />
+</div>
+</div>
+<p>Şimdi bir de <span class="math notranslate nohighlight">\(x \in [-10,10]\)</span> aralığında çizdirmeyi deneyelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">y_1</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a509f3fc7698945b9a68f4350b029d272ba20457acee032710cb90122a87ae38.png" src="_images/a509f3fc7698945b9a68f4350b029d272ba20457acee032710cb90122a87ae38.png" />
+</div>
+</div>
+<p>Bu grafikteki sorun nedir? <span class="math notranslate nohighlight">\(x\)</span>, 0 ile 1 arasındayken iki grafiğin değerleri gayet güzel anlaşıyorlardı fakat aralık artınca, değerler arasındaki farklar da uçtu gitti, bu nedenle <span class="math notranslate nohighlight">\(y_2 = x^2\)</span> fonksiyonu baskın hale gelip, <span class="math notranslate nohighlight">\(y_1 =x\)</span> fonksiyonunu gölgeledi. Bu türden, farklı değer aralıklarına sahip fonksiyonları birlikte gösterebilmek için, iki farklı düşey eksen kullanmamızı sağlayan <code class="docutils literal notranslate"><span class="pre">twinx()</span></code> fonksiyonu ile çizim yaparız fakat ikinci grafiği birinci ile ilişkilendirmek için eksenlere isim atayıp, <code class="docutils literal notranslate"><span class="pre">subplots()</span></code> fonksiyonu ile ilerlememiz gerekmektedir.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">250</span><span class="p">)</span>
+<span class="n">y_1</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x^2$&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a0f12468970b0073b4a07b4ec8aa5d5b3061edfbe325397634fd54a5b3dad816.png" src="_images/a0f12468970b0073b4a07b4ec8aa5d5b3061edfbe325397634fd54a5b3dad816.png" />
+</div>
+</div>
+</section>
+<section id="cok-ipte-cok-cambaz">
+<h2>Çok ipte çok cambaz<a class="headerlink" href="#cok-ipte-cok-cambaz" title="Permalink to this heading">#</a></h2>
+<p>Artık grafik çizmeyi epey epey öğrendiğimize göre, aynı grafik tuvali üzerinde farklı grafikleri sıralamayı da görebiliriz. Bu sıralama işini <code class="docutils literal notranslate"><span class="pre">subplot()</span></code> komutu ile tanımlıyoruz.</p>
+<p>Gözünüzün önüne (2x2)’lik bir matris getirin, örneğin:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix}1&amp;2\\3&amp;4\end{bmatrix}\end{split}\]</div>
+<p>olsun.</p>
+<p>Matrise bir isim vermediğimizden, bir yeri belirtmek için, her seferinde matrisin boyutunu ve yerin indisini belirtiriz. Mesela sağ alt köşedeki elemanı belirtmek için “2’ye 2’lik bir matrisi gözünüzün önüne getirip, onun 4. elemanının yerini düşünün” demek gibi. İşte <code class="docutils literal notranslate"><span class="pre">subplot()</span></code>’un parametreleri de bu şekilde çalışıyor. Her birini ayrı ayrı belirtip, oraya ne koyacağımızı tanımlıyoruz sonra. Aşağıdaki örneklere bakarsanız çok daha açıklayıcı olacağını umut ediyorum:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1x2&#39;lik bir düzen</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 1x2&#39;lik matrisin 1. elemanı, yani soldaki penceredeyiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># şimdi 1x2&#39;lik matrisin 2. elemanı, yani sağ penceredeyiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/25d8e405374551ef29dad55f0e0226c06755613a4d6d3efad8647f1fd542ea47.png" src="_images/25d8e405374551ef29dad55f0e0226c06755613a4d6d3efad8647f1fd542ea47.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2x1&#39;lik bir düzen</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># 1x2&#39;lik matrisin 1. elemanı, yani yukarıdaki penceredeyiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># şimdi 1x2&#39;lik matrisin 2. elemanı, yani aşağıdaki penceredeyiz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4376f99fb7e035368723b5019155048e0ddfdff72245feb085585888c8caeb8e.png" src="_images/4376f99fb7e035368723b5019155048e0ddfdff72245feb085585888c8caeb8e.png" />
+</div>
+</div>
+<p><em>İlle de bütün hücreler dolacak</em> diye bir kural da yok bu arada:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2x3&#39;lük bir düzen</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># 2x3&#39;lik matrisin 2. elemanı, yani yukarı satır, orta sütun</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="p">,</span><span class="s2">&quot;-r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># 2x3&#39;lük matrisin 3. elemanı, yani sağ-üst hücre</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="o">-</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;-g&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x-x^2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># 2x3&#39;lük matrisin 4. elemanı, yani sol-alt hücre</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_1</span><span class="o">+</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;-k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x+x^2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># şimdi 2x3&#39;lük matrisin 6. elemanı, yani sağ-alt hücre</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_2</span><span class="p">,</span><span class="s2">&quot;-b&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y=x^2$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/08bd6cb4596f9a8b7a8ac0c6d75b50e23c053cda41077f89c3d2415bef497e78.png" src="_images/08bd6cb4596f9a8b7a8ac0c6d75b50e23c053cda41077f89c3d2415bef497e78.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="sacilim">
+<h1>Saçılım<a class="headerlink" href="#sacilim" title="Permalink to this heading">#</a></h1>
+<p>Yukarıdaki örneklerdeki verilerimiz hep sıralı verilerdi, yani noktalarımızı art arda çizgilerle birleştirince anlamlı bir şekil elde ediyor, gelişim sürecini izleyebiliyorduk. Fakat saçılma deneyleri gibi deneylerde (ya da elinizdeki vişne suyu dolu bardağı beyaz halıya düşürdüğünüzde oluşan desenler gibi kazalarda) bu şekilde bir sıralılık aranmaz. Bu tür durumlarda, <code class="docutils literal notranslate"><span class="pre">plot</span></code> yerine <code class="docutils literal notranslate"><span class="pre">scatter</span></code> fonksiyonunu kullanmak birtakım avantajlar (farklı şekilde büyüklük ve renklendirme yapabilmek gibi) sunar.</p>
+<p>Saçılım için genelde çok fazla veriye ihtiyaç duyulur. Vişne bardağımızı kare şeklinde halımızın tam ortasına düşürdüğümüzü ve 300 adet damlanın rastgele yönlere sıçradığını varsayalım.</p>
+<p>Halımızın merkezini (0,0), boyunu da 4x4 <span class="math notranslate nohighlight">\(m^2\)</span> alırsak, üzerine rastgele şekilde dökülen 10 damlanın konumlarını (x,y) cinsinden şu şekilde üretebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">damlalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">damlalar</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.2815475 , -1.46227712],
+       [ 0.44215384,  0.3966586 ],
+       [-1.62447552,  1.85293843],
+       [-0.63586558,  0.28642876],
+       [-1.58330975, -0.39893594],
+       [-1.91453837, -0.20658363],
+       [ 0.90004434,  1.16580366],
+       [ 1.82091344, -1.72212274],
+       [ 1.19784983, -0.5218353 ],
+       [ 1.0896071 ,  0.49214517]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Çizdirmek için <code class="docutils literal notranslate"><span class="pre">scatter</span></code>’ı kullanalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/df7773145a9442ce7ab2475d2d263a3c95818898a52797050e25fd429f5a22d9.png" src="_images/df7773145a9442ce7ab2475d2d263a3c95818898a52797050e25fd429f5a22d9.png" />
+</div>
+</div>
+<p>Yukarıdaki “100” parametresi boyla orantılı bir değer.</p>
+<p>Damla sayısını 300’e çıkaralım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">damlalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d443791f394bcc22e0c70ecd0069a14bf1f0eb46f0558d5dee39b2ef9e3b55d.png" src="_images/9d443791f394bcc22e0c70ecd0069a14bf1f0eb46f0558d5dee39b2ef9e3b55d.png" />
+</div>
+</div>
+<p>Kar beyaz halının ortasına dökülen vişne suyunun damlacıklarının konumu için düzgün dağılım çok da gerçekçi değil bu arada, sonuçta tahmin edebilirsiniz ki, <em>normalde</em> halının merkezine yakın düşen damlacıkların sayısı (/yoğunluğu) halının uçlarına kadar ulaşan damlacık sayısından (/yoğunluğundan) çok daha fazla olacaktır.</p>
+<p>Burada “normalde” terimi anahtar kelimemiz. Doğada pek çok kez gözlemlediğimiz, belli bir ortalama değerin etrafında gerçekleşen dağılımlar için “normal dağılım”ı kullanıyoruz (<em>Gauss dağılımı</em> olarak da bilinir), bunu da <code class="docutils literal notranslate"><span class="pre">rand</span></code> yerine, <code class="docutils literal notranslate"><span class="pre">randn</span></code> fonksiyonunu kullanarak yapıyoruz. (normal dağılımı bütün güzellikleri ve formüler gösterimi ile birlikte “FİZ316 - İstatistik Fizik” dersinizde göreceksiniz 8):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">damlalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">-</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">damlalar</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">100</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e3c8e83ca8b51e326f6facc4692c026809c0b91c38f6ccba2b3fab43f2bbee06.png" src="_images/e3c8e83ca8b51e326f6facc4692c026809c0b91c38f6ccba2b3fab43f2bbee06.png" />
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> parametresi ile şeffaflığı belirtiyoruz (damlalar üst üste geldikçe koyulaşıyor).</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="histogram">
+<h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h1>
+<p>Histogram grafikleri dağılımları gösteren türden grafiklerdir. Örneğin, veri olarak 2022-2023 Güz Dönemi “FİZ227 - Bilgisayar Programlama” dersinin genel sınav notlarını ele alalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">notlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> 
+                   <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> 
+                   <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mf">20.5</span><span class="p">,</span> <span class="mf">23.5</span><span class="p">,</span> 
+                   <span class="mi">25</span><span class="p">,</span> <span class="mf">25.5</span><span class="p">,</span> <span class="mf">25.5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mf">30.5</span><span class="p">,</span> 
+                   <span class="mi">31</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> 
+                   <span class="mi">43</span><span class="p">,</span> <span class="mf">43.5</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mf">47.5</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">52.5</span><span class="p">,</span> 
+                   <span class="mi">53</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mf">72.5</span><span class="p">,</span> 
+                   <span class="mf">77.5</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mf">93.5</span><span class="p">,</span> <span class="mf">97.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Toplam 66 kişi sınava girmiş, notların dağılımını görmek için yazmamız gereken komut çok basit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">notlar</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/326db81f48f909b535045560764062e429a6b76b0dc57e5b26cc6ff85f3ba291.png" src="_images/326db81f48f909b535045560764062e429a6b76b0dc57e5b26cc6ff85f3ba291.png" />
+</div>
+</div>
+<p>Birazcık daha anlaşılır kılalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">notlar</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;2022-2023 Güz Dönemi FIZ227 Genel Sınav Not Dağılımı&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bd82e15a5f98fdeba1c485a589b3e7abec039fd5a000ed542a9cbfb17243d1cb.png" src="_images/bd82e15a5f98fdeba1c485a589b3e7abec039fd5a000ed542a9cbfb17243d1cb.png" />
+</div>
+</div>
+<p>Grafiğe bakarak kolayca (0,10] aralığında 19 not olduğunu, (10,20] arasında 9 not olduğunu, vs. görebiliyoruz, ki zaten histogramın amacı da budur.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hist</span></code> fonksiyonu varayılan olarak, verileri 10 kutuda toplar. İkinci bir paremetre ile kutu sayısını da belirleyebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">notlar</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;2022-2023 Güz Dönemi FIZ227 Genel Sınav Not Dağılımı&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ada37d90e99aa095b9f456ffadb606ee15a07feca5a089caa3ef53fd694274e3.png" src="_images/ada37d90e99aa095b9f456ffadb606ee15a07feca5a089caa3ef53fd694274e3.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="boyutlu-cizimler">
+<h1>3 Boyutlu Çizimler<a class="headerlink" href="#boyutlu-cizimler" title="Permalink to this heading">#</a></h1>
+<p>Nihayet en süper görünen çizimlere gelebildik! Ama işin kod kısmına geçmeden önce, 3 boyutlu çizimin ne anlama geldiğini tartışalım biraz. 3 boyutlu çizimlerde, <span class="math notranslate nohighlight">\(f(x,y,z)\)</span> gibi 3 parametreli fonksiyonların grafikleri çizilmez (o 4 boyutlu bir uzay gerektiriyor maalesef), <span class="math notranslate nohighlight">\(f(x,y)\)</span> gibi 2 parametreli fonksiyonların grafikleri çizilir.</p>
+<p>Kareli bir kağıt alıp, kesişim noktalarına pozitif veya negatif, çeşitli değerler yazdığınızı düşünün. Sonrasında her noktayı üzerinde yazan değer kadar pozitifse yukarı kaldırdığınızı, negatifse aşağı çektiğinizi varsayın – işte 3 boyutlu grafik böyle bir şey.</p>
+<p>Örneğin, 2x2’lik bir matrisin 9 köşesini aşağıdaki gibi işaretlediğimizi (indislediğimizi) düşünelim:</p>
+<p><img alt="03_3D_grid_1.png" src="_images/03_3D_grid_1.png" /></p>
+<p>(Köşelerin koordinatlarını (indislerini) iyice inceleyin, aklınıza yatsın)</p>
+<p>Şimdi de, her bir köşenin “z” değerini koordinatlarının karesinin toplamı olarak yazalım. Örneğin (0,-1) noktasının değeri: <span class="math notranslate nohighlight">\(0^2+(-1)^2 = 1\)</span> olur. Her köşenin yanına bu değerleri de yazalım:</p>
+<p><img alt="03_3D_grid_2.png" src="_images/03_3D_grid_2.png" /></p>
+<p>3 boyutlu grafik çizerken de tam olarak benzer bir süreçten geçiyoruz. Öncelikle, <span class="math notranslate nohighlight">\(x=\{-1,0,1\}\)</span> değerleri ile <span class="math notranslate nohighlight">\(y=\{-1,0,1\}\)</span> değerlerini harmanlayıp, (-1,-1)’den (1,1)’e olası 9 kombinasyonu üreteceğiz, sonrasında da bu koordinatlara karşılık gelen değer olarak indislerin karelerin toplamını atayacağız.</p>
+<p>Önce harmanlama işini yapalım, bunu <code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> fonksiyonu ile gerçekleştiriyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.,  0.,  1.],
+       [-1.,  0.,  1.],
+       [-1.,  0.,  1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1., -1., -1.],
+       [ 0.,  0.,  0.],
+       [ 1.,  1.,  1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zz</span> <span class="o">=</span> <span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">yy</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">zz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2., 1., 2.],
+       [1., 0., 1.],
+       [2., 1., 2.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span> <span class="c1"># Renk için</span>
+
+<span class="n">tx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="p">[</span><span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">)</span>
+<span class="n">zz</span> <span class="o">=</span> <span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">yy</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="s2">&quot;3d&quot;</span><span class="p">})</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span>
+                       <span class="n">linewidth</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">surf</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3d783d8ce4dfe80b16f311f32661f61c535a2f97a33884f7d14ba049c14a8ef3.png" src="_images/3d783d8ce4dfe80b16f311f32661f61c535a2f97a33884f7d14ba049c14a8ef3.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Renk Paletleri:<br />
+<a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">https://matplotlib.org/stable/tutorials/colors/colormaps.html</a></p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_02_Vektorler_Matrisler.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Vektörler ve Matrisler</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_04_DongulerVeKararlar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Döngüler ve Kararlar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Grafik Çizimi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-3">Ders Notları: 3</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-ile-grafik-cizimi">MatPlotLib ile Grafik Çizimi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#veriler">Veriler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markor-cesitleri">Markör çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renk-cesitleri">Renk çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markor-boyu">Markör boyu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markorun-ic-ve-dis-renkleri">Markörün iç ve dış renkleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgiler">Çizgiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-cesitleri">Çizgi Çeşitleri</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-rengi">Çizgi Rengi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cizgi-kalinligi">Çizgi kalınlığı</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gerekli-seyler-sus-pus">Gerekli şeyler &amp; süs+püs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basliklar-tanimlar">Başlıklar, tanımlar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#izgara-ve-keneler-8p">“Izgara ve keneler” 8P</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#grafigin-sinirlari">Grafiğin sınırları</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#coklu-grafikler">Çoklu grafikler</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bir-ipte-iki-cambaz-i">Bir ipte iki cambaz (I)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bir-ipte-iki-cambaz-ii">Bir ipte iki cambaz (II)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cok-ipte-cok-cambaz">Çok ipte çok cambaz</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sacilim">Saçılım</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boyutlu-cizimler">3 Boyutlu Çizimler</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1147 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Döngüler ve Kararlar &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_04_DongulerVeKararlar';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lineer Cebir" href="FIZ227_05_LineerCebir.html" />
+    <link rel="prev" title="Grafik Çizimi" href="FIZ227_03_MatPlotLib_GrafikCizimi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_03_MatPlotLib_GrafikCizimi.html">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_06_LineerCebir_Uygulama_1.html">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_08_FonksiyonTurevIntegral.html">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U01_nxn_EnKucukKareler.html">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_04_DongulerVeKararlar.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Döngüler ve Kararlar</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-4">Ders Notları: 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giris">Giriş</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bloklar">Bloklar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#donguler">Döngüler</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-dongusu">for döngüsü</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dongu-icinde-dongu">Döngü içinde döngü</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kararlar-if-elif-else">Kararlar (if…elif…else)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-kirma">break (kırma)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-devam-et">continue (devam et)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dongu-karar-while">Döngü + Karar (while)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="donguler-ve-kararlar">
+<h1>Döngüler ve Kararlar<a class="headerlink" href="#donguler-ve-kararlar" title="Permalink to this heading">#</a></h1>
+<section id="ders-notlari-4">
+<h2>Ders Notları: 4<a class="headerlink" href="#ders-notlari-4" title="Permalink to this heading">#</a></h2>
+<p><strong>Döngüler ve Kararlar</strong></p>
+<ul class="simple">
+<li><p>Giriş</p></li>
+<li><p>Bloklar</p></li>
+<li><p>Döngüler</p>
+<ul>
+<li><p>for döngüsü</p></li>
+<li><p>Döngü içinde döngü</p></li>
+</ul>
+</li>
+<li><p>Kararlar (if)</p>
+<ul>
+<li><p>break (kırma)</p></li>
+<li><p>continue (devam et)</p></li>
+</ul>
+</li>
+<li><p>Döngü + Karar (while)</p></li>
+</ul>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+</section>
+<section id="giris">
+<h2>Giriş<a class="headerlink" href="#giris" title="Permalink to this heading">#</a></h2>
+<p>Bilgisayarların en iyi yaptığı işlerin başında aynı şeyi tekrar tekrar yapmak gelir. Bilgisayarların en iyi yaptığı işlerin başında aynı şeyi tekrar tekrar yapmak gelir. Şikayet etmezler, sabırlıdırlar, sıkılmazlar: dilerseniz her seferinde <em>birazcık</em> değiştire değiştire kuantum seviyelerini bile hesaplarlar. Ezop’un tavşanı yarışta yenen kaplumbağası gibi azimleriyle bizi yeniyorlar (<a class="reference external" href="https://bkgm.com/articles/Berliner/BackgammonProgramBeatsWorldChamp/?utm_source=mandiner&amp;amp;utm_medium=link&amp;amp;utm_campaign=mandiner_digit_201610">Tavla: 1979</a>; <a class="reference external" href="https://science.sciencemag.org/content/317/5844/1518">Dama: 2007</a>; <a class="reference external" href="https://www.theguardian.com/theguardian/2011/may/12/deep-blue-beats-kasparov-1997">Satranç: 1997</a>; <a class="reference external" href="https://fortune.com/2016/03/12/googles-go-computer-vs-human/">Go: 2016</a>; <a class="reference external" href="https://www.sciencedaily.com/releases/2019/07/190711141343.htm">Texas Hold’em Poker: 2019</a>; <a class="reference external" href="https://www.nature.com/articles/d41586-019-03298-6">Starcraft: 2019</a>).</p>
+<p>Bilgisayar &amp; programlama kavramının babalarından Edsger W. Dijkstra’nın meşhur bir lafı vardır: “Bilgisayarların düşünme yeteneğini sorgulamak, denizaltıların yüzme yeteneğini sorgulamak kadar abes bir iştir.”, buna diğer babalardan Turing’in -felsefi alemde- verdiği cevap da işleri daha karıştırmıyor değil. Ama Turgut Uyar’ın “Kayayı Delen İncir”i, ya da Shao-Lin tapınağının göçük yerleri (bkz. Şekil A) azmin ve kararlılığın sonuçlarına işaret ediyor (“Delilik, aynı şeyi tekrar tekrar yapıp farklı sonuçlar beklemektir.” diyen Einstein’a bakmayın siz ;).</p>
+<p><img alt="04_ShaolinTempleFloor.jpg" src="_images/04_ShaolinTempleFloor.jpg" />
+“Şekil A: Shao-lin tapınağında yılların zıplamasıyla göçmüş yerler” [<a class="reference external" href="https://news.cgtn.com/news/7a45544e34557a6333566d54/index.html">Kaynak</a>]</p>
+<p>Programlamanın olmazsa olmazı döngüler konusuna gelmek için bu kadar zaman bekledik zira üzerinden döneceğimiz şey olan dizileri iyice anlamamız gerekiyor. Standard bir döngü (<em>for döngüsü</em>) iki “şey” üzerinden tanımlanır: döngü değişkeni ve değerler kümesi. Döngünün her turunda döngü değişkenimiz, sırayla değerler kümesinden bir elemanı kendisine değer olarak alır.</p>
+</section>
+<section id="bloklar">
+<h2>Bloklar<a class="headerlink" href="#bloklar" title="Permalink to this heading">#</a></h2>
+<p>Eski dillerde değerler kümesi sadece sayılardan (bir aralıktan) ibaret oluyordu fakat günümüzde pek çok dil (Python da buna dahil), herhangi bir küme üzerinden “tekrarlama” (<em>iteration</em>) yapabilmektedir.</p>
+<p>Programımızda hangi bölgelerin tekrara dahil olduğunu “blok” adını verdiğimiz bölgelerle tanımlıyoruz. Yine tarih dersimize dönersek: eski dillerde bu bölgelerin bitişi, başlangıçta tanımlanan satır numarasıyla belirleniyordu; sonrasında hangi yönergeyle başlattıysak, onun “anti-“siyle (FOR ise: ENDFOR; WHILE ise: ENDWHILE; IF ise: ENDIF… gibi) bitirme şekliyle belirlendi, daha sonra bloklar “{}” şeklinde <em>süslü parantezlerle</em> (“braces”) işaretlendi. Zira hemen her program dilinde, satırlara istediğiniz yerden başlıyordunuz, boşluklar ya da sekmeler sizin programınızı kolay anlaşılır kılabilmeniz için serbest kılınmıştı. Python ise ilk günden radikal bir kararla bu blokların sınırlarını çizdi: <strong>Aynı girdi boşluğuna (indent) sahip sıralı satırlar, aynı bloğa dahildir</strong>. Dahası, kafamıza göre blok belirlememize de izni kesince, programcıları aslına bakarsanız, bin türlü yazım hatasından kurtardı. Özetle: Python’da bloklar (bölgeler) ilgili yönerge satırının sonuna konulan iki nokta üstüste (“:”) işaretini takiben, içeri girdi ile başlar ve bu girdi ile devam eder. Şematik olarak:</p>
+<p><code class="docutils literal notranslate"> <span class="pre">yönerge:</span>&#160;&#160;&#160; <span class="pre">yönerge</span> <span class="pre">bloğu</span> <span class="pre">1.</span> <span class="pre">satır</span>&#160;&#160;&#160; <span class="pre">yönerge</span> <span class="pre">bloğu</span> <span class="pre">2.</span> <span class="pre">satır</span>&#160;&#160;&#160; <span class="pre">yönerge</span> <span class="pre">bloğu</span> <span class="pre">3.</span> <span class="pre">satır</span>&#160;&#160;&#160; <span class="pre">(...)</span> <span class="pre">bloğun</span> <span class="pre">dışı</span></code></p>
+</section>
+<section id="donguler">
+<h2>Döngüler<a class="headerlink" href="#donguler" title="Permalink to this heading">#</a></h2>
+<p>Bloklar hakkında biraz da olsa fikir sahibi olduğumuza göre (esas anlaşılması örnekler üzerinden olacak, merak etmeyin), döngülere geçebiliriz. Python’da (ve daha birçok dilde) asli olarak iki döngü çeşidi kullanılır: <code class="docutils literal notranslate"><span class="pre">for</span></code> ve <code class="docutils literal notranslate"><span class="pre">while</span></code>. Önce <code class="docutils literal notranslate"><span class="pre">for</span></code>u göreceğiz, ardından döngülerden kararlara atlayıp <code class="docutils literal notranslate"><span class="pre">if</span></code>i çalıştıracağız, en sonda da <code class="docutils literal notranslate"><span class="pre">while</span></code>ı çözeceğiz.</p>
+<section id="for-dongusu">
+<h3>for döngüsü<a class="headerlink" href="#for-dongusu" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü, başta da belirtildiği üzere, iki temel bileşene sahiptir: döngü değişkeni ve değerler kümesi. Döngü değişkeni birer birer ve sırayla değerler kümesindeki elemanlara bürünür ve bloğu bu değere sahip olarak çalıştırır.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">deger_kumesi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">.6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deger_kumesi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.5 6.1 6.7 7.3 7.9 8.5 9.1 9.7]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıdaki kodda, değer kümesini 5.5’tan 10’a kadar 0.6’şar artan sayılardan oluşan bir numpy dizisi olarak tanımladık. Bunun üzerinden tekrarlama yapalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">deger_kumesi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">.6</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">deger</span> <span class="ow">in</span> <span class="n">deger_kumesi</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şu andaki değer: &quot;</span><span class="p">,</span><span class="n">deger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Şu andaki değer:  5.5
+Şu andaki değer:  6.1
+Şu andaki değer:  6.699999999999999
+Şu andaki değer:  7.299999999999999
+Şu andaki değer:  7.899999999999999
+Şu andaki değer:  8.499999999999998
+Şu andaki değer:  9.099999999999998
+Şu andaki değer:  9.699999999999998
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>(“6.7” yerine “6.699999999999999” vs. yazması kafanızı karıştırmasın. Henüz biçimlendirilmiş yazmayı (<em>formatted print</em>) görmediğimizden bunlara bir müddet daha katlanacağız…)</em></p>
+<p>Burada <code class="docutils literal notranslate"><span class="pre">deger_kumesi</span></code>’nin sıralı + düzenli olmasının bir önemi yok: <code class="docutils literal notranslate"><span class="pre">for</span></code>’un tek yaptığı teker teker, baştan sona mevcut elemanların üzerinden <code class="docutils literal notranslate"><span class="pre">deger</span></code> değişkenini tanımlamak. Şimdiki örnekte karmakarışık bir şey yapalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">deger_kumesi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">deger</span> <span class="ow">in</span> <span class="n">deger_kumesi</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şu andaki değer: &quot;</span><span class="p">,</span><span class="n">deger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Şu andaki değer:  5
+Şu andaki değer:  -3
+Şu andaki değer:  2
+Şu andaki değer:  9
+Şu andaki değer:  1
+Şu andaki değer:  0
+Şu andaki değer:  12
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sadece sayılar mı? Tabii ki değil! Değer kümesi olarak <em>herhangi</em> bir kümeyi verebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">deger_kumesi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;FİZ227&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mf">5.6</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">deger</span> <span class="ow">in</span> <span class="n">deger_kumesi</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şu andaki değer: &quot;</span><span class="p">,</span><span class="n">deger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Şu andaki değer:  FİZ227
+Şu andaki değer:  42
+Şu andaki değer:  5.6
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>(Siz yine de <a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html#karma_diziler"><span class="std std-ref">“karma” listelerin nasıl tutulduğunu</span></a> aklınızın bir köşesinde tutun ;)</em></p>
+<p>Bir boyutlu dizi yerine, iki (veya daha yüksek) boyutlu dizi verirsek, en üst boyuttan gidecektir. Örneğin, iki boyutlu bir dizide, birincil eksen satırlar olduğu için, iterasyon satırlar üzerinden yapılacaktır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">deger_kumesi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="k">for</span> <span class="n">deger</span> <span class="ow">in</span> <span class="n">deger_kumesi</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Değer:&quot;</span><span class="p">,</span><span class="n">deger</span><span class="p">,</span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="n">deger</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="s2">&quot;elemanlı| son:&quot;</span><span class="p">,</span><span class="n">deger</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Değer: [1 2 3] | 3 elemanlı| son: 3
+Değer: [4 5 6] | 3 elemanlı| son: 6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıda, atanan değerin, bütün bir satır olduğuna dikkat edin! Diyelim ki 3 boyutlu bir matris üzerinden iterasyon yapıyor olsaydık, atanan değerler iki boyutlu matrisler olacaktı.</p>
+<p>Biraz da faydalı işler yapalım, mesela iki dizi üzerinden iterasyona gidelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">dizi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;Fizik&quot;</span><span class="p">,</span><span class="s2">&quot;Matematik&quot;</span><span class="p">,</span><span class="s2">&quot;Kimya&quot;</span><span class="p">])</span>
+<span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">2.0</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">dizi1</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="n">dizi1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot;:&quot;</span><span class="p">,</span><span class="n">dizi2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 . Fizik : 4.0
+1 . Matematik : 3.5
+2 . Kimya : 2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıdaki örnekte, doğrudan dizilerin elemanları üzerinden değil, onların eleman sayılarına bağlı olarak iterasyon yapıyoruz: aralığımızı <a class="reference internal" href="FIZ227_02_Vektorler_Matrisler.html#arange_araliklar"><span class="std std-ref">arange</span></a> ile 0’dan eleman sayısına kadar tanımlıyoruz, yani bu durumda [0,1,2] oluyor.</p>
+<p>Döngümüzün her dönüşünde, i sırasıyla 0,1 ve 2 değerini alıyor.</p>
+<p>Bu metodu iki vektörü skaler çarpmak için de kullanabiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">vektor1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">vektor2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="n">sonuc</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">vektor1</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">sonuc</span> <span class="o">=</span> <span class="n">sonuc</span> <span class="o">+</span> <span class="n">vektor1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">vektor2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sonuc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kodu incelediğimizde, başlangıçta 0 değeri ile tanımladığımız <code class="docutils literal notranslate"><span class="pre">sonuc</span></code> değişkenine, her adımda iki vektörün i. elemanlarının çarpımlarının eklendiğini görüyoruz.</p>
+<p><em>(Ek olarak, <code class="docutils literal notranslate"><span class="pre">arange()</span></code> fonksiyonunun tek parametre ile çağrıldığında, bu parametrenin “kadar” parametresi olduğunu ve başlangıç parametresi olarak 0 alındığını da görüyoruz: arange(sayi) &lt;=&gt; arange(0,sayi) (hatta: arange(0,sayi,1) ;))</em></p>
+</section>
+<section id="dongu-icinde-dongu">
+<h3>Döngü içinde döngü<a class="headerlink" href="#dongu-icinde-dongu" title="Permalink to this heading">#</a></h3>
+<p>(ya da Çelik’in deyişiyle: <em><a class="reference external" href="https://www.youtube.com/watch?v=GdfjKUKj1sQ">Dongi Dongi</a></em> – ben hiç 10 saniyeden fazla dinleyemedim bu arada 8P)
+Bu kadar şeyden bahsetmişken, döngü içinde döngü de kurabileceğimizi söylemek lazım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">satirlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">sutunlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">satir</span> <span class="ow">in</span> <span class="n">satirlar</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">sutun</span> <span class="ow">in</span> <span class="n">sutunlar</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">satir</span><span class="p">,</span><span class="n">sutun</span><span class="p">,</span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A 1 |A 2 |A 3 |A 4 |A 5 |
+-------------------------
+B 1 |B 2 |B 3 |B 4 |B 5 |
+-------------------------
+C 1 |C 2 |C 3 |C 4 |C 5 |
+-------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Biraz bir şeylere benzedi mi? Hangi kod satırının hangi blok’a dahil olduğu başlarındaki girdi seviyelerinden kolayca anlaşılıyor. Hemen hemen aynı kodu daha faydalı bir iş için kullanalım – 2 boyutlu bir matrisin değerlerini, her ilgili hücrenin indislerinin toplamı olarak tanımlayalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">matris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">satir</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">matris</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">sutun</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">matris</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">matris</span><span class="p">[</span><span class="n">satir</span><span class="p">,</span><span class="n">sutun</span><span class="p">]</span> <span class="o">=</span> <span class="n">satir</span> <span class="o">+</span> <span class="n">sutun</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matris</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 1. 2. 3.]
+ [1. 2. 3. 4.]
+ [2. 3. 4. 5.]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="kararlar-if-elif-else">
+<h2>Kararlar (if…elif…else)<a class="headerlink" href="#kararlar-if-elif-else" title="Permalink to this heading">#</a></h2>
+<p>Bazen (bazen değil, hemen her zaman) bilgisayara duruma göre <em>şu şekilde</em> veya <em>bu şekilde</em> davranmasını söyleriz. Bunu da <code class="docutils literal notranslate"><span class="pre">if</span></code> yönergesi ile tanımladığımız sorularla (varsayımlarla) gerçekleştiririz.</p>
+<p>Bir soruyu nasıl sorarsınız?<br />
+<code class="docutils literal notranslate"><span class="pre">if</span></code> ile sorabildiğimiz soru tipi maalesef “Hayatın anlamı nedir?” şeklinde olamayıp, olası cevabı/tahmini/varsayımı da içermelidir: “Hayatın anlamı 42 midir?” şeklinde, bilgisayarın elindeki bilgiye dayanarak “Evet”/”Hayır” şeklinde cevap verebileceği sorular olmalıdır. Sorumuza aldığımız cevaba göre, “evetse şöyle yap”, “değilse böyle yap” veya “o değilse ama buysa o zaman da böyle yap” talimatını verebiliriz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sayilar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sayi</span> <span class="ow">in</span> <span class="n">sayilar</span><span class="p">:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">sayi</span><span class="o">%</span><span class="k">2</span> == 0):
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">,</span><span class="s2">&quot;sayısı çifttir.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">,</span><span class="s2">&quot;sayısı tektir.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 sayısı çifttir.
+1 sayısı tektir.
+2 sayısı çifttir.
+3 sayısı tektir.
+4 sayısı çifttir.
+5 sayısı tektir.
+6 sayısı çifttir.
+7 sayısı tektir.
+8 sayısı çifttir.
+9 sayısı tektir.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kodumuzda hem <code class="docutils literal notranslate"><span class="pre">for</span></code>’u hem de <code class="docutils literal notranslate"><span class="pre">if</span></code>’i (hatta <code class="docutils literal notranslate"><span class="pre">else</span></code>’i bile!) kullandığımızdan, gelin detaylıca inceleyelim: döngümüz her dönüşünde, <code class="docutils literal notranslate"><span class="pre">sayi</span></code> değişkenine 0’dan 10’a kadar değerleri atıyor. Atamayı yaptıktan sonra, <code class="docutils literal notranslate"><span class="pre">if</span></code> ile sorumuzu soruyoruz: <code class="docutils literal notranslate"><span class="pre">sayi</span></code> değişkeninde tutulan değeri 2’ye bölersem kalan (‘%’) 0’a eşit mi?</p>
+<p>“eşit mi?” sorusunu bir yerine iki eşit sembolü (‘==’) ile yaptığımıza aman dikkat edin – bunun sebebi tekli ‘=’ sembolünün “kıyas” değil de “atama” anlamına gelmesinde:</p>
+<ul class="simple">
+<li><p>a = 5 (a’nın değerini 5’e ata)</p></li>
+<li><p>a == 5 (a’nın değeri, 5’e eşit mi?)</p></li>
+</ul>
+<p>Sorumuz “eşit mi?” olduğundan bunun iki yanıtı var:</p>
+<ul class="simple">
+<li><p>“evet eşit” (yani önerme <u>doğru</u>): bu durumda sayının çift olduğunu yazdır.</p></li>
+<li><p>“hayır eşit değil” (yani önerme <u>yanlış</u>): bu durumda da sayının tek olduğunu yazdır.</p></li>
+</ul>
+<p>Programımızı biraz (ama azıcık) daha geliştirelim: örneğin bize sadece sayının tek ve çift olduğunu söylemekle yetinmesin, tek ise ve 5’ten büyükse, bunu da belirtsin:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sayilar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sayi</span> <span class="ow">in</span> <span class="n">sayilar</span><span class="p">:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">sayi</span><span class="o">%</span><span class="k">2</span> == 0):
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">,</span><span class="s2">&quot;sayısı çifttir.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">sayi</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">):</span>
+        <span class="c1"># Buraya geldiğine göre mevcut sayı çift değil</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">,</span><span class="s2">&quot;sayısı tektir ve &gt; 5.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Buraya ise sayı hem çift değil, </span>
+        <span class="c1"># hem de 5&#39;ten büyük olmadığında gelinir</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sayi</span><span class="p">,</span><span class="s2">&quot;sayısı tektir.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 sayısı çifttir.
+1 sayısı tektir.
+2 sayısı çifttir.
+3 sayısı tektir.
+4 sayısı çifttir.
+5 sayısı tektir.
+6 sayısı çifttir.
+7 sayısı tektir ve &gt; 5.
+8 sayısı çifttir.
+9 sayısı tektir ve &gt; 5.
+</pre></div>
+</div>
+</div>
+</div>
+<p>… ama bizim dilimizde <code class="docutils literal notranslate"><span class="pre">elif</span></code> yönergesi, “else if” (<em>öyle değilse ama böyle ise</em>) demenin yolu. Yani bir önceki soruya olumsuz cevap almışız, ama başka bir soru daha soruyoruz. Bir <code class="docutils literal notranslate"><span class="pre">if...</span></code> karar yönergesinde 1 (bir) adet <code class="docutils literal notranslate"><span class="pre">if</span></code> sorusu, istediğimiz kadar <code class="docutils literal notranslate"><span class="pre">elif</span></code> ek sorusu, ve en fazla bir adet <code class="docutils literal notranslate"><span class="pre">else</span></code> (<em>yukarıdakilerin hiçbiri değilse, o zaman şunu yap</em>) yönergesi olabilir.</p>
+<section id="break-kirma">
+<h3>break (kırma)<a class="headerlink" href="#break-kirma" title="Permalink to this heading">#</a></h3>
+<p>Bazen döngünüzü kurar, sorunuzu sorarsınız. Aradığınız cevabı bulduğunuzda ise artık devam etmenize gerek kalmaz. Bu kalp ve döngü kırma işlemini <code class="docutils literal notranslate"><span class="pre">break</span></code> yönergesi ile yapıp, <code class="docutils literal notranslate"><span class="pre">for</span></code> döngünüzü oracıkta sonlandırıverirsiniz.</p>
+<p>Diyelim ki, bir sebepten ötürü, 60’dan büyük olup da 11’e bölünebilen bir sayıyı arıyoruz, bize bir tanesi yetiyor, daha fazlaya lüzum yok:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">11</span> == 0):
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aradığımız sayı:&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aradığımız sayı: 66
+</pre></div>
+</div>
+</div>
+</div>
+<p>Koda bakınca, döngümüzün 60’tan başlayıp, 100’e kadar yolu olduğunu görüyoruz ama 11’e bölünen sayıyı bulduğunda bunu ekrana yazdıktan sonra, aynı blok içerisinde karşısına <code class="docutils literal notranslate"><span class="pre">break</span></code> çıkınca, oracıkta döngüyü kırıp, sonlandırıyor (çok da gerekli olmayan ve yazmayıp, derste bahsedilecek bilgi: çoklu döngü kırıcıları (spoiler: Python’da yok. Neden? <a class="reference external" href="https://mail.python.org/pipermail/python-3000/2007-July/008663.html">Guido gerekli bulmadı çünkü</a>. 8P )</p>
+<p><strong>Alıştırma:</strong> Tanımlanan bir n sayısından büyük ilk asal sayıyı bulan program yazınız.</p>
+<p><img alt="04_YigitOzgur_Kirma.jpg" src="_images/04_YigitOzgur_Kirma.jpg" />
+[Yiğit Özgür]</p>
+</section>
+<section id="continue-devam-et">
+<h3>continue (devam et)<a class="headerlink" href="#continue-devam-et" title="Permalink to this heading">#</a></h3>
+<p><em>Evinize giderken, sokağınızın başındayken ileride, yolda bir kalabalık gördünüz, kesin bir şeyler olmuş, meraklanıyorsunuz, tam olay mahalline doğru ilerlerken bir polis karşınıza çıkıyor, “bir şey oldu mu?” sorusunu soruyorsunuz, polis de size “devam et, bekleme yapma” deyince, kendinizi ertesi gün yine sokağınızın başında görüyorsunuz, ileride, yolda bir kalabalık var…</em></p>
+<p>Bazen bir döngüde özel durumlarda bir şey yapmadan, geçiştirmek istersiniz. En fiziksel örneklerden biri olarak, bir çizgi üzerinde dizilmiş 3 tane yükün birbirleriyle etkileşimi sonucunda her birinin üzerine binen kuvveti hesapladığımızı düşünelim: Örneğin, 1. yük üzerindeki kuvveti hesaplayacaksak, 2. yükün uyguladığı kuvvet ile, 3. yükün uyguladığı kuvvetleri hesaplayıp toplarız; 2. yük için de 1. ile 3. yüklerin uyguladığı kuvvetleri; keza 3. yük için de 1. ile 2. yüklerin bla bla…</p>
+<p>Yüklerin konumları <code class="docutils literal notranslate"><span class="pre">konumlar</span></code> dizisinde, yükleri de <code class="docutils literal notranslate"><span class="pre">yukler</span></code> dizisinde tutuluyor olsun. Kuvvetleri de hesaplayıp, <code class="docutils literal notranslate"><span class="pre">kuvvetler</span></code> matrisinde saklayalim: örneğin <code class="docutils literal notranslate"><span class="pre">kuvvetler[0][1]</span></code> elemanı, 0 indisli yüke, 1 indisli yükün yaptığı etkileşim olacak (halk dilinde: “2. yükün 1. yüke bindirdiği kuvvet” – <span class="math notranslate nohighlight">\(F_{AB}\)</span>: <span class="math notranslate nohighlight">\(B\)</span> yükünün <span class="math notranslate nohighlight">\(A\)</span> yüküne etki ettirdiği kuvvet).</p>
+<p>Coulomb etkileşimini yazarsak:
+$<span class="math notranslate nohighlight">\(\vec{F_{ij}} = k\frac{q_i\,q_j}{r_{ij}^2}\hat{r}_{ij}=k\frac{q_i\,q_j}{r_{ij}^3}\vec{r}_{ij}\)</span>$</p>
+<p>Burada, <span class="math notranslate nohighlight">\(\vec{r}_{ij} \equiv \vec{r}_i - \vec{r}_j\)</span>.</p>
+<p>(O en sağdaki küplü ifadenin neden ortadaki kareli ifadeye eşit olduğunu görebiliyorsunuz, değil mi? ;)</p>
+<p>Kodu da şöyle bir şey olacak:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">konumlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># orijine göre (m)</span>
+<span class="n">yukler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># (C)</span>
+
+<span class="n">parcacik_sayisi</span> <span class="o">=</span> <span class="n">konumlar</span><span class="o">.</span><span class="n">size</span>
+
+<span class="n">kuvvetler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">parcacik_sayisi</span><span class="p">,</span> <span class="n">parcacik_sayisi</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;. yükün, &quot;</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="s2">&quot;. yüke etkisi:&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 . yükün,  0 . yüke etkisi:
+0 . yükün,  1 . yüke etkisi:
+0 . yükün,  2 . yüke etkisi:
+1 . yükün,  0 . yüke etkisi:
+1 . yükün,  1 . yüke etkisi:
+1 . yükün,  2 . yüke etkisi:
+2 . yükün,  0 . yüke etkisi:
+2 . yükün,  1 . yüke etkisi:
+2 . yükün,  2 . yüke etkisi:
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıda bilerek işleme geçmeden zira çok ama çok büyük bir problemimiz var: döngüler doğal olarak i==j olduğu durumları da kapsıyor, yani bizim problemimizde “bir parçacığın kendisine uyguladığı kuvveti”! İşin içine hesabı katsaydık paydadaki mesafe 0 olacaktı, işlemler patlayacaktı vs. İşte bu sıkıntıdan bizi, i==j olduğunda “bekleme yapma, devam et!” diyecek <code class="docutils literal notranslate"><span class="pre">continue</span></code> yönergesi kurtarmakta. Kodu baştan alalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">konumlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># orijine göre (m)</span>
+<span class="n">yukler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># (C)</span>
+
+<span class="n">parcacik_sayisi</span> <span class="o">=</span> <span class="n">konumlar</span><span class="o">.</span><span class="n">size</span>
+
+<span class="n">kuvvetler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">parcacik_sayisi</span><span class="p">,</span> <span class="n">parcacik_sayisi</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;. yükün, &quot;</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="s2">&quot;. yüke etkisi:&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 . yükün,  1 . yüke etkisi:
+0 . yükün,  2 . yüke etkisi:
+1 . yükün,  0 . yüke etkisi:
+1 . yükün,  2 . yüke etkisi:
+2 . yükün,  0 . yüke etkisi:
+2 . yükün,  1 . yüke etkisi:
+</pre></div>
+</div>
+</div>
+</div>
+<p>i’nin j’ye eşit olduğu durumlarda kodumuz karşısında <code class="docutils literal notranslate"><span class="pre">continue</span></code>’yu buluyor. <code class="docutils literal notranslate"><span class="pre">break</span></code>’in aksine <code class="docutils literal notranslate"><span class="pre">continue</span></code>, geriye kalan tüm değerler için değil, sadece o değer için bloğun çalıştırılmasını durdurup, değişkeni bir sonraki değerini alıp, tekrar denemesi için döngünün başına götürüyor.</p>
+<p>Sorunu hallettiğimize göre, kodumuzu tamamlayalım artık:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">konumlar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># orijine göre (m)</span>
+<span class="n">yukler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="mf">1E-6</span> <span class="c1"># (C)</span>
+
+<span class="n">parcacik_sayisi</span> <span class="o">=</span> <span class="n">konumlar</span><span class="o">.</span><span class="n">size</span>
+
+<span class="n">kuvvetler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="n">parcacik_sayisi</span><span class="p">,</span> <span class="n">parcacik_sayisi</span><span class="p">])</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">8.99E9</span> <span class="c1"># N m^2 / C^2</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">parcacik_sayisi</span><span class="p">):</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">r_ij</span> <span class="o">=</span> <span class="n">konumlar</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">konumlar</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">kuvvetler</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">yukler</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">yukler</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">r_ij</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">r_ij</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="s2">&quot;. yüke, &quot;</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="s2">&quot;. yükün etkisi:&quot;</span><span class="p">,</span><span class="n">kuvvetler</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">55</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kuvvetler</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 . yüke,  1 . yükün etkisi: 0.03596
+0 . yüke,  2 . yükün etkisi: 0.0038528571428571422
+1 . yüke,  0 . yükün etkisi: -0.035960000000000006
+1 . yüke,  2 . yükün etkisi: -0.00899
+2 . yüke,  0 . yükün etkisi: -0.0038528571428571427
+2 . yüke,  1 . yükün etkisi: 0.00899
+-------------------------------------------------------
+[[ 5.48569742e-310  3.59600000e-002  3.85285714e-003]
+ [-3.59600000e-002  0.00000000e+000 -8.99000000e-003]
+ [-3.85285714e-003  8.99000000e-003  0.00000000e+000]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Köşegenler (yani yükün kendi kendine ettiği kuvvet) sıfır, <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(j\)</span>’ye <span class="math notranslate nohighlight">\(F_{ji}\)</span> kuvveti ile etki ediyorsa, <span class="math notranslate nohighlight">\(j\)</span>’nin <span class="math notranslate nohighlight">\(i\)</span>’ye etki ettirdiği <span class="math notranslate nohighlight">\(F_{ij}\)</span> kuvveti de: <span class="math notranslate nohighlight">\(F_{ij} = -F_{ji}\)</span> (<em>Newton’ın 3. yasası!</em>), her şey tamam görünüyor, teşekkürler <code class="docutils literal notranslate"><span class="pre">continue</span></code> yönergesi!</p>
+<p>Her bir parçacığın üzerine binen toplam kuvveti hesaplamak için satırları toplamak yeterli olacaktır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kuvvetler</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.03981286 -0.04495     0.00513714]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Alıştırma:</strong> İki boyutta, konumları <span class="math notranslate nohighlight">\((x_i\hat{i} + y_i\hat{j})\,\text{m}\)</span> şeklinde, yükleri de Coulomb cinsinden verilen 5 adet parçanın her birinin üzerine diğerlerinden binen kuvvetleri (vektörel olarak) hesaplayan program yazın.</p>
+</section>
+</section>
+<section id="dongu-karar-while">
+<h2>Döngü + Karar (while)<a class="headerlink" href="#dongu-karar-while" title="Permalink to this heading">#</a></h2>
+<p>Bir <code class="docutils literal notranslate"><span class="pre">for</span></code> döngüsü ile bir <code class="docutils literal notranslate"><span class="pre">if</span></code> karar yönergesi birbirlerini çok sever ve çok isterlerse… bir <code class="docutils literal notranslate"><span class="pre">while</span></code> döngüsü ortaya çıkar. <code class="docutils literal notranslate"><span class="pre">while</span></code> döngüsü, önergesi doğru olduğu sürece devam eden bir döngüdür. Sonsuza kadar dönmesini istemiyorsanız, tabii ki önergenizin eninde sonunda yanlış hale geçecek bir önerge olmasına dikkat edersiniz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sayi</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span><span class="p">(</span><span class="n">sayi</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sayimiz: &quot;</span><span class="p">,</span><span class="n">sayi</span><span class="p">)</span>
+    <span class="n">sayi</span> <span class="o">=</span> <span class="n">sayi</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sayimiz:  1
+sayimiz:  2
+sayimiz:  3
+sayimiz:  4
+sayimiz:  5
+sayimiz:  6
+sayimiz:  7
+sayimiz:  8
+sayimiz:  9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu örnek biraz(!) basit oldu. Onun yerine, mesela, <span class="math notranslate nohighlight">\(x^2+3x+1\)</span>’in kökünü <a class="reference external" href="https://emresururi.github.io/FIZ219/FIZ219_EST_UygulamaNotlari_09_Fonksiyonlar_Egik_Atis_Problemi.html#Say%C4%B1sal-%C3%A7%C3%B6z%C3%BCm:-yar%C4%B1lama-metodu-(bisection)">yarılama (<em>bisection</em>) yoluyla</a> <span class="math notranslate nohighlight">\(10^{-6}\)</span> hassasiyetle bulan bir program yazalım (mı?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.0</span>
+<span class="n">f_a</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">a</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">f_b</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">b</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">delta</span> <span class="o">=</span> <span class="mf">1E-6</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">delta</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">f_c</span> <span class="o">=</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f_c</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">f_a</span><span class="p">)):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="n">f_a</span> <span class="o">=</span> <span class="n">f_c</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="n">f_b</span> <span class="o">=</span> <span class="n">f_c</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kök: &quot;</span><span class="p">,(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kök:  -2.618033766746521
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bir de hazır fonksiyona soralım bakalım köklerini:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.61803399 -0.38196601]
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Teşekkürler ladies &amp; gentlemen!..</em></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_03_MatPlotLib_GrafikCizimi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Grafik Çizimi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_05_LineerCebir.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lineer Cebir</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-4">Ders Notları: 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giris">Giriş</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bloklar">Bloklar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#donguler">Döngüler</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-dongusu">for döngüsü</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dongu-icinde-dongu">Döngü içinde döngü</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kararlar-if-elif-else">Kararlar (if…elif…else)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#break-kirma">break (kırma)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-devam-et">continue (devam et)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dongu-karar-while">Döngü + Karar (while)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

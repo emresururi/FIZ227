@@ -1,0 +1,2321 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Vektörler ve Matrisler &#8212; FIZ227 - Bilgisayar Programlama</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIZ227_02_Vektorler_Matrisler';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Grafik Çizimi" href="FIZ227_03_MatPlotLib_GrafikCizimi.html" />
+    <link rel="prev" title="Python’a Giriş ve Listeler" href="FIZ227_01_Giris_Listeler.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="FIZ227 - Bilgisayar Programlama - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="FIZ227 - Bilgisayar Programlama - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_01_Giris_Listeler.html">Python’a Giriş ve Listeler</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vektörler ve Matrisler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_03_MatPlotLib_GrafikCizimi.html">Grafik Çizimi</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_04_DongulerVeKararlar.html">Döngüler ve Kararlar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_05_LineerCebir.html">Lineer Cebir</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_06_LineerCebir_Uygulama_1.html">Lineer Cebir Uygulamaları (I)</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_07_LineerCebir_Uygulama_2.html">Lineer Cebir Uygulamaları (II)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_08_FonksiyonTurevIntegral.html">Fonksiyonlar, Türev ve İntegral</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U01_nxn_EnKucukKareler.html">Uygulama 1: Döngüler ve Kararlar</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_U02_YukluParcacikSimulasyonu.html">Uygulama 2: Yüklü Parçacıklar Simülasyonu</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1.html">2023-24 1. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT1_QA.html">2023-24 1. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2.html">2023-24 2. Ara Sınav</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_20231_MT2_QA.html">2023-24 2. Ara Sınav Çözümleri</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="FIZ227_Sinav_Tavsiyeler.html">Sınavlara Hazırlanırken Tavsiyeler</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/FIZ227_02_Vektorler_Matrisler.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vektörler ve Matrisler</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-2">Ders Notları: 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-in-n-boyutlu-dizileri-ndarray">NumPy’ın N-boyutlu Dizileri (ndarray)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanimlama">Tanımlama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-elemanlarina-erisim-ve-degistirme">Matris Elemanlarına Erişim ve Değiştirme</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bolgesel-erisim">Bölgesel erişim</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-elemanlarini-degistirmek">Matris Elemanlarını Değiştirmek</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrise-eleman-ekleme">Matrise Eleman Ekleme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matristen-eleman-silme">Matristen Eleman Silme</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrislerin-ozellikleri">Matrislerin Özellikleri</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-matrisin-eleman-sayisi">size: Matrisin eleman sayısı</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-matrisimizin-boyutlari-90-60-90">shape: Matrisimizin boyutları <em>(90-60-90)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-yeniden-sekillendir-sam">reshape: yeniden şekillendir, Sam..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndim-kisa-yoldan-kac-boyutlu-bir-matrisimiz-olduguna-dair">ndim: kısa yoldan kaç boyutlu bir matrisimiz olduğuna dair…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtype-elemanlarinin-cinsi">dtype: elemanlarının cinsi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipik-matrisler">Tipik Matrisler</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeros-sifir-sifir-sifir">zeros : sıfır sıfır sıfır…</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ones-bir-bir-bir-nereye-kadar-gidecegiz-boyle-haydi-bakalim">ones : bir bir bir… (nereye kadar gideceğiz böyle, haydi bakalım…)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-ile-matrisi-doldurmak">fill ile matrisi doldurmak</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#birim-matris">birim matris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rastgele-matrisler">rastgele matrisler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange-ile-araliklar">arange ile aralıklar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace-duzenli-disiplinli">linspace: düzenli, disiplinli</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-islemleri-dort-islem-bir-ters-bir-duz">Matris işlemleri (dört işlem + bir ters, bir düz)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dort-temel-islem-eleman-bazinda">Dört temel işlem (eleman bazında)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skaler-ve-vektorel-carpimlar">Skaler ve Vektörel Çarpımlar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrisin-transpozesi-tersi-ve-determinanti">Matrisin transpozesi, tersi ve determinantı</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vektorler-ve-matrisler">
+<h1>Vektörler ve Matrisler<a class="headerlink" href="#vektorler-ve-matrisler" title="Permalink to this heading">#</a></h1>
+<section id="ders-notlari-2">
+<h2>Ders Notları: 2<a class="headerlink" href="#ders-notlari-2" title="Permalink to this heading">#</a></h2>
+<p><strong>Matrisler (NumPy Dizi (<em>numpy.ndarray</em>) Nesneleri)</strong></p>
+<ul class="simple">
+<li><p>Tanımlama</p></li>
+<li><p>Matris Elemanlarına Erişim ve Değiştirme</p>
+<ul>
+<li><p>Bölgesel erişim</p></li>
+<li><p>Matris Elemanlarını Değiştirmek</p></li>
+</ul>
+</li>
+<li><p>Matrise Eleman Ekleme</p>
+<ul>
+<li><p>Sihirbazlık: Değişkenleri kopyalamak (‘copy’)</p></li>
+<li><p>append</p></li>
+<li><p>insert</p></li>
+<li><p>concatenate</p></li>
+</ul>
+</li>
+<li><p>Matristen Eleman Silme</p></li>
+<li><p>Matrislerin Özellikleri</p>
+<ul>
+<li><p>size</p></li>
+<li><p>shape</p></li>
+<li><p>reshape</p></li>
+<li><p>ndim</p></li>
+<li><p>dtype</p></li>
+</ul>
+</li>
+<li><p>Tipik Matrisler</p>
+<ul>
+<li><p>zeros</p></li>
+<li><p>ones</p></li>
+<li><p>fill ile matrisi doldurmak</p></li>
+<li><p>birim matris</p></li>
+<li><p>rastgele matrisler</p></li>
+<li><p>arange ile aralıklar</p></li>
+<li><p>linspace</p></li>
+</ul>
+</li>
+<li><p>Matris işlemleri</p>
+<ul>
+<li><p>Dört temel işlem (eleman bazında)</p></li>
+<li><p>Skaler ve Vektörel Çarpımlar</p>
+<ul>
+<li><p>Skaler Çarpım</p></li>
+<li><p>Vektörel Çarpım</p></li>
+</ul>
+</li>
+<li><p>Matrisin transpozesi, tersi ve determinantı</p>
+<ul>
+<li><p>Transpozesi</p></li>
+<li><p>Tersi</p></li>
+<li><p>‘Tersimsisi’</p></li>
+<li><p>Determinantı</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Vektörler ve Matrisler: Bilgi metotları; tipik matrisler (zeros, ones, doldurulmuş, birim, rastgele); aralıklar (arange ve linspace); matrisler arasındaki işlemler: eleman bazlı işlemler, skaler çarpım, vektörel çarpım; matris işlemleri (transpoze, tersi, ‘tersimsisi’, determinantı). Matris Uygulamaları: n bilinmeyenli n denklem setinin matris çarpımı temsili ve çözümü; dönüş matrisi. Uygulama: Elektrik devresinin Kirchhoff metotu ile lineer denklem seti haline getirilip çözülmesi.</p>
+<p>Dr. Emre S. Taşcı, <a class="reference external" href="mailto:emre&#46;tasci&#37;&#52;&#48;hacettepe&#46;edu&#46;tr">emre<span>&#46;</span>tasci<span>&#64;</span>hacettepe<span>&#46;</span>edu<span>&#46;</span>tr</a><br />
+Fizik Mühendisliği Bölümü<br />
+Hacettepe Üniversitesi</p>
+</section>
+<section id="numpy-in-n-boyutlu-dizileri-ndarray">
+<h2>NumPy’ın N-boyutlu Dizileri (ndarray)<a class="headerlink" href="#numpy-in-n-boyutlu-dizileri-ndarray" title="Permalink to this heading">#</a></h2>
+<p>Bu dersimizde bundan böyle epey bir zaman kullanacağımız etkili ve hızlı NumPy dizilerini göreceğiz. Aslında teknik olarak <em>dizi</em> dense de, bizim temel kullanım amacımız matrisler şeklinde olacak.</p>
+<section id="tanimlama">
+<h3>Tanımlama<a class="headerlink" href="#tanimlama" title="Permalink to this heading">#</a></h3>
+<p>Bir NumPy dizisini, cinsiyle (yani “np.ndarray”), boş veya ilk değerli olarak tanımlarız. Python dizileri ile benzer olarak, bir liste bir kez oluşturulduktan sonra eleman ekleme/çıkarma yaparken aslında -çok da çaktırmadan- yerine yeni bir liste oluşturulur.</p>
+<p>Tanımlama için normal dizilerdeki gibi köşeli parantezler kullanırız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">mat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>İki boyutlu bir matrisi iç içe geçmiş köşeli parantezler içinde (satır gruplu olarak) belirtiyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [3 4 5]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Peki ya üç boyutlu bir matrisi?… (Siz düşünün cevabı sonra 8)</p>
+</section>
+<section id="matris-elemanlarina-erisim-ve-degistirme">
+<h3>Matris Elemanlarına Erişim ve Değiştirme<a class="headerlink" href="#matris-elemanlarina-erisim-ve-degistirme" title="Permalink to this heading">#</a></h3>
+<p>Matrisimizin elemanlarına tıpkı normal dizilerde veya matrix nesnelerinde olduğu gibi köşeli parantezlerle erişebiliriz. Yalnız, onlardan farklı olarak, birden yüksek boyutlu olan matrislerin -tek bir elemana dair(!)- çoklu indislerini belirtirken, hepsini aynı köşeli parantezlerde yazabileceğimiz gibi, ayrı köşeli parantezlerde de belirtebiliriz (fakat ileride bahsedileceği üzere, özellikle çoklu seçimlerde ayrı köşeli parantezlerin bambaşka bir anlamı olduğundan, mümkün mertebe aynı parantezler içindeki notasyonu kullanın).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimiz mat2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mat2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin sağ alttaki elemanı: mat2[1,2] = &quot;</span><span class="p">,</span><span class="n">mat2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aynı elemanı bir de mat2[1][2] ile çağıralım: &quot;</span><span class="p">,</span><span class="n">mat2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrisimiz mat2:
+ [[0 1 2]
+ [3 4 5]]
+---------
+Matrisimizin sağ alttaki elemanı: mat2[1,2] =  5
+Aynı elemanı bir de mat2[1][2] ile çağıralım:  5
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bolgesel-erisim">
+<h4>Bölgesel erişim<a class="headerlink" href="#bolgesel-erisim" title="Permalink to this heading">#</a></h4>
+<p>Matrisimizin elemanlarına ‘bölgesel’ (yani, aralık belirterek) de erişebiliriz: bunun için “:” aralık operatörünü kullanabiliriz (aralık operatörünün kullanımı ve özelliklerine dair detaylı bilgiyi 2. kısım olan Listeler’in “Liste elemanlarına ulaşma” bölümünde bulabilirsiniz):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+[[4 5]
+ [7 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eğer çağrı aralığımız bir sütun vektörü döndürüyorsa, Python bunu satır vektörü olarak sunacaktır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+
+<span class="c1"># Butun satirlarin son sutunu</span>
+<span class="n">mat2_son_sutun</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2_son_sutun</span><span class="p">)</span> 
+
+<span class="c1"># Butun satirlarin son iki sutunu</span>
+<span class="n">mat2_son_2sutun</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2_son_2sutun</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+[2 5 8]
+[[1 2]
+ [4 5]
+ [7 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bu (tek sütunlu vektörlerin satır vektörü olarak dönmesi) çok büyük bir sorun değil, çaresini şimdi verelim, detayını ileride göreceğiz: <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> metodu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+
+<span class="c1"># Butun satirlarin son sutunu</span>
+<span class="n">mat2_son_sutun</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2_son_sutun</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sihirli &#39;reshape&#39; çekelim:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mat2_son_sutun</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+[2 5 8]
+
+Sihirli &#39;reshape&#39; çekelim:
+ [[2]
+ [5]
+ [8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dizilerin aksine, bir blok olmayan (yani aralarında boşluk olan) bölgelerden de elemanlara erişebiliriz. Örneğin, <code class="docutils literal notranslate"><span class="pre">mat2</span></code> matrisimizin ilk ve son sütunlarını alalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">İlk (0.) ve son (2.) sütunlar:&quot;</span><span class="p">)</span>
+<span class="n">mat2_ilk_ve_son_sutunlar</span> <span class="o">=</span> <span class="n">mat2</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat2_ilk_ve_son_sutunlar</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+
+İlk (0.) ve son (2.) sütunlar:
+[[0 2]
+ [3 5]
+ [6 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>İndis belirtirken, başlangıç için nasıl 0 kullanıyorsak, sonuncu için de <code class="docutils literal notranslate"><span class="pre">end</span></code> veya <code class="docutils literal notranslate"><span class="pre">-1</span></code> kullanabiliriz; benzer şekilde <code class="docutils literal notranslate"><span class="pre">-2</span></code> “sondan ikinci”, <code class="docutils literal notranslate"><span class="pre">-3</span></code> “sondan üçüncü”, vs.. olarak işlenir. Uygulama olarak <span class="math notranslate nohighlight">\((3\times5)\)</span>’lik bir matrisin sondan 2. ve 3. sütunlarına erişelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin sondan 2. ve 3. sütunları:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">[:,[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4]
+ [ 5  6  7  8  9]
+ [10 11 12 13 14]]
+---------
+Matrisimizin sondan 2. ve 3. sütunları:
+[[ 3  2]
+ [ 8  7]
+ [13 12]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aralıkları tersten arttırarak matrisimizin sütunlarının sırasını tersine de çevirebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin sütunlarının tersten sıralanmış hali:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">[:,</span><span class="mi">4</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4]
+ [ 5  6  7  8  9]
+ [10 11 12 13 14]]
+---------
+Matrisimizin sütunlarının tersten sıralanmış hali:
+[[ 4  3  2  1  0]
+ [ 9  8  7  6  5]
+ [14 13 12 11 10]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıdaki örnekte 0. sütun dahil olduğu için aralığımızı <code class="docutils literal notranslate"><span class="pre">4:0:-1</span></code> şeklinde yazamadık çünkü bu (aralık tanımının {başlangıç}:{bitiş (kadar/dahil değil}:{artış miktarı} olmasından ötürü): 4,3,2,1 değerlerini içerir. <code class="docutils literal notranslate"><span class="pre">0</span></code> yerine <code class="docutils literal notranslate"><span class="pre">-1</span></code> koymak başta makul görünse de, -1’in özel bir anlamı var (yukarıda, satır vektörünü sütun vektörüne çevirirken de kullanmıştık, daha sonra kapsamlı olarak değineceğiz), onu da kullanamıyoruz, indislerin tam sayı (ve <span class="math notranslate nohighlight">\(\ge0\)</span> - yani -1 de olmuyor teknik olarak ;) olma zorunluluğundan ötürü <code class="docutils literal notranslate"><span class="pre">-0.2</span></code> gibi bir cinlik de yapamıyoruz. Bu tür durumlarda işi “oluruna” yani <em>boş</em> bırakıyoruz: boş bıraktığımızda “tümü” ya da biraz daha gevşek bir deyişle “<em>gittiği yere kadar…</em>” şeklinde bir anlam çıkmakta.</p>
+</section>
+<section id="matris-elemanlarini-degistirmek">
+<h4>Matris Elemanlarını Değiştirmek<a class="headerlink" href="#matris-elemanlarini-degistirmek" title="Permalink to this heading">#</a></h4>
+<p>Erişebilmeyi öğrendikten sonra, değiştirmek çok kolay. Eriştiğiniz matris elemanları ile aynı boyutta olduktan sonra, istediğiniz gibi değiştirebilirsiniz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">mat_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+ <span class="p">[</span> <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Baştan 2. (indis:1), sondan 2. sütunlar:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="c1"># Erisebildigimize gore, bunlari degistirelim:</span>
+<span class="c1"># --(3x2)&#39;lik matris olduguna dikkat ederek--</span>
+<span class="n">mat_3x5</span><span class="p">[:,[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">],[</span><span class="mi">21</span><span class="p">,</span><span class="mi">23</span><span class="p">],</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span><span class="mi">33</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bu kısmın değiştirilmiş olduğu hali:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_3x5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4]
+ [ 5  6  7  8  9]
+ [10 11 12 13 14]]
+---------
+Baştan 2. (indis:1), sondan 2. sütunlar:
+[[ 1  3]
+ [ 6  8]
+ [11 13]]
+
+Bu kısmın değiştirilmiş olduğu hali:
+[[ 0 11  2 13  4]
+ [ 5 21  7 23  9]
+ [10 31 12 33 14]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="matrise-eleman-ekleme">
+<h3>Matrise Eleman Ekleme<a class="headerlink" href="#matrise-eleman-ekleme" title="Permalink to this heading">#</a></h3>
+<p>Bir matrisi (NumPy dizisini) oluşturmayı, mevcut olan elemanlara erişip, onları değiştirmeyi gördük. Peki ya yeni bir eleman eklemek istersek? İlk akla gelen şekilde “olmayanı yoktan tanımlamak” işe yarar mı? (pek olacak gibi görünmüyor, bir deneyelim bakalım…)</p>
+<p>Aldığımız hatanın gerisinde yatan temel sebep, <em>teknik olarak</em> bir matrisin (NumPy dizisinin - bir daha bu ek açıklamayı yapmayacağım) sadece ilk tanımlanışı sırasında boyutunun belirlenebilmesi.</p>
+<p>Pratikte tabii ki bu sıkıntıya düşmüyoruz, birazdan göreceğimiz üzere, genişleme de yapacağız, boyutunu da değiştireceğiz, sileceğiz de, ekleyebileceğiz de. Ama bu teknik kısıtlamanın altında ince bir programlama numarası yatmakta. Önceki ders notlarında bundan bahsettiysek de, bunların ders değil de aslında bir referans notu olmasından ötürü burada bir kez daha değineceğim. 8)</p>
+<p><strong>Sihirbazlık: Değişkenleri kopyalamak (‘copy’)</strong><br />
+Bu sihirbazlık numarası için yardımınıza ihtiyacım var:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code> diye bir değişken düşünüp, ona bir değer atayın (örneğin 3)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code> diye bir değişken düşünüp, onu da <code class="docutils literal notranslate"><span class="pre">a</span></code>ya eşitleyin.<br />
+<em>(şu anda <code class="docutils literal notranslate"><span class="pre">a</span></code> da, <code class="docutils literal notranslate"><span class="pre">b</span></code> de 3’e eşit, buraya kadar hemfikirizdir umarım)</em></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>nın değerini başka bir sayı yapın (örneğin 5).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">b</span></code>nin şu andaki değeri nedir?</p></li>
+</ol>
+<p>Psikoloji bilimi doğru çalışıyorsa, büyük ihtimalle “5” demişsinizdir (“hoca sorduğuna göre o kadar bariz (3) cevap olamaz, vardır bir şaşırtmaca/hinlik) ama gerçekten de o kadar bariz (yani <code class="docutils literal notranslate"><span class="pre">b</span></code> değerimiz hala 3’e eşit), kendi gözlerinizle görün:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">b: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şimdi a&#39;nın değerini 5 yapıyoruz...</span><span class="se">\n</span><span class="s2">(b&#39;ye dokunmuyoruz)&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">b: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">¯\_(ツ)_/¯ -- Duh!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a: 3	b: 3
+Şimdi a&#39;nın değerini 5 yapıyoruz...
+(b&#39;ye dokunmuyoruz)
+a: 5	b: 3
+
+¯\_(ツ)_/¯ -- Duh!
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\_&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\_&#39;
+/tmp/ipykernel_14737/3930200487.py:7: SyntaxWarning: invalid escape sequence &#39;\_&#39;
+  print(&quot;\n¯\_(ツ)_/¯ -- Duh!&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>E sihirbazlık neresinde kaldı bu işin? Tekrar deneyelim… Bir şans daha. Bu sefer dizilerle yapalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">dizi_b</span> <span class="o">=</span> <span class="n">dizi_a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Şimdi a dizisinin elemanının değerini 5 yapıyoruz...</span><span class="se">\n</span><span class="s2">(b dizisine dokunmuyoruz)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">dizi_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a dizisi:  [3]
+b dizisi:  [3]
+
+Şimdi a dizisinin elemanının değerini 5 yapıyoruz...
+(b dizisine dokunmuyoruz)
+
+a dizisi:  [5]
+b dizisi:  [5]
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="JamesHence_Beaker_Scream.jpg" src="_images/JamesHence_Beaker_Scream.jpg" /><br />
+(James Hence - “The Meep”)</p>
+<p>Nasıl oldu? Biz b dizisine dokunmamıştık, nasıl oldu da gitti a’yı değiştirince b de değişiverdi? Cevap: dizilerin (yani birden fazla elemanı olan değişkenlerin) hafızada nasıl tutulduğu. Bize ad diye verilen şey aslında onun hafızada tutulduğu yeri gösteren bir işaretçi (<em>pointer</em>). Birebir aynı olmasa da bu ilişkiyi <em>id</em>’lere bakarak gözlemleyebiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">dizi_b</span> <span class="o">=</span> <span class="n">dizi_a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Şimdi a dizisinin elemanının değerini 5 yapıyoruz...</span><span class="se">\n</span><span class="s2">(b dizisine dokunmuyoruz)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">dizi_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a dizisi:  [3]
+a dizisinin id&#39;si:  136233329917072
+b dizisi:  [3]
+b dizisinin id&#39;si:  136233329917072
+
+
+Şimdi a dizisinin elemanının değerini 5 yapıyoruz...
+(b dizisine dokunmuyoruz)
+
+a dizisi:  [5]
+a dizisinin id&#39;si:  136233329917072
+b dizisi:  [5]
+b dizisinin id&#39;si:  136233329917072
+</pre></div>
+</div>
+</div>
+</div>
+<p>Görüldüğü üzere, ikisi de değişiklik yapıldıktan sonra bile aynı yeri işaret ediyorlar. Halbuki ilk örneğimizde:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">b: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&#39;nın id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&#39;nin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Şimdi a&#39;nın değerini 5 yapıyoruz...</span><span class="se">\n</span><span class="s2">(b&#39;ye dokunmuyoruz)&quot;</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a: </span><span class="si">%d</span><span class="se">\t</span><span class="s2">b: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a&#39;nın id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b&#39;nin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a: 3	b: 3
+a&#39;nın id&#39;si:  101362868780392
+b&#39;nin id&#39;si:  101362868780392
+Şimdi a&#39;nın değerini 5 yapıyoruz...
+(b&#39;ye dokunmuyoruz)
+
+a: 5	b: 3
+a&#39;nın id&#39;si:  101362868780456
+b&#39;nin id&#39;si:  101362868780392
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python’da bir değişken tanımladığımızda, hafızada onun büyüklüğünde bir alan aranır ve o bölgenin başlangıç adresi o değişkenin adı ile ilişkilendirilir. Örneğin (3x4)’lük bir tamsayılar matrisi tanımladığınızda 3x4=12’lik tamsayının kapladığı yer bulunur, o yerin başlangıcı da matrisinizin adına atanır. Yani matrisin adı dediğimiz şey -hemen hemen- onun tutulduğu bölge. <code class="docutils literal notranslate"><span class="pre">dizi_b</span> <span class="pre">=</span> <span class="pre">dizi_a</span></code> demekle, a dizisinin adresini b dizisine de atamış olduk – bu bir anahtarı çoğaltmak gibi bir şey! Bu yüzden a dizisinde yaptığımız değişiklik b dizisini de etkiliyor çünkü ikisi de aynı evi gösteriyor! Kardeşinizde de, sizde de birer anahtar var, kardeşiniz halıya vişne suyu döktüğünde, siz eve girince bu lekeyi görüyorsunuz! 8)</p>
+<p>Peki değerleri cinsinden birbirinin aynı ama göbekleri birbirlerine bağlı olmayan iki diziyi nasıl tanımlayacağız o halde? Cevap: <code class="docutils literal notranslate"><span class="pre">copy</span></code> komutu ile:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">dizi_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Şimdi a dizisinin elemanının değerini 5 yapıyoruz...</span><span class="se">\n</span><span class="s2">(b dizisine dokunmuyoruz)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">dizi_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisi: &quot;</span><span class="p">,</span><span class="n">dizi_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b dizisinin id&#39;si: &quot;</span><span class="p">,</span><span class="nb">id</span><span class="p">(</span><span class="n">dizi_b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a dizisi:  [3]
+a dizisinin id&#39;si:  136233329917456
+b dizisi:  [3]
+b dizisinin id&#39;si:  136233329917552
+
+
+Şimdi a dizisinin elemanının değerini 5 yapıyoruz...
+(b dizisine dokunmuyoruz)
+
+a dizisi:  [5]
+a dizisinin id&#39;si:  136233329917456
+b dizisi:  [3]
+b dizisinin id&#39;si:  136233329917552
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yine bu hafıza/adres meselesi yüzünden, kafamıza göre olmayan bir elemanı yoktan tanımlayamıyoruz: bilgisayar bize diyelim 12’lik yer bulup ayırmış, hemen dibinden bir başka değişken başlıyor, siz kalkıp da 13. elemanı tanımlayamazsınız, kalkıp yandaki komşunun odasına girecek haliniz yok (bu vesileyle son yıllarda hayli güvenli bilgisayarları yakıp kavuran <a class="reference external" href="https://en.wikipedia.org/wiki/Heartbleed">Heartbleed bug’ı</a> tam da bu şekilde çalışıp bilgileri sızdırıyordu). O nedenle siz “bana 12 odalı ev yetmiyor, 13. odaya ihtiyacım var” dediğinizde, Python da 13 odalı bir ev oluşturup, sizi -pek de çaktırmadan- oraya taşıyor (adresiniz değişiyor haliyle ama no prob. ;).</p>
+<ul class="simple">
+<li><p><strong>append()</strong> komutu ile eleman ekleme
+<code class="docutils literal notranslate"><span class="pre">append</span></code> ile bir matrisin sonuna elemanlar eklenebilir. Dikkat edilmesi gereken husus, bu komutun yeni bir matris döndürdüğüdür: girdi olarak kullanılan matris doğal olarak -siz çıktı olarak kendisini işaret etmezseniz- değişiklik göstermez.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diziye ek yapılmış hali:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dizi</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizide bir değişiklik yok: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------&quot;</span><span class="p">)</span>
+
+<span class="c1"># Degisikligin diziye yapilmasi icin:</span>
+<span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dizi</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi: 
+ [0 1 2 3 4]
+diziye ek yapılmış hali:
+ [0 1 2 3 4 5 6 7]
+dizide bir değişiklik yok: 
+ [0 1 2 3 4]
+-----------
+dizi: 
+ [0 1 2 3 4 5 6 7]
+</pre></div>
+</div>
+</div>
+</div>
+<p>(tahmin edeceğiniz üzere, baştaki <code class="docutils literal notranslate"><span class="pre">dizi</span></code> ile, ekleme yapılmış <code class="docutils literal notranslate"><span class="pre">dizi</span></code>nin adresleri de, id’leri de farklı).</p>
+<ul class="simple">
+<li><p><strong>insert()</strong> komutu ile eleman ekleme<br />
+<code class="docutils literal notranslate"><span class="pre">insert</span></code> komutu işleyiş açısından <code class="docutils literal notranslate"><span class="pre">append</span></code>e benzese de, ondan temel farkı ille de sona değil, listenin herhangi bir yerine aradan ekleme yapma imkanı vermesindedir. İlk parametre olarak ekleme yapılacak dizi; ikinci parametre olarak hangi indisin yerinden ekleme yapılacağı (örneğin “2” dersek, 2 indisli (3.) elemanın soluna eklenir, yani eski 2 indisindeki (3.) eleman sağa kayar:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">)</span>
+
+<span class="n">dizi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">dizi</span><span class="p">,</span><span class="mi">2</span><span class="p">,[</span><span class="mi">99</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">97</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi: 
+ [0 1 2 3 4]
+--------
+dizi: 
+ [ 0  1 99 98 97  2  3  4]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>concatenate()</strong> ile dizi birleştirme<br />
+Python’da “normal” (standard) dizileri <code class="docutils literal notranslate"><span class="pre">+</span></code> operatörü ile birleştirebiliyorduk. NumPy matrislerinde bu operatör ile gerçek toplama yapabildiğimizden ötürü, yeni bir komuta gerek olmuş, o komut da işte <code class="docutils literal notranslate"><span class="pre">concatenate</span></code>:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
+<span class="n">dizi3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">dizi1</span><span class="p">,</span><span class="n">dizi2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi3: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi3: 
+ [ 0  1  2  3  4  9 10 15]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">concatenate</span></code> ile yaptığımız her türlü işlemi <code class="docutils literal notranslate"><span class="pre">append</span></code> ile yapabileceğimiz doğrudur fakat <code class="docutils literal notranslate"><span class="pre">append</span></code> fonksiyonu bizzat concatenate ile tanımlanmıştır. <a class="reference external" href="https://github.com/numpy/numpy/blob/master/numpy/ma/core.py">Kaynak koduna</a> bakacak olursanız (append en altta yer alıyor; korkmayın, bir bakın bence, açık kaynağın, özgür yazılımın en güzel yanlarından biri de bu! 8):</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">append(a,</span> <span class="pre">b,</span> <span class="pre">axis=None):</span></code></p>
+<p>şeklinde başlıyor tanımı, bir dolu açıklama metni ve tüm bir fonksiyonun kod olarak aslında tek bir satırda tanımlandığını görüyorsunuz:</p>
+<p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">concatenate([a,</span> <span class="pre">b],</span> <span class="pre">axis)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">concatenate</span></code>’i burada, bir boyutlu matrisler üzerinde çalışırken gördük ama ileride hem daha yüksek boyutlu matrislere ekleme yapacağız, hem de <code class="docutils literal notranslate"><span class="pre">vstack</span></code> olsun, <code class="docutils literal notranslate"><span class="pre">hstack</span></code> olsun, daha ince işler, kurulumlar yapacağız.</p></li>
+</ul>
+</section>
+<section id="matristen-eleman-silme">
+<h3>Matristen Eleman Silme<a class="headerlink" href="#matristen-eleman-silme" title="Permalink to this heading">#</a></h3>
+<p>Silme işlemini <code class="docutils literal notranslate"><span class="pre">delete</span></code> komutu ile yapıyoruz ama hemen kullanmaya kalkmadan biraz düşünelim:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Silmek</span></code> ile ne kast ediyoruz?</p></li>
+</ul>
+<p>Tamam, <code class="docutils literal notranslate"><span class="pre">[0,1,2,3,4,5]</span></code> gibi bir dizinin diyelim <em>2 ve 4 indisli elemanlarını silmekten</em> bahsedebiliriz, o zaman <code class="docutils literal notranslate"><span class="pre">[0,1,3,5]</span></code> gibi bir şey olur elimize dönen, hatta:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi1:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">dizi1</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi1:
+ [0 1 2 3 4 5]
+------------
+[0 1 3 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nefis!… Bravo… vs..</p>
+<p>Peki ya elimizde 2 boyutlu bir dizi varsa?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi2:
+ [[1 2]
+ [3 4]
+ [5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bunun <em>2 ve 4 indisli elemanlarını silmek</em> ne demek??? (bkz. <em>what ne demek?</em> 8P).. <em>1. satırı silelim</em>, bunu anlarız (Python da anlar), haydi <em>2. sütunu silelim</em> bu da tamam ama <em>2 ve 4 indisi</em> bırakın, <em>2 indisli elemanı silelim</em>’in bile 2 boyutlu bir matriste anlamı yok (jenga oynayanlarınız bilir, yapıyı korumak lazım: bir satırında 2 elemanı, bir başka satırında 1 elemanı olan bir matris matematik dünyasında yok (olana da hilkat garibesi muamelesi çekiliyor, girmiyorum o konuya ama çok istiyorsanız bkz. dizi dizileri ya da hücre dizileri)).</p>
+<p>Önce bir satırı, sonra bir sütunu uçurup, sonra da tek bir elemanı uçurmaya kalkıp sonuçlara bakalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. satırı uçurduğumuz hali:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">dizi2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. sütunu uçurduğumuz hali:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">dizi2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. &amp; 3. sütunu uçurduğumuz hali:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">dizi2</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi2:
+ [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+---------
+2. satırı uçurduğumuz hali:
+ [[1 2 3]
+ [7 8 9]]
+---------
+2. sütunu uçurduğumuz hali:
+ [[1 3]
+ [4 6]
+ [7 9]]
+---------
+1. &amp; 3. sütunu uçurduğumuz hali:
+ [[2]
+ [5]
+ [8]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Satırlar ve sütunlar gayet iyi uçuyor (satır uçururken <code class="docutils literal notranslate"><span class="pre">0</span></code>, sütun uçururken <code class="docutils literal notranslate"><span class="pre">1</span></code> değerini alan parametre “eksen” parametresi: 2-boyutlu bir matriste birincil (0) eksen x-ekseni (yani satırlar); ikincil (1) eksen y-ekseni (yani sütunlar)).</p>
+<p>Şimdi gelelim bir tek, diyelim 2. elemanı uçurmaya:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. elemanı uçurduğumuz hali:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">dizi2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi2:
+ [[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+---------
+2. elemanı uçurduğumuz hali:
+ [1 3 4 5 6 7 8 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>2. eleman olan 2 (indis:1) hakikaten de uçtu ama artık matrisin bütünlüğü bozulduğundan, otomatik olarak 1 boyuta indirgendi ki, siz de takdir ederseniz, en mantıklı çözüm bu.</p>
+</section>
+</section>
+<section id="matrislerin-ozellikleri">
+<h2>Matrislerin Özellikleri<a class="headerlink" href="#matrislerin-ozellikleri" title="Permalink to this heading">#</a></h2>
+<p>Sıklıkla, elimize geçirdiğimiz bir NumPy dizisinin özelliklerini bilmek isteriz: boyu nedir, boyutu nedir, kimlerdendir, içinde sevdiceğimiz var mıdır vs. Bu bölümde temel bilgi komut ve metotlarını işleyeceğiz.</p>
+<p>O halde, bir tane 2 boyutlu <span class="math notranslate nohighlight">\((4\times5)\)</span> matris tanımlayıp, işimize bakalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">],[</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">],[</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4]
+ [10 11 12 13 14]
+ [20 21 22 23 24]
+ [30 31 32 33 34]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aa</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span><span class="n">aa</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mat1</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 (3, 1)
+[array([ 2, 12, 22, 32])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fark ettiyseniz, değerler aynı zamanda satır ve sütun indislerini veriyor (ilk satırın (0 satırı) misal 2 indisli elemanını <code class="docutils literal notranslate"><span class="pre">02</span></code> yazamadığımdan, <code class="docutils literal notranslate"><span class="pre">2</span></code> ile yetiniyoruz ama artık o kadar kusur kadı kızında da bulunur).</p>
+<section id="size-matrisin-eleman-sayisi">
+<h3>size: Matrisin eleman sayısı<a class="headerlink" href="#size-matrisin-eleman-sayisi" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">size</span></code> metodu bize matrisin toplam eleman sayısını verir. Örneğimizdeki matrisimizin 20 elemanı var, o halde, “size” diye sorunce, “20” demesini bekliyoruz, bakalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin eleman sayısı: &quot;</span><span class="p">,</span><span class="n">mat1</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrisimizin eleman sayısı:  20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="shape-matrisimizin-boyutlari-90-60-90">
+<h2>shape: Matrisimizin boyutları <em>(90-60-90)</em><a class="headerlink" href="#shape-matrisimizin-boyutlari-90-60-90" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">shape</span></code> metodu matrisimizin “şeklini” yani boyutlarını bir demet (<em>tuple</em>) olarak döndürür:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin boyutları: &quot;</span><span class="p">,</span><span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span><span class="s2">&quot; adet boyutu var.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Asıl (0 - satırlar) eksendeki &#39;kat&#39; sayısı: &quot;</span><span class="p">,</span><span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;İkincil (1 - sütunlar) eksendeki &#39;daire sayısı: &quot;</span><span class="p">,</span><span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrisimizin boyutları:  (4, 5)
+Matrisimizin  2  adet boyutu var.
+Asıl (0 - satırlar) eksendeki &#39;kat&#39; sayısı:  4
+İkincil (1 - sütunlar) eksendeki &#39;daire sayısı:  5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Burada dikkatinizi çektiyse, boyutların döndürüldüğü mat1.shape demetinin boyunu bulurken <code class="docutils literal notranslate"><span class="pre">size</span></code> metodunu değil, <code class="docutils literal notranslate"><span class="pre">len</span></code> komutunu kullandık. Bunun sebebi, <code class="docutils literal notranslate"><span class="pre">size</span></code>ın bir ndarray metodu olup, demetlere uygulanabilir olmaması. <code class="docutils literal notranslate"><span class="pre">len</span></code> komutu epey evrensel bir komut olup, hemen her değişkene sorulabilir. O halde niye <code class="docutils literal notranslate"><span class="pre">len</span></code> dururken, matrislerde <code class="docutils literal notranslate"><span class="pre">size</span></code> ile uğraşıyoruz? Hemen bakalım:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mat1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gördüğünüz üzere, sadece ilk eksenin (satırların) sayısını veriyor, gayet de mantıklı zira Python bunu -teknik olarak- her birinde 5 elemanlı 1 boyutlu dizi olan, 4 elemanlı bir derleme olarak görüyor (matrisi nasıl tanımladığımızı hatırlayın: [ [1. eleman: 1. dizi], [2. eleman: 2. dizi], …]). Bu yüzden, n-boyutlu matrislerin eleman sayısını <code class="docutils literal notranslate"><span class="pre">len</span></code> ile değil, <code class="docutils literal notranslate"><span class="pre">size</span></code> ile öğreniyoruz (bu konu sanırım bölüm sonlarında olan “bunları bilmeseniz de olur ama işte…” kısmına daha uygundu!.. 8)</p>
+<p><img alt="play-it-sam.jpg" src="_images/02_BogartCasablancaSam.jpg" />Casablanca, “Play it -again- Sam” (tamam, Bogart hiç <em>again</em> lafını söylemiyor aslında ama olsun)</p>
+</section>
+<section id="reshape-yeniden-sekillendir-sam">
+<h2>reshape: yeniden şekillendir, Sam..<a class="headerlink" href="#reshape-yeniden-sekillendir-sam" title="Permalink to this heading">#</a></h2>
+<p>Matrisin şekli çok önemlidir zira o şekli yeniden (“re-”) biçimlendirebiliriz (“shape”) =&gt; <code class="docutils literal notranslate"><span class="pre">reshape</span></code>!</p>
+<p>Elimizdeki matris (4x5)’ti, 20 elemanı vardı. Elemanları düzgünce dağıtabileceğimiz (yani bütün boyutlarının çarpımı 20 olduğu sürece) her boyuta çıkabiliriz. Çarpımı 20 olan sayılardan bazılarını sıralayalım:</p>
+<ul class="simple">
+<li><p>1x20</p></li>
+<li><p>2x10</p></li>
+<li><p>2x2x5</p></li>
+<li><p>20x1</p></li>
+</ul>
+<p>Gördüğünüz üzere, yukarıdakilerden 1. ve 4. örnekler bir boyutlu matrisler (ilki satır, ikincisi sütun vektörü); 2. örnek 2 satırlı, 10 sütunlu iki boyutlu bir matris; 3. ilginç çünkü 3 boyut var. Tek tek deneyelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4 10 11 12 13 14 20 21 22 23 24 30 31 32 33 34]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3  4 10 11 12 13 14]
+ [20 21 22 23 24 30 31 32 33 34]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[ 0  1  2  3  4]
+  [10 11 12 13 14]]
+
+ [[20 21 22 23 24]
+  [30 31 32 33 34]]]
+33
+</pre></div>
+</div>
+</div>
+</div>
+<p>(2x2x5) üç boyutlu matrisimizde [1,1,3] indisli elemanı istediğimizde, önce 1. eksende ilerleyip, 1 indisli diziye gittik:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[[20</span> <span class="pre">21</span> <span class="pre">22</span> <span class="pre">23</span> <span class="pre">24]</span>&#160;&#160; <span class="pre">[30</span> <span class="pre">31</span> <span class="pre">32</span> <span class="pre">33</span> <span class="pre">34]]</span></code></p>
+<p>dizisi. Sonra bu dizinin 1 indisli dizisine gittik:</p>
+<p><code class="docutils literal notranslate"> <span class="pre">[30</span> <span class="pre">31</span> <span class="pre">32</span> <span class="pre">33</span> <span class="pre">34]</span></code></p>
+<p>dizisi. Sonra da, bu dizinin 3 indisli elemanına (yani 4. elemanına) gittik: 33</p>
+<p>Bu vesileyle, çaktırmadan, 3 boyutlu bir diziyi nasıl oluşturabileceğimize dair bir yolu da keşfetmiş olduk: <code class="docutils literal notranslate"><span class="pre">reshape</span></code> metodu ile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0]
+ [ 1]
+ [ 2]
+ [ 3]
+ [ 4]
+ [10]
+ [11]
+ [12]
+ [13]
+ [14]
+ [20]
+ [21]
+ [22]
+ [23]
+ [24]
+ [30]
+ [31]
+ [32]
+ [33]
+ [34]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ndim-kisa-yoldan-kac-boyutlu-bir-matrisimiz-olduguna-dair">
+<h2>ndim: kısa yoldan kaç boyutlu bir matrisimiz olduğuna dair…<a class="headerlink" href="#ndim-kisa-yoldan-kac-boyutlu-bir-matrisimiz-olduguna-dair" title="Permalink to this heading">#</a></h2>
+<p>Elimizdeki matrisimizin kaç boyutlu olduğunu şeklinin kaç elemanı olduğunu sorarak öğrenebilmiştik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">mat1</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span><span class="s2">&quot; adet boyutu var.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrisimizin  2  adet boyutu var.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bunu tek bir metotla da yapmak mümkün, bu iş için <code class="docutils literal notranslate"><span class="pre">ndim</span></code> metotu yardımımıza koşuyor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrisimizin &quot;</span><span class="p">,</span><span class="n">mat1</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span><span class="s2">&quot; adet boyutu var.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrisimizin  2  adet boyutu var.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dtype-elemanlarinin-cinsi">
+<h2>dtype: elemanlarının cinsi<a class="headerlink" href="#dtype-elemanlarinin-cinsi" title="Permalink to this heading">#</a></h2>
+<p><a name="karma_diziler"></a>
+Aşağıdaki üç diziye bir bakın – sizce aralarında çok fark var mı?</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dizi_1</span> <span class="pre">=</span> <span class="pre">np.array([0,1,2])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dizi_2</span> <span class="pre">=</span> <span class="pre">np.array([0,1,2.0])</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dizi_3</span> <span class="pre">=</span> <span class="pre">np.array([0,1.0,&quot;iki&quot;])</span></code></p></li>
+</ol>
+<p>…</p>
+<p>Herhalde, 3.yü listeye koymasaydık, “fark yok” cevabı normal karşılanacaktı ama 3. işi bozduğundan, bu sefer 1. ile 2. arasında da bir bit yeniği çıkmasını bekliyoruz. Python’a verelim, bakalım o ne diyecek:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">dizi_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.0</span><span class="p">])</span>
+<span class="n">dizi_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="s2">&quot;iki&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_1:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi_1</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi_2</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_3:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dizi_3</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi_1:
+ [0 1 2] 
+
+dizi_2:
+ [0. 1. 2.] 
+
+dizi_3:
+ [&#39;0&#39; &#39;1.0&#39; &#39;iki&#39;] 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hemen fark edenler kendilerine bir 10 puan yazsınlar bakalım! Detaylıca incelediğimizde, ilkinde sayılarımızın ondalık noktalarının olmadığını, ikincisinde diziyi girerken sadece 2’yi ondalıklı girdiğimiz halde (o da hani “2.3” gibi değil, bildiğiniz “2.0” masumane şekliyleydi!) 0 ve 1’in kuyruklarına da ondalık noktasının takılmış olduğunu, üçüncü dizide ise hepsinin (0’ın ve 1.0’ın bile!) bir kelimeymişçesine kesme (’) işaretleri arasına alınmış olduğunu görüyoruz. Bunun sebebi şu:</p>
+<p>NumPy dizileri sadece tek bir eleman cinsini tutarlar. İlk dizimizde bütün elemanlarımız tam sayı, o yüzden tam sayı olarak tutulabiliyorlar; ikinci dizimizde iki tam sayı, bir tane ondalıklı sayı girdiğimizde, ondalıklı sayının varlığı (değerinden bağımsız olarak), dizinin elemanları tuttuğu cins olarak tam sayıyı değil, hepsini içerebilecek ondalıklı sayı cinsini seçmesini gerektiriyor (genel olarak: tam sayıları bilgi kaybı olmadan ondalıklı olarak tutabilsek de, tersi mümkün değil); üçüncüsünde ise, tam sayı olsun, ondalıklı sayı olsun, bunları string olarak tutabiliyoruz ama string değişkenlerini -genel olarak- sayı olarak ifade edemediğimizden, elemanların cinsi “en küçük ortak cins” olan string olarak tanımlanıyor.</p>
+<p>Bir dizinin tuttuğu eleman cinsini de <code class="docutils literal notranslate"><span class="pre">dtype</span></code> metodu ile öğreniyoruz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_1&#39;in elemanlarının cinsi :&quot;</span><span class="p">,</span><span class="n">dizi_1</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_2&#39;nin elemanlarının cinsi:&quot;</span><span class="p">,</span><span class="n">dizi_2</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dizi_3&#39;ün elemanlarının cinsi :&quot;</span><span class="p">,</span><span class="n">dizi_3</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dizi_1&#39;in elemanlarının cinsi : int64 
+
+dizi_2&#39;nin elemanlarının cinsi: float64 
+
+dizi_3&#39;ün elemanlarının cinsi : &lt;U32 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tipte yazılı kısım cinsi (integer: tam sayı; float: ondalıklı sayı; U: Unicode string) verirken, peşinden gelen sayı her bir eleman için hafızada ayrılan yer miktarını (bit cinsinden) verir.</p>
+<p>Bir dizinin elemanlarının cinsini <strong>zorla</strong> bir başka cinse dönüştürmek mümkündür: bunu <code class="docutils literal notranslate"><span class="pre">astype</span></code> metotu ile yaparız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dizi_2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dizi_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0. , 1. , 2.6])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ama bunun mümkün olmadığı yerde de zorlamanın pek bir alemi yok:</p>
+<p>150 tane tam sayı elemanı olan bir diziye, 151. eleman olarak ondalıklı sayı eklediğimizde bütün elemanlarının tipi nasıl da tümden ondalıklı sayılara dönüşüyorsa, iki sayıyı topladığımızda da bu kural otomatikman uygulanır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tam sayı + tam sayı = tam sayı:</span>
+<span class="mi">5</span> <span class="o">+</span> <span class="mi">7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tam sayı + ondalıklı sayı = ondalıklı sayı:</span>
+<span class="mi">5</span> <span class="o">+</span> <span class="mf">7.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Çok mu barizdi? Öyleyse bir de şuna bakalım:</span>
+<span class="mi">5</span> <span class="o">+</span> <span class="mf">7.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tipik-matrisler">
+<h2>Tipik Matrisler<a class="headerlink" href="#tipik-matrisler" title="Permalink to this heading">#</a></h2>
+<p>Şimdi eğri oturup, doğru konuşalım: NumPy’da matris elemanlarını tanımlamak çoğu kez epey sıkıcı. Bu yüzden hayatı kolaylaştırıcı birkaç tipik hazır matris türü var.</p>
+<section id="zeros-sifir-sifir-sifir">
+<h3>zeros : sıfır sıfır sıfır…<a class="headerlink" href="#zeros-sifir-sifir-sifir" title="Permalink to this heading">#</a></h3>
+<p>Adı üzerinde, istediğimiz boyutta, tüm elemanları sıfır olan bir matris döndürür - yapmamız gereken, istediğimiz matris boyutunu belirlemekten ibaret:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">mat_0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[0. 0. 0. 0.]
+  [0. 0. 0. 0.]
+  [0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0.]
+  [0. 0. 0. 0.]
+  [0. 0. 0. 0.]]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ones-bir-bir-bir-nereye-kadar-gidecegiz-boyle-haydi-bakalim">
+<h3>ones : bir bir bir… (nereye kadar gideceğiz böyle, haydi bakalım…)<a class="headerlink" href="#ones-bir-bir-bir-nereye-kadar-gidecegiz-boyle-haydi-bakalim" title="Permalink to this heading">#</a></h3>
+<p>Bu da, bütün elemanları 1 olan bir matris döndürür:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[1. 1.]
+  [1. 1.]
+  [1. 1.]
+  [1. 1.]
+  [1. 1.]]
+
+ [[1. 1.]
+  [1. 1.]
+  [1. 1.]
+  [1. 1.]
+  [1. 1.]]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fill-ile-matrisi-doldurmak">
+<h3>fill ile matrisi doldurmak<a class="headerlink" href="#fill-ile-matrisi-doldurmak" title="Permalink to this heading">#</a></h3>
+<p>Bütün elemanları sıfır veya bir olan bir matrisi nasıl tanımlayacağımızı artık biliyoruz, peki bütün elemanlarının 2.7 olmasını istiyorsak? Bu durumda, iki-üç(-çok?) yolumuz var:</p>
+<ol class="arabic simple">
+<li><p>0-matrisi oluşturup, bütün elemanlarına 2.7 ekleriz:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_0</span> <span class="o">+</span> <span class="mf">2.7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[2.7, 2.7, 2.7, 2.7],
+        [2.7, 2.7, 2.7, 2.7],
+        [2.7, 2.7, 2.7, 2.7]],
+
+       [[2.7, 2.7, 2.7, 2.7],
+        [2.7, 2.7, 2.7, 2.7],
+        [2.7, 2.7, 2.7, 2.7]]])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>1-matrisi oluşturup, bütün elemanlarını 2.7 ile çarparız:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_1</span> <span class="o">*</span> <span class="mf">2.7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7]],
+
+       [[2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7],
+        [2.7, 2.7]]])
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Herhangi bir matris oluşturup (ya da hazır alıp), bütün elemanlarını 2.7 ile <em>doldururuz</em>:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">3.</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------&quot;</span><span class="p">)</span>
+<span class="n">mat_n</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 2. 3.]
+ [4. 5. 6.]]
+----------
+[[2.3 2.3 2.3]
+ [2.3 2.3 2.3]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fill</span></code> metodunu kullanırken dikkat etmeniz gereken iki şey var:</p>
+<ul class="simple">
+<li><p>Metodu kullandığınızda doğrudan ilgili matrise etki eder, yeni bir matris döndürmez.</p></li>
+<li><p>Elinizdeki matrisin cinsi ne ise, doldururken kullandığınız değerin cinsini matrisin cinsine döndürür.</p></li>
+</ul>
+<p>İkinci noktanın nasıl çalıştığını görmek için üstteki örneği bir kez daha, bu kez “hilesiz, el çabukluğu kerametsiz”, ağır çekimde izleyelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------&quot;</span><span class="p">)</span>
+<span class="n">mat_n</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]]
+----------
+[[2 2 2]
+ [2 2 2]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hoppala! Yukarıdakinin <em>aynısını</em> yazdık ama bu sefer 2.3 yerine, 2 ile doldurdu… nereyi farklı girdik ki?.. (haydi bulun bakalım, size 1 dakika süre…)</p>
+<p>…</p>
+<p>Buldunuz mu? İki girişte de ilk satırdaki “3”e bakın. Evet, tam orası işte! İlk kodda “3.” diyerek, çaktırmadan bütün diziyi ondalıklı tipine dönüştürmüşüz, ikincisinde hepsi tam sayı. Bu yüzden ikincisinde “2.3” ondalıklı sayısı ile doldur deyince matrisimize, “hiç kusura bakma, ben tam sayı matrisiyim, çok istiyorsa tam sayı kılığına girsin, 2 olarak eklerim” diyor, olayımız bundan ibaret. 8P 8)</p>
+</section>
+<section id="birim-matris">
+<h3>birim matris<a class="headerlink" href="#birim-matris" title="Permalink to this heading">#</a></h3>
+<p>Birim matris, tanım itibarı ile -ve tabii ki boyutları ile uyumlu olmak şartıyla- bir matrisle çarpıldığı zaman, o matrisi değiştirmeyen matristir. Bunu da sağlamanın tek yolu, köşegeni boyunca “1” değerini almasıdır. “Identity” (birim, etkisiz) olarak isimlendirilip “I” harfi ile temsil edildiğinden, okunuşundan yola çıkıp, ufak bir kelime oyunu ile <code class="docutils literal notranslate"><span class="pre">eye</span></code> olarak tanımlanır:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_birim_5x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_birim_5x5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]
+ [0. 0. 0. 1. 0.]
+ [0. 0. 0. 0. 1.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kare matris olması zorunluluğu yoktur:</span>
+<span class="n">mat_birim_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_birim_3x5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ [0. 0. 1. 0. 0.]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rastgele-matrisler">
+<h3>rastgele matrisler<a class="headerlink" href="#rastgele-matrisler" title="Permalink to this heading">#</a></h3>
+<p>Bazen uğraşmak istemeyiz, “sen kafana göre doldur, ben sonra bakarım” deriz. Bu durumlarda numpy.random kütüphanesinin rand ve randint’i epey yardımcı olur:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_rastgele_tamsayilar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_rastgele_tamsayilar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[7 6 7 8]
+  [9 9 5 5]
+  [5 5 5 7]]
+
+ [[8 6 8 7]
+  [5 5 6 7]
+  [6 5 9 9]]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_rastgele_ondaliklar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_rastgele_ondaliklar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[0.90112423 0.08766438 0.8014479  0.21715885]
+  [0.77199647 0.52574609 0.18777848 0.05299309]
+  [0.45547319 0.70330176 0.10407506 0.41325737]]
+
+ [[0.0779831  0.92514714 0.33222948 0.68345084]
+  [0.6491985  0.32568914 0.03950827 0.86147118]
+  [0.58610349 0.86722389 0.79682945 0.80665059]]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Parametreler anlaşılıyor mu çağrıştan? randint’e ilk parametre olarak alt limiti (dahil), ikinci parametre olarak üst limiti (hariç), üçüncü parametre olarak da matrisimizin arzu ettiğimiz boyutunu belirtiyoruz (Bu arada, Python’da harikulade bir parametre sıralama opsiyonu var, birkaç haftaya göreceğiz inşallah 8)</p>
+<p>rand’da ise parametre olarak sadece boyutu verebiliyoruz, o da bize, alışık olduğumuz üzere 0 ile 1 arasında (0 dahil, 1 hariç) sayılar üretiyor (teknik not: düzgün dağılımdan).</p>
+<p><a name="arange_araliklar"></a></p>
+</section>
+<section id="arange-ile-araliklar">
+<h3>arange ile aralıklar<a class="headerlink" href="#arange-ile-araliklar" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">arange</span></code> komutu bize bir boyutlu diziler verir ama elemanlarını istediğimiz adımla türetebildiğimiz için, peşine bir de <code class="docutils literal notranslate"><span class="pre">reshape</span></code> çekersek tadından yenmez olur. İlk parametre başlayacağı sayı (dahil), ikinci parametre biteceği sayı (hariç), üçüncü parametre de adım boyu olur:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_aralik</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">10.1</span><span class="p">,</span><span class="mf">2.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_aralik</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.  6.3 8.6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gördüğünüz üzere, ne başlangıcın, ne bitişin, ne de adım boyunun tam sayı olmak gibi bir zorunluluğu yok. İleriye doğru gidebildiğimiz gibi, geriye doğru da gidebiliriz (Nasıl?.. Adım boyumuzu negatif alarak tabii ki!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_aralik_gerigeri</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_aralik_gerigeri</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10  8  6  4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bir de arange + reshape kombosu yapalım, tam olsun:</span>
+<span class="n">mat_kombo_3x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_kombo_3x3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıdaki örnekte nokta ardından nokta birleşik yazımı (metodun dönüşüne metot) kafanızı karıştırıyorsa, parantez içinde de güzel güzel belirtebilirsiniz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_kombo_3x3</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_kombo_3x3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="SelcukErdem_AkilliEfendiKopek.png" src="_images/SelcukErdem_AkilliEfendiKopek.png" />
+(Selçuk Erdem, Karikatürler 1, s.72)</p>
+</section>
+<section id="linspace-duzenli-disiplinli">
+<h3>linspace: düzenli, disiplinli<a class="headerlink" href="#linspace-duzenli-disiplinli" title="Permalink to this heading">#</a></h3>
+<p>Sayısal örneklerle haşır neşir olacağımız için bir fonksiyonun belli -ve hemen her zaman düzenl aralıklı- noktalarda değerini hesaplatmak istediğimizde arange yardıma koşar. Ama mesela doğrudan “23 ile 30 arasındaki değerleri hesaplayalım, 100 tane değer alalım” dersek, o zaman biraz zorlanıyoruz (ben zorlanıyorum en azından… <code class="docutils literal notranslate"><span class="pre">adım_boyu</span> <span class="pre">=</span> <span class="pre">(30</span> <span class="pre">-</span> <span class="pre">23)</span> <span class="pre">/</span> <span class="pre">100</span></code>?..</p>
+<p>Bu gibi durumlarda, bu işi yapan hazır linspace komutumuz var:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mat_duzenli_guzel_aralik</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_duzenli_guzel_aralik</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bu güzel, düzenli dizinin eleman sayısı: &quot;</span><span class="p">,</span><span class="n">mat_duzenli_guzel_aralik</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[23.         23.07070707 23.14141414 23.21212121 23.28282828 23.35353535
+ 23.42424242 23.49494949 23.56565657 23.63636364 23.70707071 23.77777778
+ 23.84848485 23.91919192 23.98989899 24.06060606 24.13131313 24.2020202
+ 24.27272727 24.34343434 24.41414141 24.48484848 24.55555556 24.62626263
+ 24.6969697  24.76767677 24.83838384 24.90909091 24.97979798 25.05050505
+ 25.12121212 25.19191919 25.26262626 25.33333333 25.4040404  25.47474747
+ 25.54545455 25.61616162 25.68686869 25.75757576 25.82828283 25.8989899
+ 25.96969697 26.04040404 26.11111111 26.18181818 26.25252525 26.32323232
+ 26.39393939 26.46464646 26.53535354 26.60606061 26.67676768 26.74747475
+ 26.81818182 26.88888889 26.95959596 27.03030303 27.1010101  27.17171717
+ 27.24242424 27.31313131 27.38383838 27.45454545 27.52525253 27.5959596
+ 27.66666667 27.73737374 27.80808081 27.87878788 27.94949495 28.02020202
+ 28.09090909 28.16161616 28.23232323 28.3030303  28.37373737 28.44444444
+ 28.51515152 28.58585859 28.65656566 28.72727273 28.7979798  28.86868687
+ 28.93939394 29.01010101 29.08080808 29.15151515 29.22222222 29.29292929
+ 29.36363636 29.43434343 29.50505051 29.57575758 29.64646465 29.71717172
+ 29.78787879 29.85858586 29.92929293 30.        ]
+---------------------
+Bu güzel, düzenli dizinin eleman sayısı:  100
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yani, linspace ile tek yapmamız gereken başlangıcı (dahil), bitişi (<strong>o da dahil</strong>, aman dikkat!) ve toplamda kaç tane nokta istediğimiz belirtip, arkamıza yaslanmak!</p>
+</section>
+</section>
+<section id="matris-islemleri-dort-islem-bir-ters-bir-duz">
+<h2>Matris işlemleri (dört işlem + bir ters, bir düz)<a class="headerlink" href="#matris-islemleri-dort-islem-bir-ters-bir-duz" title="Permalink to this heading">#</a></h2>
+<section id="dort-temel-islem-eleman-bazinda">
+<h3>Dört temel işlem (eleman bazında)<a class="headerlink" href="#dort-temel-islem-eleman-bazinda" title="Permalink to this heading">#</a></h3>
+<p>Matrislerimizi -birbirleriyle boyutları uyumlu olduğu sürece- dört temel işlemi kullanarak <u>eleman bazında</u> toplayabilir, çıkarabilir, çarpabilir ve hatta bölebiliriz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">227</span><span class="p">)</span>
+<span class="n">mat_a_3x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mat_a_3x2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">mat_b_3x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_b_3x2:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mat_b_3x2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">mat_c_2x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_c_2x4:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">mat_c_2x4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_a_3x2:
+ [[1 1]
+ [9 3]
+ [7 5]]
+--------------------------------------------------
+mat_b_3x2:
+ [[5 9]
+ [4 5]
+ [2 1]]
+--------------------------------------------------
+mat_c_2x4:
+ [[9 8 2 4]
+ [1 6 2 6]]
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x2 + mat_b_3x2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x2</span> <span class="o">+</span> <span class="n">mat_b_3x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_a_3x2 + mat_b_3x2
+[[ 6 10]
+ [13  8]
+ [ 9  6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x2 * mat_b_3x2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x2</span> <span class="o">*</span> <span class="n">mat_b_3x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_a_3x2 * mat_b_3x2
+[[ 5  9]
+ [36 15]
+ [14  5]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x2 / mat_b_3x2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x2</span> <span class="o">/</span> <span class="n">mat_b_3x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_a_3x2 / mat_b_3x2
+[[0.2        0.11111111]
+ [2.25       0.6       ]
+ [3.5        5.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="skaler-ve-vektorel-carpimlar">
+<h3>Skaler ve Vektörel Çarpımlar<a class="headerlink" href="#skaler-ve-vektorel-carpimlar" title="Permalink to this heading">#</a></h3>
+<p><strong>Skaler Çarpım</strong><br />
+Matrislerin skaler çarpımını ise <code class="docutils literal notranslate"><span class="pre">dot</span></code> fonksiyonu ile sağlarız:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skaler_carpim_3x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mat_a_3x2</span><span class="p">,</span><span class="n">mat_c_2x4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;skaler_carpim_3x4 = np.dot(mat_a_3x2,mat_c_2x4):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">skaler_carpim_3x4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skaler_carpim_3x4 = np.dot(mat_a_3x2,mat_c_2x4):
+[[10 14  4 10]
+ [84 90 24 54]
+ [68 86 24 58]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Vektörel Çarpım</strong><br />
+Vektörel çarpım ise <code class="docutils literal notranslate"><span class="pre">cross</span></code> fonksiyonu ile yapılmakta:
+$<span class="math notranslate nohighlight">\(\hat{i}\times \hat{j} = \hat{k}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">j_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">k_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i_hat x j_hat = &quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">i_hat</span><span class="p">,</span><span class="n">j_hat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x2 x mat_b_3x2 =&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">mat_a_3x2</span><span class="p">,</span><span class="n">mat_b_3x2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i_hat x j_hat =  [0 0 1]
+--------------------------------------------------
+mat_a_3x2 x mat_b_3x2 = [ 4 33 -3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrisin-transpozesi-tersi-ve-determinanti">
+<h3>Matrisin transpozesi, tersi ve determinantı<a class="headerlink" href="#matrisin-transpozesi-tersi-ve-determinanti" title="Permalink to this heading">#</a></h3>
+<p><strong>Transpozesi</strong>
+Matrislerimizin transpozesini <code class="docutils literal notranslate"><span class="pre">T</span></code> metodu ile alırız (Uzun uzadıya yazmak isterseniz transpose() komutunu kullanabilirsiniz)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x2</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">mat_a_3x2</span><span class="p">))</span>
+<span class="n">mat_d_2x3x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_d_2x3x4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_d_2x3x4</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 1]
+ [9 3]
+ [7 5]]
+--------------------------------------------------
+[[1 9 7]
+ [1 3 5]]
+
+[[1 9 7]
+ [1 3 5]]
+==================================================
+[[[1 6 2 1]
+  [2 4 5 4]
+  [2 3 7 2]]
+
+ [[3 3 1 6]
+  [3 9 6 3]
+  [9 3 4 9]]]
+--------------------------------------------------
+[[[1 3]
+  [2 3]
+  [2 9]]
+
+ [[6 3]
+  [4 9]
+  [3 3]]
+
+ [[2 1]
+  [5 6]
+  [7 4]]
+
+ [[1 6]
+  [4 3]
+  [2 9]]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Tersi</strong><br />
+Kare bir matrisin tersini <code class="docutils literal notranslate"><span class="pre">linalg</span></code> (<em>linear algebra</em>) kütüphanesinin <code class="docutils literal notranslate"><span class="pre">inv</span></code> (<em>inverse</em>) komutu ile alabiliriz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">227</span><span class="p">)</span>
+<span class="n">mat_e_3x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">mat_e_3x3_tersi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">mat_e_3x3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_e_3x3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_e_3x3_tersi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 1 9]
+ [3 7 5]
+ [5 9 4]]
+[[ 0.22368421 -1.01315789  0.76315789]
+ [-0.17105263  0.53947368 -0.28947368]
+ [ 0.10526316  0.05263158 -0.05263158]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bildiğiniz üzere, bir matrisin tersi, o matrisle çarpıldığında, birim matrisini veren matristir, yani:
+$<span class="math notranslate nohighlight">\(A\cdot A^{-1} = \mathbb{1}\)</span>$</p>
+<p>Yukarıdaki hesabımızı kontrol edelim:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mat_e_3x3</span><span class="p">,</span><span class="n">mat_e_3x3_tersi</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+00  1.45716772e-16 -2.77555756e-17]
+ [-3.33066907e-16  1.00000000e+00 -1.94289029e-16]
+ [ 0.00000000e+00  3.60822483e-16  1.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(10^{-16}\)</span> küçüklüğünü pratik olarak 0 alabileceğimiz için, çarpımın gayet güzel bir birim matris vermiş olduğunu görüyoruz! 8)</p>
+<p><strong>‘Tersimsisi’</strong><br />
+Bir matrisin tersi hesaplanırken, analitik olarak determinantından da faydalanır. Determinant ise sadece kare matrislerin bir özelliği olduğundan, bu nedenle kare olmayan matrislerin analitik olarak tersleri yoktur. Fakat, nümerik olarak kare olmayan (nxm)’lik bir matris ile çarpılıp, (nxn)’lik bir birim matrisi verebilecek (mxn)’lik bir matris bulunabilir. Kare olmayan bu ters matrisler de sanki-ters, ‘tersimsi’ (<em>pseudo-inverse</em>) olarak adlandırılıp, buradan kısaltmayla, yine <code class="docutils literal notranslate"><span class="pre">linalg</span></code> kütüphanesinin <code class="docutils literal notranslate"><span class="pre">pinv</span></code> komutu ile bulunur (yalnız tabii her matrisin tersi olacak diye bir garanti yoktur).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">227</span><span class="p">)</span>
+<span class="n">mat_a_3x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x5:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x5_tersimsi:&quot;</span><span class="p">)</span>
+<span class="n">mat_a_3x5_tersimsi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">mat_a_3x5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_a_3x5_tersimsi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_a_3x5 x mat_a_3x5_tersimsi =&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mat_a_3x5</span><span class="p">,</span><span class="n">mat_a_3x5_tersimsi</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_a_3x5:
+[[1 1 9 3 7]
+ [5 5 9 4 5]
+ [2 1 9 8 2]]
+--------------------------------------------------
+mat_a_3x5_tersimsi:
+[[-0.09098056  0.12033452 -0.02276971]
+ [-0.08144814  0.13321803 -0.04835983]
+ [ 0.04811415 -0.00919829  0.02856778]
+ [-0.05332259 -0.03392362  0.12458971]
+ [ 0.1284813  -0.00985672 -0.07996423]]
+--------------------------------------------------
+mat_a_3x5 x mat_a_3x5_tersimsi =
+[[ 1.00000000e+00 -2.04697370e-16  4.16333634e-17]
+ [ 7.77156117e-16  1.00000000e+00  1.80411242e-16]
+ [ 4.44089210e-16 -6.93889390e-18  1.00000000e+00]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Determinantı</strong><br />
+Kare bir matrisin determinantını da şaşırtıcı olmayan bir biçimde, <code class="docutils literal notranslate"><span class="pre">linalg</span></code> kütüphanesinin <code class="docutils literal notranslate"><span class="pre">det</span></code> komutu ile elde ederiz:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mat_e_3x3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mat_e_3x3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;det(mat_e_3x3):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">mat_e_3x3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mat_e_3x3
+[[1 1 9]
+ [3 7 5]
+ [5 9 4]]
+--------------------------------------------------
+det(mat_e_3x3):
+-76.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="FIZ227_01_Giris_Listeler.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python’a Giriş ve Listeler</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FIZ227_03_MatPlotLib_GrafikCizimi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Grafik Çizimi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ders-notlari-2">Ders Notları: 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-in-n-boyutlu-dizileri-ndarray">NumPy’ın N-boyutlu Dizileri (ndarray)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanimlama">Tanımlama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-elemanlarina-erisim-ve-degistirme">Matris Elemanlarına Erişim ve Değiştirme</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bolgesel-erisim">Bölgesel erişim</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-elemanlarini-degistirmek">Matris Elemanlarını Değiştirmek</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrise-eleman-ekleme">Matrise Eleman Ekleme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matristen-eleman-silme">Matristen Eleman Silme</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrislerin-ozellikleri">Matrislerin Özellikleri</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size-matrisin-eleman-sayisi">size: Matrisin eleman sayısı</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shape-matrisimizin-boyutlari-90-60-90">shape: Matrisimizin boyutları <em>(90-60-90)</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-yeniden-sekillendir-sam">reshape: yeniden şekillendir, Sam..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndim-kisa-yoldan-kac-boyutlu-bir-matrisimiz-olduguna-dair">ndim: kısa yoldan kaç boyutlu bir matrisimiz olduğuna dair…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtype-elemanlarinin-cinsi">dtype: elemanlarının cinsi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipik-matrisler">Tipik Matrisler</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeros-sifir-sifir-sifir">zeros : sıfır sıfır sıfır…</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ones-bir-bir-bir-nereye-kadar-gidecegiz-boyle-haydi-bakalim">ones : bir bir bir… (nereye kadar gideceğiz böyle, haydi bakalım…)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-ile-matrisi-doldurmak">fill ile matrisi doldurmak</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#birim-matris">birim matris</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rastgele-matrisler">rastgele matrisler</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arange-ile-araliklar">arange ile aralıklar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linspace-duzenli-disiplinli">linspace: düzenli, disiplinli</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matris-islemleri-dort-islem-bir-ters-bir-duz">Matris işlemleri (dört işlem + bir ters, bir düz)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dort-temel-islem-eleman-bazinda">Dört temel işlem (eleman bazında)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skaler-ve-vektorel-carpimlar">Skaler ve Vektörel Çarpımlar</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrisin-transpozesi-tersi-ve-determinanti">Matrisin transpozesi, tersi ve determinantı</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Emre S. Tasci
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
