@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.16.4
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -114,7 +114,7 @@ for deger in deger_kumesi:
     print("Şu andaki değer: ",deger)
 ```
 
-_(Siz yine de ["karma" listelerin nasıl tutulduğunu](FIZ227_02_Vektorler_Matrisler.html#karma_diziler) aklınızın bir köşesinde tutun ;)_
+_(Siz yine de ["karma" listelerin nasıl tutulduğunu](FIZ227_02_Vektorler_Matrisler.md#karma_diziler) aklınızın bir köşesinde tutun ;)_
 
 +++
 
@@ -145,7 +145,7 @@ for i in np.arange(0,dizi1.size):
     print(i,".",dizi1[i],":",dizi2[i])
 ```
 
-Yukarıdaki örnekte, doğrudan dizilerin elemanları üzerinden değil, onların eleman sayılarına bağlı olarak iterasyon yapıyoruz: aralığımızı [arange](FIZ227_02_Vektorler_Matrisler.html#arange_araliklar) ile 0'dan eleman sayısına kadar tanımlıyoruz, yani bu durumda [0,1,2] oluyor. 
+Yukarıdaki örnekte, doğrudan dizilerin elemanları üzerinden değil, onların eleman sayılarına bağlı olarak iterasyon yapıyoruz: aralığımızı [arange](FIZ227_02_Vektorler_Matrisler.md#arange_araliklar) ile 0'dan eleman sayısına kadar tanımlıyoruz, yani bu durumda [0,1,2] oluyor. 
 
 Döngümüzün her dönüşünde, i sırasıyla 0,1 ve 2 değerini alıyor.
 

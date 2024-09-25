@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.11.5
+    jupytext_version: 1.16.4
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -216,7 +216,7 @@ print("Toplam: ",top)
 print("Fark: ",cik)
 ```
 
-Peki, diyelim boş bulunup, dönüşe tek değişken koyduk? Bu durumda, bize sonuç demet (_tuple_) olarak dönecektir (demetlerle ilgili daha fazla bilgi için bkz. [Ders Notları #1](FIZ227_01_Giris_Listeler.html#demetler))
+Peki, diyelim boş bulunup, dönüşe tek değişken koyduk? Bu durumda, bize sonuç demet (_tuple_) olarak dönecektir (demetlerle ilgili daha fazla bilgi için bkz. [Ders Notları #1](FIZ227_01_Giris_Listeler.md#demetler))
 
 ```{code-cell} ipython3
 tekli_donen = topla_cikar(3,5)
