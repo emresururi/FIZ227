@@ -1,0 +1,24 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+
+- file: FIZ227_01_Giris_Listeler
+  title: Listeler ve Sözlükler
+- file: FIZ227_02_Vektorler_Matrisler
+  title: Vektörler ve Matrisler
+- file: FIZ227_03_MatPlotLib_GrafikCizimi
+- file: FIZ227_04_DongulerVeKararlar
+- file: FIZ227_05_LineerCebir
+- file: FIZ227_06_LineerCebir_Uygulama_1
+- file: FIZ227_07_LineerCebir_Uygulama_2
+- file: FIZ227_08_FonksiyonTurevIntegral
+- file: FIZ227_U01_nxn_EnKucukKareler
+- file: FIZ227_U02_YukluParcacikSimulasyonu
+- file: FIZ227_Sinav_20231_MT1
+- file: FIZ227_Sinav_20231_MT1_QA
+- file: FIZ227_Sinav_20231_MT2
+- file: FIZ227_Sinav_20231_MT2_QA
+- file: FIZ227_Sinav_Tavsiyeler
